@@ -16,19 +16,20 @@ namespace finalyearproject.Controllers
         private CvRepo cvRepo;
         private int user_id;
         private string role;
-        public ProfileController(ApplicationDBcontext dBcontext, HttpContextAccessor httpContextAccessor, IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
+        public ProfileController(ApplicationDBcontext dBcontext, IHttpContextAccessor httpContextAccessor, IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
         {
             _dbcontext = dBcontext;
             _userRepo = new UserRepo(_dbcontext);
             session =httpContextAccessor.HttpContext.Session;
             _sendMailSystem=new SendMailSystem(emailSender, hostEnvironment);
             cvRepo = new CvRepo(_dbcontext);
-            user_id =(int) session.GetInt32("user_id");
-            role = session.GetString("role");
+            //user_id =(int) session.GetInt32("user_id");
+            //role = session.GetString("role");
         }
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> index(int id)
         {
-            if (Checkinfor(id))
+            id = 1;
+            //if (Checkinfor(id))
             {
                 User user= await _userRepo.SearchUserById(id);
                 return View(user);

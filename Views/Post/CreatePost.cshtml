@@ -15,12 +15,12 @@
          
             <div class="form-group">
                 <label asp-for="post_title" class="control-label"></label>
-                <input asp-for="post_title" class="form-control" />
+                <input asp-for="post_title" class="form-control" required />
                 <span asp-validation-for="post_title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="post_body" class="control-label"></label>
-                <input asp-for="post_body" class="form-control" />
+                <input asp-for="post_body" class="form-control" required />
                 <span asp-validation-for="post_body" class="text-danger"></span>
             </div>
             <div class="form-group">
