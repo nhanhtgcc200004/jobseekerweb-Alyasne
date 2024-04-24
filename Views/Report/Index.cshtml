@@ -1,5 +1,65 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<finalyearproject.Models.Report>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.repoter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reciver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.post)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.content_report)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_submit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.repoter.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reciver.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.post.post_body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.content_report)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_submit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.report_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.report_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.report_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

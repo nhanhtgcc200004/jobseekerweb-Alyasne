@@ -143,9 +143,18 @@ namespace finalyearproject.Controllers
         [HttpPost]
         public async Task<IActionResult> AppliedJob(int post_id)
         {
-
-            return View();
+            HandleAppliedJob(post_id);
+            return Ok();
         }
-       
+
+        private void HandleAppliedJob(int post_id)
+        {
+            Appliedjob appliedjob = new Appliedjob();
+            appliedjob.post_id = post_id;
+            appliedjob.user_id= user_id;
+            appliedjob.status = "in Processing...";
+            _dbContext.Add(appliedjob);
+            _dbContext.SaveChanges();
+        }
     }
 }
