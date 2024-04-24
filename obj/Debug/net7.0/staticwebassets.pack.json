@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets\\css\\Profile.css"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\authentication.css",
       "PackagePath": "staticwebassets\\css\\authentication.css"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\mdb.min.css",
@@ -37,12 +45,20 @@
       "PackagePath": "staticwebassets\\css\\style.min.css"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\templatemo-style.css",
+      "PackagePath": "staticwebassets\\css\\templatemo-style.css"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",
       "PackagePath": "staticwebassets\\js\\Search.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\plugins.js"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\site.js",

@@ -19,7 +19,7 @@ namespace finalyearproject.Controllers
             user_id =(int) session.GetInt32("user_id");
             role = session.GetString("role");
         }
-        public IActionResult Search(string search_value)
+        public IActionResult Index(string search_value)
         {
             if (ChecktypeSearch())
             {

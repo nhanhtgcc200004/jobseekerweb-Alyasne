@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VMbZDy/br90gUdZwz75N1UdAEMiEx4HWAMtIA5FBM9A=",
+  "Hash": "fhoabnbCC/dDlL90KOoFgCWG0f6osg2uPELLO2GbNio=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "D:\\1640\\finalyearproject\\finalyearproject\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\finalyearproject.bundle.scp.css"
     },
     {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\all.min.css",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "css/all.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\all.min.css"
+    },
+    {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\authentication.css",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\authentication.css"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\bootstrap.min.css",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "css/bootstrap.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\Login.css",
@@ -187,6 +221,23 @@
       "OriginalItemSpec": "wwwroot\\css\\style.min.css"
     },
     {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\templatemo-style.css",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "css/templatemo-style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\templatemo-style.css"
+    },
+    {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\favicon.ico",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
@@ -202,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\plugins.js",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "js/plugins.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\plugins.js"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",

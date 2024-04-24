@@ -24,6 +24,11 @@ namespace finalyearproject.Repositories
         {
             return await dbcontext.Users.Where(u=>u.Status!="0").ToListAsync();
         }
+        public async Task<List<User>> SearchAllWorker()
+        {
+            return await dbcontext.Users.Where(u => u.Status != "0" && u.role=="user").ToListAsync();
+        }
+        
         public async Task<User> SearchUserByMail(string email)
         {
             User user = await dbcontext.Users.Where(u => u.Email == email).FirstAsync();

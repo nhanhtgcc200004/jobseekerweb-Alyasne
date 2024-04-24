@@ -31,13 +31,13 @@ namespace finalyearproject.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(string gmail, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            User user = await userRepo.Login(gmail, password);
+            User user = await userRepo.Login(email, password);
             var login = HandleLogin(user);
             if (login=="success")
             {
-                return View("Home","Index");
+                return RedirectToAction("Index","Post");
             }
             else if (login== "this account still doesn't verify")
             {
@@ -57,7 +57,7 @@ namespace finalyearproject.Controllers
                 if (user.Status != "waiting for confirmation" && user.Status!="deleted")
                 {
                     Session.SetString("role", user.role);
-                    Session.SetInt32("Id", user.user_id);
+                    Session.SetInt32("user_id", user.user_id);
                     return "success";
                 }
                 else
