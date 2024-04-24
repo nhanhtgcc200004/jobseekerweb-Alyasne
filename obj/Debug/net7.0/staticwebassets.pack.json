@@ -53,6 +53,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\image\\img_avatar.png",
+      "PackagePath": "staticwebassets\\image\\img_avatar.png"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Profile.js",
+      "PackagePath": "staticwebassets\\js\\Profile.js"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",
       "PackagePath": "staticwebassets\\js\\Search.js"
     },

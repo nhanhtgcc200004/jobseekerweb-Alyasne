@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fhoabnbCC/dDlL90KOoFgCWG0f6osg2uPELLO2GbNio=",
+  "Hash": "QgkVadC4LtjpQSzQ5T+tGzS73lEM7POfKfwJvBh7ucg=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -255,6 +255,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\image\\img_avatar.png",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "image/img_avatar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\img_avatar.png"
+    },
+    {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\plugins.js",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
@@ -270,6 +287,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\plugins.js"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Profile.js",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "js/Profile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Profile.js"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",

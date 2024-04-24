@@ -237,13 +237,13 @@ namespace finalyearproject.Controllers
         {
             return View();
         }
-        public IActionResult RegisterCompany([FromForm] Company company)
+        public IActionResult RegisterCompany([FromForm] Conpany company)
         {
             HandleRegisterCompany(company);
             return View();
         }
        
-        private void HandleRegisterCompany(Company company)
+        private void HandleRegisterCompany(Conpany company)
         {
             company.status = "waiting for confirmation";
             _dbContext.Add(company);

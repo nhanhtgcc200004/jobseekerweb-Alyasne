@@ -9,7 +9,7 @@ namespace finalyearproject.Models
         public ApplicationDBcontext(DbContextOptions options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<CV> CVs { get; set; }
-        public DbSet<Company> Companys { get; set; }
+        public DbSet<Conpany> Conpanys { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Reply_Comment> Replys { get; set; }

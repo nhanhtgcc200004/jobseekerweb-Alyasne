@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace finalyearproject.Models
 {
-    public class Company
+    public class Conpany
     {
-        public Company() { }
+        public Conpany() { }
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

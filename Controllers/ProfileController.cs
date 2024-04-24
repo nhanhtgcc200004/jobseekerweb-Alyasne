@@ -23,13 +23,13 @@ namespace finalyearproject.Controllers
             session =httpContextAccessor.HttpContext.Session;
             _sendMailSystem=new SendMailSystem(emailSender, hostEnvironment);
             cvRepo = new CvRepo(_dbcontext);
-            //user_id =(int) session.GetInt32("user_id");
-            //role = session.GetString("role");
+            user_id =(int) session.GetInt32("user_id");
+            role = session.GetString("role");
         }
         public async Task<IActionResult> index(int id)
         {
-            id = 1;
-            //if (Checkinfor(id))
+            
+            if (Checkinfor(id))
             {
                 User user= await _userRepo.SearchUserById(id);
                 return View(user);
