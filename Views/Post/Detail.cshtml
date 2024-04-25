@@ -1,1 +1,46 @@
-﻿
+﻿@model IEnumerable<finalyearproject.Models.Post>
+.
+<div class="post-detail">
+    <h5>@item.post_title</h5>
+
+    <figure class="effect-ming tm-video-item">
+        <p>@item.post_body</p>
+        <figcaption class="d-flex align-items-center justify-content-center">
+            <a href="photo-detail.html">View more</a>
+        </figcaption>                    
+    </figure>
+
+    <div class="d-flex justify-content-between tm-text-gray">
+        <span class="tm-text-gray-light">@item.date_post</span>
+        <span>@item.location_work</span>
+    </div>
+
+    <!-- Comment Zone -->
+    <div class="comment-zone">
+        <!-- Add comment form -->
+        <form class="comment-form">
+            <div class="form-group">
+                <label for="comment">Your Comment:</label>
+                <textarea class="form-control" id="comment" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Comments -->
+        <div class="comments">
+            <!-- Example Comment -->
+            <div class="comment">
+                <div class="comment-author">
+                    <strong>John Doe</strong> <span class="comment-date">2 hours ago</span>
+                </div>
+                <div class="comment-content">
+                    <p>This is an example comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <!-- End of Example Comment -->
+
+            <!-- Add more comments as needed -->
+        </div>
+    </div>
+    <!-- End of Comment Zone -->
+</div>
