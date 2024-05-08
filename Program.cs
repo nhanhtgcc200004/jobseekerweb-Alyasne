@@ -25,6 +25,6 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Profile}/{action=index}");
+    pattern: "{controller=Post}/{action=PostManagement}");
 
 app.Run();

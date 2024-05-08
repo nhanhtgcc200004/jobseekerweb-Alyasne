@@ -1,0 +1,34 @@
+﻿@model finalyearproject.Models.Post
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.user.conpany.conpany_name</h6>
+        <div class="dropdown no-arrow">
+            <div class="d-flex gap-4">
+                <a asp-controller="Post" asp-action="Detail" asp-route-post_id="@Model.post_id" class="btn btn-info">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+                    <a asp-controller="Post" asp-action="UpdatePost" asp-route-post_id="@Model.post_id" style="text-decoration:none" class="btn btn-warning">
+                    <i class="fas fa-edit"></i>
+                    </a>
+                <button class="btn btn-danger" data-toggle="modal" data-id="@Model.post_id" data-target="#confirm_delete">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2 col-sm-12">
+                <img src="~/public/img/@Model.user.avatar" style="width: 5rem; height: 5rem" alt="">
+            </div>
+            <div class="col-md-10 col-sm-12">
+                <div><label>Postion: </label> <p style="margin-left: 2%;display: inline;">@Model.Position</p></div>
+                <div>
+                    <label>Job description: </label><p style="margin-left: 2%;display: inline; overflow:hidden">@Model.job_description</p>
+                </div>
+                <div><label>Address: </label><p style="margin-left: 2%;display: inline; ">@Model.address</p></div>
+            </div>
+        </div>
+    </div>
+</div>

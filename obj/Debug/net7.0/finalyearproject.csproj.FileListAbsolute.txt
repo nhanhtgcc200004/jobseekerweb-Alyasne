@@ -262,9 +262,7 @@ D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\staticwebassets\msbui
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\staticwebassets.pack.json
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\staticwebassets.build.json
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\staticwebassets.development.json
-D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\scopedcss\bundle\finalyearproject.styles.css
-D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\scopedcss\projectbundle\finalyearproject.bundle.scp.css
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\finalyearproject.csproj.CopyComplete
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\finalyearproject.dll
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\refint\finalyearproject.dll

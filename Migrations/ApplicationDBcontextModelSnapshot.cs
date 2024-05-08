@@ -70,9 +70,9 @@ namespace finalyearproject.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("finalyearproject.Models.Company", b =>
+            modelBuilder.Entity("finalyearproject.Models.Conpany", b =>
                 {
-                    b.Property<int>("company_id")
+                    b.Property<int>("conpany_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -80,15 +80,15 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Email_company")
+                    b.Property<string>("Email_conpany")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("User_Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("company_name")
+                    b.Property<string>("conpany_name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -100,9 +100,21 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("company_id");
+                    b.HasKey("conpany_id");
 
                     b.ToTable("Companys");
+
+                    b.HasData(
+                        new
+                        {
+                            conpany_id = 999,
+                            Address = "open",
+                            Email_conpany = "b",
+                            User_Name = "d",
+                            conpany_name = "a",
+                            position = "c",
+                            status = "open"
+                        });
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Post", b =>
@@ -111,15 +123,32 @@ namespace finalyearproject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("date_post")
+                    b.Property<string>("Position")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("location_work")
+                    b.Property<string>("address")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("post_body")
+                    b.Property<DateTime>("date_post")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("experience")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("expired_date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("job_description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("limit_candidates")
+                        .HasColumnType("int");
+
+                    b.Property<string>("other_condition")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -127,9 +156,19 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("salary")
+                        .HasColumnType("int");
+
+                    b.Property<string>("skill_required")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("status")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int>("total_of_candidates")
+                        .HasColumnType("int");
 
                     b.Property<int>("user_id")
                         .HasColumnType("int");
@@ -139,34 +178,6 @@ namespace finalyearproject.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("finalyearproject.Models.Reply_Comment", b =>
-                {
-                    b.Property<int>("reply_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("comment_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("date_reply")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("reply_content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("user_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("reply_id");
-
-                    b.HasIndex("comment_id");
-
-                    b.HasIndex("user_id");
-
-                    b.ToTable("Replys");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Report", b =>
@@ -204,33 +215,6 @@ namespace finalyearproject.Migrations
                     b.HasIndex("reporter_id");
 
                     b.ToTable("Reports");
-                });
-
-            modelBuilder.Entity("finalyearproject.Models.Review", b =>
-                {
-                    b.Property<int>("review_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("review_content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("reviewer_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("stars")
-                        .HasColumnType("int");
-
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("review_id");
-
-                    b.HasIndex("reviewer_id");
-
-                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.User", b =>
@@ -271,13 +255,39 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("avatar")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("conpany_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("role")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("user_id");
 
+                    b.HasIndex("conpany_id");
+
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            user_id = 1,
+                            Birthday = "13/05/2002",
+                            Email = "abc@gmail.com",
+                            Gender = "Male",
+                            Name = "nhan",
+                            Password = "123456",
+                            Phone = "07777",
+                            Status = "Ok",
+                            Viewable = "public",
+                            avatar = "a",
+                            conpany_id = 999,
+                            role = "user"
+                        });
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Verification", b =>
@@ -341,25 +351,6 @@ namespace finalyearproject.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("finalyearproject.Models.Reply_Comment", b =>
-                {
-                    b.HasOne("finalyearproject.Models.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("comment_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("finalyearproject.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("user_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Comment");
-
-                    b.Navigation("user");
-                });
-
             modelBuilder.Entity("finalyearproject.Models.Report", b =>
                 {
                     b.HasOne("finalyearproject.Models.Post", "post")
@@ -387,15 +378,15 @@ namespace finalyearproject.Migrations
                     b.Navigation("repoter");
                 });
 
-            modelBuilder.Entity("finalyearproject.Models.Review", b =>
+            modelBuilder.Entity("finalyearproject.Models.User", b =>
                 {
-                    b.HasOne("finalyearproject.Models.User", "User")
+                    b.HasOne("finalyearproject.Models.Conpany", "conpany")
                         .WithMany()
-                        .HasForeignKey("reviewer_id")
+                        .HasForeignKey("conpany_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("conpany");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Verification", b =>

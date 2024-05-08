@@ -1,0 +1,75 @@
+﻿@model finalyearproject.Models.Post;
+@{
+    Layout = "RecruiterLayout";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Topbar Search -->
+    <div class="card shadow mb-3" style="    position: sticky;
+    text-align: end;
+    z-index: 8;
+    top: 4.4rem;">
+        <div class="card-body d-flex align-items-end flex-end justify-content-end flex-wrap gap-4">
+            <button type="submit" form="UpdatePost" class="btn btn-success btn-icon-split" style="margin-left: 1rem">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Update</span>
+            </button>
+        </div>
+    </div>
+    <!-- DataTales Example -->
+    <form id="UpdatePost" asp-action="UpdatePost" asp-controller="Post" asp-route-post_id="@Model.post_id" method="post" >
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Post information</h6>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
+                <div class="input-block">
+                    <label>Position</label>
+                    <input name="Position" type="text" value="@Model.Position" required>
+                </div>
+                <div class="input-block">
+                    <label>Limited</label>
+                    <input name="limit_candidates" type="text" value="@Model.limit_candidates" required>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
+                <div class="input-block">
+                    <label>Experience</label>
+                    <input name="experience" type="text" value="@Model.experience" required>
+                </div>
+                <div class="input-block">
+                    <label>Expired date</label>
+                        <input name="expired_date" type="date" value="@Model.expired_date.ToString("yyyy-MM-dd")" required>
+                </div>
+                <div class="input-block">
+                    <label>Salary</label>
+                    <input name="salary" type="text" value="@Model.salary" required>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="input-block">
+                    <label>Skill required</label>
+                    <textarea name="skill_required" id="" cols="30" rows="5">@Model.skill_required</textarea>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="input-block">
+                    <label>Job Description</label>
+                    <textarea name="job_description" id="" cols="30" rows="5">@Model.job_description</textarea>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="input-block">
+                    <label>Other condition</label>
+                    <textarea name="other_condition" id="" cols="30" rows="5">@Model.other_condition</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- /.container-fluid -->

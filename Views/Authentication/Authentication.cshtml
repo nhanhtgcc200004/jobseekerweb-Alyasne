@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" href="~/css/login/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/login/login.css">
+</head>
+<body style="background: var(--light-blue)">
+    <section class="forms-section">
+        <h1 class="section-title text-center w-100 mt-5">Sign up</h1>
+        <div class="forms">
+            <div class="form-wrapper is-active">
+                <button type="button" class="switcher switcher-login">
+                    Candidate
+                    <span class="underline"></span>
+                </button>
+                <form class="form form-login" asp-action="CandidateRegister" method="post">
+                    <fieldset>
+                        <div class="input-block">
+                            <label>Full name</label>
+                            <input type="text" name="FullName" required>
+                        </div>
+                        <div class="input-block">
+                            <label>Email</label>
+                            <input type="email" name="Email" required>
+                        </div>
+                        <div class="d-flex gap-2 flex-sm-column flex-md-row">
+                            <div class="input-block">
+                                <label>Password</label>
+                                <input type="password" name="Password" required>
+                            </div>
+                            <div class="input-block">
+                                <label>Confirm password</label>
+                                <input type="password" name="ConfirmPassword" required>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 flex-sm-column flex-md-row">
+                            <div class="input-block">
+                                <label>Phone number</label>
+                                <input type="tel" name="PhoneNumber" required>
+                            </div>
+                            <div class="input-block">
+                                <label>Birthdate</label>
+                                <input type="date" name="Birthdate" required>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <label style="font-size: 14px;color: #a1b4b4;">Gender</label>
+                            <div class="ms-2">
+                                <label for="Male">Male</label>
+                                <input id="Male" type="radio" name="Gender" value="Male" required>
+                            </div>
+                            <div class="ms-3">
+                                <label for="Female">Female</label>
+                                <input id="Female" type="radio" name="Gender" value="Female" required>
+                            </div>
+                        </div>
+                        <div class="input-block mt-3">
+                            <label>Upload resume</label>
+                            <input type="file" name="Resume" required>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+            <div class="form-wrapper">
+                <button type="button" class="switcher switcher-signup">
+                    Recruiter
+                    <span class="underline"></span>
+                </button>
+                <form class="form form-signup" asp-action="RecruiterRegister" method="post">
+                    <fieldset>
+                        <div class="input-block">
+                            <label>Company's name</label>
+                            <input type="text" name="CompanyName" required>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="input-block">
+                                <label>Full name</label>
+                                <input type="text" name="FullName" required>
+                            </div>
+                        </div>
+                        <div class="input-block">
+                            <label>Email</label>
+                            <input type="email" name="Email" required>
+                        </div>
+                        <div class="d-flex gap-2 flex-sm-column flex-md-row">
+                            <div class="input-block">
+                                <label>Password</label>
+                                <input type="password" name="Password" required>
+                            </div>
+                            <div class="input-block">
+                                <label>Confirm password</label>
+                                <input type="password" name="ConfirmPassword" required>
+                            </div>
+                        </div>
+                        <div class="input-block">
+                            <label>Phone number</label>
+                            <input type="tel" name="PhoneNumber" required>
+                        </div>
+                        <div class="input-block">
+                            <label>Address</label>
+                            <input type="text" name="Address">
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        const switchers = [...document.querySelectorAll('.switcher')]
+        
+        switchers.forEach(item => {
+            item.addEventListener('click', function() {
+                switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                this.parentElement.classList.add('is-active')
+            })
+        })
+    </script>
+</body>
+</html>

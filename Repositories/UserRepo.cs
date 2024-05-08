@@ -12,7 +12,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<User> SearchUserById(int id)
         {
-           User user = await dbcontext.Users.Where(u => u.user_id == id).FirstAsync();
+           User user = await dbcontext.Users.Where(u => u.user_id == id).Include(u=>u.conpany).FirstAsync();
             return user;
         }
         public async Task<User> Login(string email,string password)

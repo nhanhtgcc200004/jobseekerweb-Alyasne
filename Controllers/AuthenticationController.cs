@@ -23,7 +23,7 @@ namespace finalyearproject.Controllers
             mailSystem = new SendMailSystem(emailSender,hostEnvironment);
             verifyRepo = new VerifyRepo(_dbContext);
         }
-      
+        
         public IActionResult Login()
         {
             if (Session.GetString("role") != null&& Session.GetInt32("user_id")!=null)
@@ -35,11 +35,11 @@ namespace finalyearproject.Controllers
         {
             User user = await userRepo.Login(email, password);
             var login = HandleLogin(user);
-            if (login=="success")
+            if (login =="success")
             {
                 return RedirectToAction("Index","Post");
             }
-            else if (login== "this account still doesn't verify")
+            else if (login == "this account still doesn't verify")
             {
                 return RedirectToAction("VerifyAccount", "Account");
             }

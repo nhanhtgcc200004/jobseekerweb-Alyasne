@@ -1,65 +1,61 @@
-﻿@model IEnumerable<finalyearproject.Models.Report>
-
+﻿@model IEnumerable<finalyearproject.Models.Report>;
 @{
-    ViewData["Title"] = "Index";
+    Layout = "AdminLayout";
 }
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Reports</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Reporter email</th>
+                            <th>Reason report</th>
+                            <th>Reciver email</th>
+                            <th>Report date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach( var report in Model){
+                        <tr>
+                            <th>@report.report_id</th>
+                            <th>@report.repoter.Email</th>
+                            <th>@report.content_report</th>
+                            <th>@report.reciver.Email</th>
+                            <th>@report.date_submit</th>
+                            <th>@report.status</th>
+                            <th>
+                                <div class="btn-group-vertical">
+                                    <a asp-controller="Report" asp-action="Accept" asp-route-report_id="@Model.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                        <span class="icon text-white" style="background: none">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                        <span class="text">Accecpt</span>
+                                    </a>
+                                    <a asp-controller="Report" asp-action="Refuse" asp-route-report_id="@Model.report_id" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white" style="background: none">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text">Refuse</span>
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                        }
+   
 
-<h1>Index</h1>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.repoter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.reciver)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.post)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.content_report)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.date_submit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.repoter.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reciver.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.post.post_body)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.content_report)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.date_submit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.report_id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.report_id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.report_id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</div>
+<!-- /.container-fluid -->

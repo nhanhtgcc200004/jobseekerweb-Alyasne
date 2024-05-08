@@ -32,9 +32,19 @@ namespace finalyearproject.Controllers
             if (Checkinfor(id))
             {
                 User user= await _userRepo.SearchUserById(id);
+                if (user.conpany_id != 999)
+                {
+                    return RedirectToAction("conpany",user);
+                }
                 return View(user);
             }
             return BadRequest();
+        }
+        public IActionResult conpany(User user)
+        {
+            if (Checkinfor(user.user_id))
+            return View(user);
+            return NotFound();
         }
         public async Task<IActionResult> UpdateProfile(int id)
         {

@@ -1,6 +1,4 @@
-﻿
-
-using EnterpriceWeb.Mailutils;
+﻿using EnterpriceWeb.Mailutils;
 using finalyearproject.Models;
 using finalyearproject.SubSystem.Mailutils;
 using System.IO.Compression;

@@ -1,0 +1,48 @@
+﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center"
+       style="position: sticky; top: 0"
+       href="/admin?page=dashboard">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Pluto.com</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" style="position: sticky; top: 4.5rem">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active" style="position: sticky; top: 4.5rem">
+        <a class="nav-link" href="/recruiter?page=home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" style="position: sticky; top: 8rem">
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" style="position: sticky; top: 9rem">
+        <a class="nav-link" asp-controller="Post" asp-action="PostManagement">
+            <i class="fas fa-file-alt"></i>
+            <span>Post</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item" style="position: sticky; top: 12.5rem">
+        <a class="nav-link" href="/recruiter?page=candidate">
+            <i class="fas fa-user-tag"></i>
+            <span>Candidate</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block" style="position: sticky; top: 19.5rem">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline" style="position: sticky; top: 21rem">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>

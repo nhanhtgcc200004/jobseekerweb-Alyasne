@@ -35,13 +35,22 @@ namespace finalyearproject.Controllers
         {
             List<Report> reports = await reportRepo.SearchAllReport();
             List<User> users = await userRepo.SearchAllWorker();
-            List<Post> posts =await postRepo.SearchAllPost();
+            List<Post> posts =await postRepo.SearchAllPostForManagement();
             return new data_chart(posts, users,reports);
         }
         public async Task<IActionResult> Chart()
         {
             return View();
         }
-
+        public async Task<IActionResult> ManageAccount()
+        {
+            List<User> allUser = await userRepo.SearchAllUser();
+            return View();
+        }
+        public async Task<IActionResult> UpdateAccount(int user_id)
+        {
+            User user= await userRepo.SearchUserById(user_id);
+            return View(user);
+        }
     }
 }

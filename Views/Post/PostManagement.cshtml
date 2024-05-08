@@ -1,0 +1,47 @@
+﻿@model IEnumerable<finalyearproject.Models.Post>;
+@{
+    Layout = "RecruiterLayout";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Topbar Search -->
+    <div class="card shadow mb-3" style="position: sticky; text-align: end; z-index: 8; top: 4.4rem;">
+        <div class="card-body d-flex align-items-end flex-end justify-content-end flex-wrap gap-4">
+            <div style="margin-right: 1rem">
+                <select class="form-control" id="exampleFormControlSelect1" style="min-width: 10rem">
+                    <option>Address</option>
+                    <option>Position</option>
+                    <option>Conpany Name</option>
+                </select>
+            </div>
+            <form class="navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                           aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <a asp-controller="Post" asp-action="CreatePost" class="btn btn-primary btn-icon-split" style="margin-left: 1rem">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">New</span>
+            </a>
+        </div>
+    </div>
+    <!-- DataTales Example -->
+    @foreach (var item in Model)
+    {
+        @Html.Partial("~/Views/Post/Components/ItemPost.cshtml",item)
+    }
+
+    @Html.Partial("~/Views/Post/Components/DeleteModal.cshtml")
+</div>
+<!-- /.container-fluid -->
+
