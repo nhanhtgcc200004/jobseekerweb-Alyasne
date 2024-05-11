@@ -24,10 +24,11 @@ namespace finalyearproject.Controllers
             user_id =(int) Session.GetInt32("user_id");
             role = Session.GetString("role");
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<User> users = new List<User>();
-            return View();
+            List<User> users = await userRepo.SearchAllUser();
+            TempData["user_id"] = user_id;
+            return View(users);
         }
         [HttpPost]
         public void BanAccount(int user_id)

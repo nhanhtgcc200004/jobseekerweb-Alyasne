@@ -27,8 +27,20 @@ namespace finalyearproject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            data_chart data_Chart =await HandleGetDataChart();
-            return View(data_Chart);
+            List<Post> posts = await postRepo.SearchAllPostForAdmin();
+            TempData["data"] = role;
+            TempData["user_id"] = user_id;
+            return View(posts);
+        }
+        public async Task<IActionResult> PostManagement(int user_id)
+        {
+            List<Post> posts = await postRepo.SearchAllPostForAdmin();
+            return View(posts);
+        }
+        public IActionResult Dashboard()
+        {
+            TempData["user_id"] = user_id;
+            return View();
         }
 
         private async Task<data_chart> HandleGetDataChart()
@@ -37,10 +49,6 @@ namespace finalyearproject.Controllers
             List<User> users = await userRepo.SearchAllWorker();
             List<Post> posts =await postRepo.SearchAllPostForManagement();
             return new data_chart(posts, users,reports);
-        }
-        public async Task<IActionResult> Chart()
-        {
-            return View();
         }
         public async Task<IActionResult> ManageAccount()
         {

@@ -1,31 +1,40 @@
 ﻿using finalyearproject.Models;
+using finalyearproject.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using System.Data;
+using System.Drawing.Text;
 
 namespace finalyearproject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private PostRepo postRepo;
+        private readonly ApplicationDBcontext _dbContext;
+        private ISession Session;
+        private int user_id;
+        private string role;
+        public HomeController(ApplicationDBcontext dbContext, IHttpContextAccessor httpContextAccessor)
         {
-            _logger = logger;
+            _dbContext = dbContext;
+            postRepo = new PostRepo(_dbContext);
+            Session = httpContextAccessor.HttpContext.Session;
+            user_id = (int)Session.GetInt32("user_id");
+            role = Session.GetString("role");
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Recruiter()
         {
-            return View();
+            List<Post> posts = await postRepo.SearchAllPostForAdmin();
+            TempData["data"] = role;
+            return View(posts);
         }
-        public IActionResult UpdatePost()
+        
+        public async Task<IActionResult> Candidate()
         {
-            return View();
+            List<Post> posts = await postRepo.SearchAllPostForAdmin();
+            TempData["data"] = role;
+            return View(posts);
         }
-        public void DeletePost()
-        {
-            
-        }
-
-       
     }
 }

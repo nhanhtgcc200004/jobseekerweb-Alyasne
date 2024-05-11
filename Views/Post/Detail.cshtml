@@ -1,6 +1,17 @@
 ﻿@model finalyearproject.Models.ViewModel.Post_CommentViewModel
 @{
-    Layout = "RecruiterLayout";
+    @if (TempData["role"].ToString() == "Admin")
+    {
+        Layout = "AdminLayout";
+    }
+    else if (TempData["role"].ToString() == "Recruiter")
+    {
+        Layout = "RecruiterLayout";
+    }
+    else
+    {
+        Layout = null;
+    }
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -14,6 +25,7 @@
                     <img src="/public/img/undraw_profile.svg" style="width: 5rem; height: 5rem" alt="">
                 </div>
                 <div class="col-md-8 col-sm-12">
+                    
                     <p>@Model.Post.Position</p>
                     <p>@Model.Post.address</p>
                     <p>@Model.Post.limit_candidates/@Model.Post.total_of_candidates</p>
@@ -26,11 +38,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-5">
-                    <button class="btn btn-success" style="margin-right: 2rem">
+                    <button id="Apply" class="btn btn-success" data-post-id="@Model.Post.post_id" style="margin-right: 2rem">
                         <i class="fas fa-sign-in-alt" style="margin-right: 10px"></i>
                         Apply now
                     </button>
-                    <button class="btn btn-danger">
+                    <button id="ShowCreateReport" class="btn btn-danger" data-toggle="modal" data-id="@Model.Post.post_id" data-target="#Report">
                         <i class="fas fa-exclamation-triangle" style="margin-right: 10px"></i>
                         Report
                     </button>
@@ -80,19 +92,24 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-sm-between gap-4 align-items-center mb-5">
-                <img src="/public/img/undraw_profile.svg" style="width: 3rem; height: 3rem" alt="">
+                <img src="~/img/@TempData["avatar"]" style="width: 3rem; height: 3rem" alt="">
                 <div class="w-100">
                     @Html.Partial("~/Views/Post/Components/rating.cshtml")
                     <div class="input-block" style="margin-bottom: 0">
-                        <input type="text">
+                        <input type="text" id="comment">
                     </div>
                 </div>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" id="CommentButton">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
-           
+            @foreach(var comment in Model.Comments)
+            {
+                @Html.Partial("~/Views/Post/Components/Comment.cshtml",comment);
+            }
         </div>
     </div>
+    @Html.Partial("~/Views/Post/Components/CreateReport.cshtml")
 </div>
+
 <!-- /.container-fluid -->

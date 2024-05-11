@@ -1,6 +1,13 @@
 ﻿@model finalyearproject.Models.Post;
 @{
-    Layout = "RecruiterLayout";
+    if (TempData["role"] == "Admin")
+    {
+        Layout = "AdminLayout";
+    }
+    else if (TempData["role"] == "Recruiter")
+    {
+        Layout = "RecruiterLayout";
+    }
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">

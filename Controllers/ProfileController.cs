@@ -25,23 +25,21 @@ namespace finalyearproject.Controllers
             cvRepo = new CvRepo(_dbcontext);
             user_id =(int) session.GetInt32("user_id");
             role = session.GetString("role");
+           
         }
-        public async Task<IActionResult> index(int id)
+        public async Task<IActionResult> Candidate(int id)
         {
             
             if (Checkinfor(id))
             {
                 User user= await _userRepo.SearchUserById(id);
-                if (user.conpany_id != 999)
-                {
-                    return RedirectToAction("conpany",user);
-                }
                 return View(user);
             }
             return BadRequest();
         }
-        public IActionResult conpany(User user)
+        public async Task<IActionResult> Conpany(int id)
         {
+            User user= await _userRepo.SearchUserById(id);
             if (Checkinfor(user.user_id))
             return View(user);
             return NotFound();
@@ -91,11 +89,12 @@ namespace finalyearproject.Controllers
 
         private bool Checkinfor(int id)
         {
-            if (user_id != null && user_id == id)
-            {
-                return true;
-            }
-            return false;
+            //if (user_id != null && user_id == id)
+            //{
+            //    return true;
+            //}
+            //return false;
+            return true;
         }
     }
 }

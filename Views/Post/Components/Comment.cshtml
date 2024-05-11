@@ -1,0 +1,16 @@
+﻿@model finalyearproject.Models.Comment;
+<div class="row">
+    <div class="col-md-2 col-sm-12">
+        <p>@Model.user.Email</p>
+        <img src="~/img/@Model.user.avatar" style="width: 5rem; height: 5rem" alt="">
+    </div>
+    <div class="col-md-10 col-sm-12">
+        <div class="d-flex flex-column">
+            <div class="d-flex justify-content-sm-between">
+                @Html.Partial("~/Views/Post/Components/rating.cshtml")
+                <p>@Model.date_comment</p>
+            </div>
+            <p>@Model.comment_content</p>
+        </div>
+    </div>
+</div>

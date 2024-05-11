@@ -14,6 +14,7 @@ namespace finalyearproject.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Verification> Verifications { get; set; }
+        public DbSet<Appliedjob> Appliedjobs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             

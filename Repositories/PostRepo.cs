@@ -13,7 +13,11 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Post>> SearchAllPostForHome()
         {
-            return await dbcontext.Posts.Where(p => p.status !="reported"&& p.status!="deleted").ToListAsync();
+            return await dbcontext.Posts.Where(p => p.status !="reported"&& p.status!="deleted").Include(p=>p.user).Include(p=>p.user.conpany).ToListAsync();
+        }
+        public async Task<List<Post>> SearchAllPostForAdmin()
+        {
+            return await dbcontext.Posts.Where(p => p.status != "reported" && p.status != "deleted").Include(p => p.user).Include(p => p.user.conpany).ToListAsync();
         }
         public async Task<List<Post>> SearchAllPostForManagement()
         {

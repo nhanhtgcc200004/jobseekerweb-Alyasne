@@ -16,9 +16,37 @@
 </head>
 <body style="background: var(--light-blue)">
     <section class="forms-section">
-        <h1 class="section-title text-center w-100 mt-5">Sign up</h1>
+        <h1 class="section-title text-center w-100 mt-5">Login</h1>
         <div class="forms">
             <div class="form-wrapper is-active">
+                <button type="button" class="switcher switcher-login">
+                    Sign In
+                    <span class="underline"></span>
+                </button>
+                <form class="form form-login" asp-controller="Authentication" asp-action="Login" method="post">
+                    <fieldset>
+                        <div class="input-block">
+                            <label>Email</label>
+                            <input type="email" name="Email" required>
+                        </div>
+                        <div class="d-flex gap-2 flex-sm-column flex-md-row">
+                            <div class="input-block">
+                                <label>Password</label>
+                                <input type="password" name="Password" required>
+                            </div>
+                        </div>
+                        <p>Forgot password?</p>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+                
+            </div>
+        </div>
+
+
+        <h1 class="section-title text-center w-100 mt-5">Sign up</h1>
+        <div class="forms">
+            <div class="form-wrapper">
                 <button type="button" class="switcher switcher-login">
                     Candidate
                     <span class="underline"></span>
@@ -46,7 +74,7 @@
                         <div class="d-flex gap-2 flex-sm-column flex-md-row">
                             <div class="input-block">
                                 <label>Phone number</label>
-                                <input type="tel" name="PhoneNumber" required>
+                                <input type="tel" name="Phone" required>
                             </div>
                             <div class="input-block">
                                 <label>Birthdate</label>

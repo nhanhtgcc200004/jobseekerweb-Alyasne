@@ -21,8 +21,9 @@ namespace finalyearproject.Controllers
             postRepo = new PostRepo(dbContext);
             commentRepo = new CommentRepo(dbContext);
             Session = httpContextAccessor.HttpContext.Session;
-           // user_id = (int) Session.GetInt32("user_id");
-            //role = Session.GetString("role");
+            user_id = (int) Session.GetInt32("user_id");
+            role = Session.GetString("role");
+            
         }
         public async Task<IActionResult> Index()
         {
@@ -34,17 +35,34 @@ namespace finalyearproject.Controllers
             List<Post> posts= await postRepo.SearchAllPostByUserId(user_id);
             return View(posts);
         }
+        
         public async Task<IActionResult> Detail(int post_id)
         {
+            User user = await userRepo.SearchUserById(user_id);
             List<Comment> comments = await commentRepo.GetAllCommentByPostId(post_id);
             if (CheckUserInfo())
             {
                 Post post = await postRepo.SearchPostById(post_id);
                 Post_CommentViewModel post_comment= new Post_CommentViewModel(post,comments);
+                TempData["role"] = role;
+                TempData["avatar"] = user.avatar;
                 return View(post_comment);
             }
             else return NotFound();
         }
+        public async Task<IActionResult>DetailAdmin(int post_id)
+        {
+            List<Comment> comments = await commentRepo.GetAllCommentByPostId(post_id);
+            if (CheckUserInfo())
+            {
+                Post post = await postRepo.SearchPostById(post_id);
+                Post_CommentViewModel post_comment = new Post_CommentViewModel(post, comments);
+                TempData["role"] = role;
+                return View(post_comment);
+            }
+            else return NotFound();
+        }
+
         public IActionResult CreatePost()
         {
             return View();
@@ -54,7 +72,7 @@ namespace finalyearproject.Controllers
         {
             if (CheckUserInfo())
             {
-                user_id = 1;
+              
                 User user = await userRepo.SearchUserById(user_id);
                 HandleCreatePost(post,user);
                 return View();
@@ -69,7 +87,7 @@ namespace finalyearproject.Controllers
         public async Task<IActionResult> UpdatePost(int post_id)
         {
             Post post=await postRepo.SearchPostById(post_id);
-            user_id = 1;
+           
             if (post != null && user_id != null)
             {
                 return View(post);
@@ -186,9 +204,7 @@ namespace finalyearproject.Controllers
                 HandleAppliedJob(post_targeted);
                 return Ok();
             }
-           
         }
-
         private async void HandleAppliedJob(Post post_targeted)
         {
             Appliedjob appliedjob = new Appliedjob();

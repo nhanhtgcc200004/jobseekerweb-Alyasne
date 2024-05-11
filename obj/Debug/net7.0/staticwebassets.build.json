@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M9XRV7dMtGlR3U5K0qu3WU1YTxmQzsMDwkKctgTWgrs=",
+  "Hash": "xLIA5BOOrTWTTA8U2vFuhZEpOlObQeJjH6YP1sCZV4A=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -136,12 +136,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\image\\img_avatar.png",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\img_avatar.png",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "image/img_avatar.png",
+      "RelativePath": "img/img_avatar.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,7 +150,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\image\\img_avatar.png"
+      "OriginalItemSpec": "wwwroot\\img\\img_avatar.png"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\plugins.js",
@@ -170,12 +170,12 @@
       "OriginalItemSpec": "wwwroot\\js\\plugins.js"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Profile.js",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Post.js",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "js/Profile.js",
+      "RelativePath": "js/Post.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -184,7 +184,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Profile.js"
+      "OriginalItemSpec": "wwwroot\\js\\Post.js"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\profile.js",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "js/profile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\profile.js"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\recruiter.js",

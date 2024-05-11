@@ -5,13 +5,16 @@
         <h6 class="m-0 font-weight-bold text-primary">@Model.user.conpany.conpany_name</h6>
         <div class="dropdown no-arrow">
             <div class="d-flex gap-4">
+                <a asp-controller="Candidate" asp-action="Index" asp-route-post_id="@Model.post_id" class="btn btn-primary">
+                    <i class="fas fa-user-circle"></i>
+                </a>
                 <a asp-controller="Post" asp-action="Detail" asp-route-post_id="@Model.post_id" class="btn btn-info">
                     <i class="fas fa-info-circle"></i>
                 </a>
                     <a asp-controller="Post" asp-action="UpdatePost" asp-route-post_id="@Model.post_id" style="text-decoration:none" class="btn btn-warning">
                     <i class="fas fa-edit"></i>
                     </a>
-                <button class="btn btn-danger" data-toggle="modal" data-id="@Model.post_id" data-target="#confirm_delete">
+                <button class="btn btn-danger" id="deletebutton_id" data-toggle="modal" data-post-id="@Model.post_id" data-target="#confirm_delete">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>

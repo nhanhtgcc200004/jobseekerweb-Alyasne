@@ -25,6 +25,6 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Post}/{action=PostManagement}");
+    pattern: "{controller=Authentication}/{action=Authentication}");
 
 app.Run();

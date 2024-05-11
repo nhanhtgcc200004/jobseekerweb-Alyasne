@@ -1,6 +1,13 @@
 ﻿@model finalyearproject.Models.User
 @{
+    if (TempData["role"] == "Admin")
+    {
         Layout = "AdminLayout";
+    }
+    else 
+    {
+        Layout = "RecruiterLayout";
+    }
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -37,9 +44,8 @@
             <div class="d-flex justify-content-center flex-md-wrap flex-sm-wrap gap-5">
                 <div class="d-flex flex-column flex-grow-1">
                     <div class="text-center">
-                        <img src="~/img/undraw_profile.svg" alt="" style="width: 10rem; height: 10rem">
-                        <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>
-                        <input type="file" id="fileupload" style="display: none;">
+                        <img src="~/public/img/undraw_profile.svg" alt="" style="width: 10rem; height: 10rem">
+                        <button class="btn btn-primary mt-5 d-block" style="margin-right: auto; margin-left: auto">Upload</button>
                     </div>
                 </div>
                 <div class="flex-grow-1">

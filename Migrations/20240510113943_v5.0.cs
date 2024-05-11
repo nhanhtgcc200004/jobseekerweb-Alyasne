@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace finalyearproject.Migrations
 {
     /// <inheritdoc />
-    public partial class v11 : Migration
+    public partial class v50 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,6 +46,8 @@ namespace finalyearproject.Migrations
                 {
                     user_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    avatar = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Email = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "longtext", nullable: false)
@@ -110,11 +112,11 @@ namespace finalyearproject.Migrations
                     user_id = table.Column<int>(type: "int", nullable: false),
                     post_title = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    post_body = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     job_description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     address = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    experience = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     salary = table.Column<int>(type: "int", nullable: false),
                     Position = table.Column<string>(type: "longtext", nullable: false)
@@ -122,7 +124,7 @@ namespace finalyearproject.Migrations
                     date_post = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     status = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    expire_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    expired_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     limit_candidates = table.Column<int>(type: "int", nullable: false),
                     total_of_candidates = table.Column<int>(type: "int", nullable: false),
                     skill_required = table.Column<string>(type: "longtext", nullable: false)
@@ -165,6 +167,35 @@ namespace finalyearproject.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Appliedjobs",
+                columns: table => new
+                {
+                    appliedjob_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    user_id = table.Column<int>(type: "int", nullable: false),
+                    post_id = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appliedjobs", x => x.appliedjob_id);
+                    table.ForeignKey(
+                        name: "FK_Appliedjobs_Posts_post_id",
+                        column: x => x.post_id,
+                        principalTable: "Posts",
+                        principalColumn: "post_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Appliedjobs_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
+                        principalColumn: "user_id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -172,6 +203,7 @@ namespace finalyearproject.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     comment_content = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    rating = table.Column<int>(type: "int", nullable: false),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     post_id = table.Column<int>(type: "int", nullable: false),
                     date_comment = table.Column<DateTime>(type: "datetime(6)", nullable: false)
@@ -233,6 +265,26 @@ namespace finalyearproject.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.InsertData(
+                table: "Companys",
+                columns: new[] { "conpany_id", "Address", "Email_conpany", "User_Name", "conpany_name", "position", "status" },
+                values: new object[] { 999, "open", "b", "d", "a", "c", "open" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "user_id", "Birthday", "Email", "Gender", "Name", "Password", "Phone", "Status", "Viewable", "avatar", "conpany_id", "role" },
+                values: new object[] { 1, "13/05/2002", "abc@gmail.com", "Male", "nhan", "123456", "07777", "Ok", "public", "a", 999, "user" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appliedjobs_post_id",
+                table: "Appliedjobs",
+                column: "post_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appliedjobs_user_id",
+                table: "Appliedjobs",
+                column: "user_id");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_post_id",
                 table: "Comments",
@@ -282,6 +334,9 @@ namespace finalyearproject.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Appliedjobs");
+
             migrationBuilder.DropTable(
                 name: "Comments");
 

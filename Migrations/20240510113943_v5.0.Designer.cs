@@ -11,8 +11,8 @@ using finalyearproject.Models;
 namespace finalyearproject.Migrations
 {
     [DbContext(typeof(ApplicationDBcontext))]
-    [Migration("20240508121232_v1.1")]
-    partial class v11
+    [Migration("20240510113943_v5.0")]
+    partial class v50
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,31 @@ namespace finalyearproject.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.17")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("finalyearproject.Models.Appliedjob", b =>
+                {
+                    b.Property<int>("appliedjob_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("post_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("appliedjob_id");
+
+                    b.HasIndex("post_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Appliedjobs");
+                });
 
             modelBuilder.Entity("finalyearproject.Models.CV", b =>
                 {
@@ -59,6 +84,9 @@ namespace finalyearproject.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("post_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("rating")
                         .HasColumnType("int");
 
                     b.Property<int>("user_id")
@@ -106,6 +134,18 @@ namespace finalyearproject.Migrations
                     b.HasKey("conpany_id");
 
                     b.ToTable("Companys");
+
+                    b.HasData(
+                        new
+                        {
+                            conpany_id = 999,
+                            Address = "open",
+                            Email_conpany = "b",
+                            User_Name = "d",
+                            conpany_name = "a",
+                            position = "c",
+                            status = "open"
+                        });
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Post", b =>
@@ -125,7 +165,11 @@ namespace finalyearproject.Migrations
                     b.Property<DateTime>("date_post")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("expire_date")
+                    b.Property<string>("experience")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("expired_date")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("job_description")
@@ -136,10 +180,6 @@ namespace finalyearproject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("other_condition")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("post_body")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -246,6 +286,10 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("avatar")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("conpany_id")
                         .HasColumnType("int");
 
@@ -258,6 +302,23 @@ namespace finalyearproject.Migrations
                     b.HasIndex("conpany_id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            user_id = 1,
+                            Birthday = "13/05/2002",
+                            Email = "abc@gmail.com",
+                            Gender = "Male",
+                            Name = "nhan",
+                            Password = "123456",
+                            Phone = "07777",
+                            Status = "Ok",
+                            Viewable = "public",
+                            avatar = "a",
+                            conpany_id = 999,
+                            role = "user"
+                        });
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Verification", b =>
@@ -278,6 +339,25 @@ namespace finalyearproject.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("Verifications");
+                });
+
+            modelBuilder.Entity("finalyearproject.Models.Appliedjob", b =>
+                {
+                    b.HasOne("finalyearproject.Models.Post", "post")
+                        .WithMany()
+                        .HasForeignKey("post_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("finalyearproject.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("post");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.CV", b =>

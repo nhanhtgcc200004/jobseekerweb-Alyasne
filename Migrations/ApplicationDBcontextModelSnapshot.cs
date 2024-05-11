@@ -19,6 +19,31 @@ namespace finalyearproject.Migrations
                 .HasAnnotation("ProductVersion", "7.0.17")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("finalyearproject.Models.Appliedjob", b =>
+                {
+                    b.Property<int>("appliedjob_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("post_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("appliedjob_id");
+
+                    b.HasIndex("post_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Appliedjobs");
+                });
+
             modelBuilder.Entity("finalyearproject.Models.CV", b =>
                 {
                     b.Property<int>("cv_id")
@@ -56,6 +81,9 @@ namespace finalyearproject.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("post_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("rating")
                         .HasColumnType("int");
 
                     b.Property<int>("user_id")
@@ -308,6 +336,25 @@ namespace finalyearproject.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("Verifications");
+                });
+
+            modelBuilder.Entity("finalyearproject.Models.Appliedjob", b =>
+                {
+                    b.HasOne("finalyearproject.Models.Post", "post")
+                        .WithMany()
+                        .HasForeignKey("post_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("finalyearproject.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("post");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.CV", b =>

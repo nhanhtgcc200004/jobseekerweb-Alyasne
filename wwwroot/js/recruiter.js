@@ -1,11 +1,33 @@
-﻿
-    $(document).ready(function () {
-        $('#confirm_delete').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var postId = button.data('post-id'); // Extract post_id from data-post-id attribute
-            var modal = $(this);
-
-            // Set the href attribute of the delete button in the modal to include the postId
-            modal.find('#deleteButton').attr('href', '/Post/Delete/' + postId);
+﻿$(document).ready(function () {
+    var deletebuttons = document.querySelectorAll("#deletebutton_id");
+    var confirmdelete = document.getElementById("deletebuttonmodal");
+    var deletebuttonId;
+    deletebuttons.forEach(function (deletebutton) {
+        deletebutton.addEventListener("click", function () {
+            deletebuttonId = deletebutton.getAttribute("data-post-id");
         });
     });
+
+    confirmdelete.addEventListener("click", function () {
+        var post_id = deletebuttonId;
+        $.ajax({
+            url: "/Post/DeletePost",
+            method: "Post",
+            data: {
+                post_id: post_id,
+            },
+            success: function (response) {
+                console.log("CreateReport success");
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                console.error("CreateReport error: " + xhr.responseText);
+            }
+        });
+    });
+    
+    
+    // Get a reference to the ShowCreateReport button
+   
+});

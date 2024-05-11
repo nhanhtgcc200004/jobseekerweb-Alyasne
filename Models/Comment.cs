@@ -11,6 +11,7 @@ namespace finalyearproject.Models
         public int comment_id {  get; set; }
         [Required(ErrorMessage ="comment content can't be empty")]
         public string comment_content {  get; set; }
+        public int rating {  get; set; }
         public int user_id {  get; set; }
         [ForeignKey("user_id")]
         public User user { get; set; }

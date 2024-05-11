@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/1640/finalyearproject/finalyearproject/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/1640/finalyearproject/finalyearproject/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,22 +36,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ2hhbmdlc1Bhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Authentication/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/1640/finalyearproject/finalyearproject/Views/Authentication/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/1640/finalyearproject/finalyearproject/Views/Authentication/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/1640/finalyearproject/finalyearproject/Views/Authentication/RegisterConpany.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJDb25wYW55LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/1640/finalyearproject/finalyearproject/Views/Authentication/termofservices.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cdGVybW9mc2VydmljZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,8 +44,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVmVyaWZ5QWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/1640/finalyearproject/finalyearproject/Views/Candidate/Appliedjobmanagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlXEFwcGxpZWRqb2JtYW5hZ2VtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Candidate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Home/Candidate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYW5kaWRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/1640/finalyearproject/finalyearproject/Views/Home/NotFound.cshtml]
@@ -68,12 +64,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/DeleteModal.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXERlbGV0ZU1vZGFsLmNzaHRtbA==
+[D:/1640/finalyearproject/finalyearproject/Views/Home/Recruiter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNydWl0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXERldGFpbC5jc2h0bWw=
+[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/Comment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXENvbW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/CreateReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXENyZWF0ZVJlcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/DeleteModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXERlbGV0ZU1vZGFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/1640/finalyearproject/finalyearproject/Views/Post/Components/ItemPost.cshtml]
@@ -104,16 +108,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxVcGRhdGVQb3N0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/1640/finalyearproject/finalyearproject/Views/Profile/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/1640/finalyearproject/finalyearproject/Views/Profile/Candidate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDYW5kaWRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Profile/Conpany.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDb25wYW55LmNzaHRtbA==
+[D:/1640/finalyearproject/finalyearproject/Views/Profile/components/Changepassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxjb21wb25lbnRzXENoYW5nZXBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Report/CreateReport.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XENyZWF0ZVJlcG9ydC5jc2h0bWw=
+[D:/1640/finalyearproject/finalyearproject/Views/Profile/Conpany.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDb25wYW55LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/1640/finalyearproject/finalyearproject/Views/Report/Index.cshtml]
@@ -140,12 +148,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlY3J1aXRlck5hdmlnYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Shared/TopBarAdmin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRvcEJhckFkbWluLmNzaHRtbA==
+[D:/1640/finalyearproject/finalyearproject/Views/Shared/TopBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRvcEJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/1640/finalyearproject/finalyearproject/Views/Shared/TopBarRecruiter.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRvcEJhclJlY3J1aXRlci5jc2h0bWw=
+[D:/1640/finalyearproject/finalyearproject/Views/Shared/UserLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFVzZXJMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Shared/UserNavigation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFVzZXJOYXZpZ2F0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/1640/finalyearproject/finalyearproject/Views/_ViewImports.cshtml]

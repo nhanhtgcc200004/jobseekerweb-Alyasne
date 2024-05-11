@@ -23,33 +23,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach( var report in Model){
-                        <tr>
-                            <th>@report.report_id</th>
-                            <th>@report.repoter.Email</th>
-                            <th>@report.content_report</th>
-                            <th>@report.reciver.Email</th>
-                            <th>@report.date_submit</th>
-                            <th>@report.status</th>
-                            <th>
-                                <div class="btn-group-vertical">
-                                    <a asp-controller="Report" asp-action="Accept" asp-route-report_id="@Model.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
-                                        <span class="icon text-white" style="background: none">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                        </span>
-                                        <span class="text">Accecpt</span>
-                                    </a>
-                                    <a asp-controller="Report" asp-action="Refuse" asp-route-report_id="@Model.report_id" class="btn btn-danger btn-icon-split">
-                                        <span class="icon text-white" style="background: none">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text">Refuse</span>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
+                        @foreach (var report in Model)
+                        {
+                            <tr>
+                                <th>@report.report_id</th>
+                                <th>@report.repoter.Email</th>
+                                <th>@report.content_report</th>
+                                <th>@report.reciver.Email</th>
+                                <th>@report.date_submit</th>
+                                <th>@report.status</th>
+                                <th>
+                                    <div class="btn-group-vertical">
+                                        <a asp-controller="Report" asp-action="Accept" asp-route-report_id="@report.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                            <span class="icon text-white" style="background: none">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </span>
+                                            <span class="text">Accecpt</span>
+                                        </a>
+                                        <a asp-controller="Report" asp-action="Refuse" asp-route-report_id="@report.report_id" class="btn btn-danger btn-icon-split">
+                                            <span class="icon text-white" style="background: none">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                            <span class="text">Refuse</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
                         }
-   
+
 
                     </tbody>
                 </table>

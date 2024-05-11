@@ -1,0 +1,58 @@
+﻿@model IEnumerable<finalyearproject.Models.Appliedjob>
+@{
+    Layout = "RecruiterLayout";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Candidate</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Post Id</th>
+                            <th>Post Owner</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach( var jobs in Model){
+                        <tr>
+                            <th>@jobs.appliedjob_id</th>
+                            <th>@jobs.user.Email</th>
+                            <th>@jobs.post.post_id</th>
+                            <th>@jobs.status</th>
+                            <th>
+                                <div class="btn-group-vertical">
+                                        <a asp-controller="Candidate" asp-action="AcceptApplied" asp-route-appliedjob_id="@jobs.post.post_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                        <span class="icon text-white" style="background: none">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                        <span class="text">Accecpt</span>
+                                    </a>
+                                        <a asp-controller="Candidate" asp-action="RefuseApplied" asp-route-appliedjob_id="@jobs.post" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white" style="background: none">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text">Refuse</span>
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                        }
+   
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

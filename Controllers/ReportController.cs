@@ -17,7 +17,7 @@ namespace finalyearproject.Controllers
         private SendMailSystem mailSystem;
         private int user_id;
         private string role;
-        public ReportController(ApplicationDBcontext dBcontext, HttpContextAccessor httpContextAccessor, IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
+        public ReportController(ApplicationDBcontext dBcontext, IHttpContextAccessor httpContextAccessor, IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
         {
             _dbcontext = dBcontext;
             _reportRepo = new ReportRepo(_dbcontext);
@@ -27,27 +27,33 @@ namespace finalyearproject.Controllers
             mailSystem=new SendMailSystem(emailSender, hostEnvironment);
             user_id = (int)session.GetInt32("user_id");
             role = session.GetString("role");
+            
         }
-        public async Task<IActionResult> index()
+        public async Task<IActionResult> Index()
         {
             List<Report> reports=await _reportRepo.SearchAllReport();
+            TempData["user_id"] = user_id;
             return View(reports);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateReport(int reporter_id,int post_id, [FromForm] Report report)
+        public async Task<IActionResult> CreateReport(int post_id, string reason)
         {
+            Report report = new Report();
+            Post post=await _postRepo.SearchPostById(post_id);
             
             if (CheckInfor())
             {
                 report.post_id = post_id;
                 report.reporter_id = user_id;
-                report.reporter_id = reporter_id;
+                report.reciver_id = post.user_id;
+                report.content_report = reason;
+                report.status = "Processing..";
                 HandleCreateReport(report);
-                return View("index");
+                return Ok();
             }
             return BadRequest();
         }
-        [HttpDelete]
+        [HttpPost]
         public async void AcceptReport(int report_id)
         {
             if (CheckInfor())
@@ -60,7 +66,7 @@ namespace finalyearproject.Controllers
                 HandleAcceptReport(post,reporter,reciver,report);
             }
         }
-        [HttpDelete]
+        [HttpPost]
         public async void RefuseReport(int report_id)
         {
             if (CheckInfor())

@@ -23,11 +23,19 @@ namespace finalyearproject.Controllers
             mailSystem = new SendMailSystem(emailSender,hostEnvironment);
             verifyRepo = new VerifyRepo(_dbContext);
         }
-        
-        public IActionResult Login()
+        public IActionResult Authentication()
         {
-            if (Session.GetString("role") != null&& Session.GetInt32("user_id")!=null)
-                return RedirectToAction("Index", "Home");
+            if (Session.GetString("role") != null && Session.GetInt32("user_id") != null)
+            {
+                if (Session.GetString("role") == "Recruiter")
+                {
+                    return RedirectToAction("Recruiter", "Home");
+                }
+                else if (Session.GetString("role") == "Admin")
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
             return View();
         }
         [HttpPost]
@@ -35,9 +43,21 @@ namespace finalyearproject.Controllers
         {
             User user = await userRepo.Login(email, password);
             var login = HandleLogin(user);
-            if (login =="success")
+            if (login =="success") 
             {
-                return RedirectToAction("Index","Post");
+                TempData["user_id"] = user.user_id;
+                if (user.role == "Recruiter")
+                {
+                    return RedirectToAction("Recruiter", "Home");
+                }
+                else if(user.role == "Admin")
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Candidate", "Home");
+                }
             }
             else if (login == "this account still doesn't verify")
             {
@@ -49,7 +69,6 @@ namespace finalyearproject.Controllers
                 return View();
             }
         }
-
         private string HandleLogin(User user)
         {
             if (user != null)
@@ -58,6 +77,8 @@ namespace finalyearproject.Controllers
                 {
                     Session.SetString("role", user.role);
                     Session.SetInt32("user_id", user.user_id);
+                    TempData["role"] = Session.GetString("role");
+                    TempData["name"] = user.Name;
                     return "success";
                 }
                 else
@@ -159,15 +180,16 @@ namespace finalyearproject.Controllers
             return NotFound();
         }
 
-        public async Task<IActionResult> UpdatePassword(int id , string current_password, string new_passsword, string confirm_password)
+        public async Task<IActionResult> ChangePassword(string current_password, string new_passsword, string confirm_password)
         {
+            int id = 1;
             if (checkUser(id))
             {
                 User user=await userRepo.SearchUserById(id);
                 if (checkPassword(user,current_password,new_passsword,confirm_password))
                 {
                     changesPassword(new_passsword, user);
-                    return RedirectToAction("Index", "Profile", id = id);
+                    
                 }
                 else
                 {
@@ -211,6 +233,7 @@ namespace finalyearproject.Controllers
             _dbContext.SaveChanges();
             mailSystem.SendVerifyCode(verification.verify_code,user.Email);
         }
+       
         private void changesPassword(string newpassword, User user)
         {
             user.Password = newpassword;
@@ -293,7 +316,7 @@ namespace finalyearproject.Controllers
         public IActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Login");
+            return RedirectToAction("Authentication");
         }
     }
 }

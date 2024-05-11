@@ -21,6 +21,7 @@ namespace finalyearproject.Controllers
             session = httpContextAccessor.HttpContext.Session;
             user_id = (int)session.GetInt32("user_id");
             role = session.GetString("role");
+            
         }
         public async Task<IActionResult> ProfileConpany(int conpany_id)
         {
