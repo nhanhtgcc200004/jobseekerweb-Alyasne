@@ -26,43 +26,45 @@
                 <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
                     <div class="input-block">
                         <label>Position</label>
-                        <input type="text" name="Position" required>
+                        <input type="text" name="Position" placeholder="Enter Position" required>
                     </div>
                     <div class="input-block">
                         <label>Limited</label>
-                        <input type="text" name="limit_candidates" required>
+                        <input type="text" name="limit_candidates" placeholder="Enter number of candidate limit " required>
+                      
                     </div>
                 </div>
                 <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
                     <div class="input-block">
                         <label>Experience</label>
-                        <input type="text" name="experience" required>
+                        <input type="text" name="experience" placeholder="Enter experience required" required>
                     </div>
                     <div class="input-block">
                         <label>Expired date</label>
                         <input type="date" name="expired_date" required>
+                        <p style="color:red"> the expired the must be higher than the current date</p>
                     </div>
                     <div class="input-block">
                         <label>Salary</label>
-                        <input type="text" required>
+                        <input type="number" placeholder="Enter salary " name="salary" required>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="input-block">
                         <label>Skill required</label>
-                        <textarea name="skill_required" id="" cols="30" rows="5"></textarea>
+                        <textarea name="skill_required" placeholder="Enter skill required " id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="input-block">
                         <label>Job Description</label>
-                        <textarea name="job_description" id="" cols="30" rows="5"></textarea>
+                        <textarea name="job_description" placeholder="Enter description about job " id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="input-block">
                         <label>Other condition</label>
-                        <textarea name="other_condition" id="" cols="30" rows="5"></textarea>
+                        <textarea name="other_condition" placeholder="Enter other condition" id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
     </form>

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace finalyearproject.Migrations
 {
     /// <inheritdoc />
-    public partial class v50 : Migration
+    public partial class v10 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace finalyearproject.Migrations
                 {
                     conpany_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    conpany_name = table.Column<string>(type: "longtext", nullable: false)
+                    company_name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Email_conpany = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -66,14 +66,14 @@ namespace finalyearproject.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Viewable = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    conpany_id = table.Column<int>(type: "int", nullable: false)
+                    company_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.user_id);
                     table.ForeignKey(
-                        name: "FK_Users_Companys_conpany_id",
-                        column: x => x.conpany_id,
+                        name: "FK_Users_Companys_company_id",
+                        column: x => x.company_id,
                         principalTable: "Companys",
                         principalColumn: "conpany_id",
                         onDelete: ReferentialAction.Cascade);
@@ -267,12 +267,12 @@ namespace finalyearproject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Companys",
-                columns: new[] { "conpany_id", "Address", "Email_conpany", "User_Name", "conpany_name", "position", "status" },
+                columns: new[] { "conpany_id", "Address", "Email_conpany", "User_Name", "company_name", "position", "status" },
                 values: new object[] { 999, "open", "b", "d", "a", "c", "open" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "user_id", "Birthday", "Email", "Gender", "Name", "Password", "Phone", "Status", "Viewable", "avatar", "conpany_id", "role" },
+                columns: new[] { "user_id", "Birthday", "Email", "Gender", "Name", "Password", "Phone", "Status", "Viewable", "avatar", "company_id", "role" },
                 values: new object[] { 1, "13/05/2002", "abc@gmail.com", "Male", "nhan", "123456", "07777", "Ok", "public", "a", 999, "user" });
 
             migrationBuilder.CreateIndex(
@@ -321,9 +321,9 @@ namespace finalyearproject.Migrations
                 column: "reporter_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_conpany_id",
+                name: "IX_Users_company_id",
                 table: "Users",
-                column: "conpany_id");
+                column: "company_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Verifications_user_id",

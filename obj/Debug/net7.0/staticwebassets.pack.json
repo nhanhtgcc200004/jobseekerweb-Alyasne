@@ -29,8 +29,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\6.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Logo.jpg",
+      "PackagePath": "staticwebassets\\img\\Logo.jpg"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\img_avatar.png",
       "PackagePath": "staticwebassets\\img\\img_avatar.png"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\logo2.jpg",
+      "PackagePath": "staticwebassets\\img\\logo2.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\plant.jpg",
+      "PackagePath": "staticwebassets\\img\\plant.jpg"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Post.js",
@@ -39,6 +55,34 @@
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",
       "PackagePath": "staticwebassets\\js\\Search.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\dashboard\\chart1.js",
+      "PackagePath": "staticwebassets\\js\\dashboard\\chart1.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\dashboard\\chart2.js",
+      "PackagePath": "staticwebassets\\js\\dashboard\\chart2.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\dashboard\\chart3.js",
+      "PackagePath": "staticwebassets\\js\\dashboard\\chart3.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\datatables-demo.js"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\plugins.js",
@@ -51,6 +95,14 @@
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\recruiter.js",
       "PackagePath": "staticwebassets\\js\\recruiter.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\sb-admin-2.js",
+      "PackagePath": "staticwebassets\\js\\sb-admin-2.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\sb-admin-2.min.js",
+      "PackagePath": "staticwebassets\\js\\sb-admin-2.min.js"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\lib\\bootstrap\\LICENSE",

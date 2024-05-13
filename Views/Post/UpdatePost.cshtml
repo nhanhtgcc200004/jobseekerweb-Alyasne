@@ -1,14 +1,7 @@
 ﻿@model finalyearproject.Models.Post;
 @{
-    if (TempData["role"] == "Admin")
-    {
-        Layout = "AdminLayout";
-    }
-    else if (TempData["role"] == "Recruiter")
-    {
         Layout = "RecruiterLayout";
     }
-}
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -36,17 +29,17 @@
             <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
                 <div class="input-block">
                     <label>Position</label>
-                    <input name="Position" type="text" value="@Model.Position" required>
+                        <input name="Position" type="text" placeholder="Enter position" value="@Model.Position" required>
                 </div>
                 <div class="input-block">
                     <label>Limited</label>
-                    <input name="limit_candidates" type="text" value="@Model.limit_candidates" required>
+                        <input name="limit_candidates" type="text" placeholder="Enter number of candidate limit" value="@Model.limit_candidates" required>
                 </div>
             </div>
-            <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap  gap-4">
+            <div class="d-flex justify-content-center flex-md-nowrap flex-sm-wrap gap-4">
                 <div class="input-block">
                     <label>Experience</label>
-                    <input name="experience" type="text" value="@Model.experience" required>
+                        <input name="experience" type="text" placeholder="Enter experience required " value="@Model.experience" required>
                 </div>
                 <div class="input-block">
                     <label>Expired date</label>
@@ -54,25 +47,25 @@
                 </div>
                 <div class="input-block">
                     <label>Salary</label>
-                    <input name="salary" type="text" value="@Model.salary" required>
+                        <input name="salary" type="number" placeholder="Enter salary " value="@Model.salary" required>
                 </div>
             </div>
             <div class="d-flex">
                 <div class="input-block">
                     <label>Skill required</label>
-                    <textarea name="skill_required" id="" cols="30" rows="5">@Model.skill_required</textarea>
+                        <textarea name="skill_required" placeholder="Enter skill required " id="" cols="30" rows="5">@Model.skill_required</textarea>
                 </div>
             </div>
             <div class="d-flex">
                 <div class="input-block">
                     <label>Job Description</label>
-                    <textarea name="job_description" id="" cols="30" rows="5">@Model.job_description</textarea>
+                        <textarea name="job_description" placeholder="Enter description about job " id="" cols="30" rows="5">@Model.job_description</textarea>
                 </div>
             </div>
             <div class="d-flex">
                 <div class="input-block">
                     <label>Other condition</label>
-                    <textarea name="other_condition" id="" cols="30" rows="5">@Model.other_condition</textarea>
+                        <textarea name="other_condition" placeholder="Enter other condition" id="" cols="30" rows="5">@Model.other_condition</textarea>
                 </div>
             </div>
         </div>

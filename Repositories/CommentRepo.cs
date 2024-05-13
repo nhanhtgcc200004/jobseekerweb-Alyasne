@@ -12,7 +12,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Comment>> GetAllCommentByPostId(int postId)
         {
-            return await _dbcontext.Comments.Where(c => c.post_id == postId).ToListAsync();
+            return await _dbcontext.Comments.Where(c => c.post_id == postId).Include(c=>c.user).ToListAsync();
         }
         
         public async Task<Comment> GetCommentById(int comment_id)

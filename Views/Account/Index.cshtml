@@ -56,18 +56,30 @@
                                 <th>@user.Status</th>
                                 <td>
                                     <div class="btn-group-vertical">
-                                        <a href="#" class="btn btn-warning btn-icon-split" style="justify-content: normal">
+                                        <a href="#" class="btn btn-warning btn-icon-split" style="justify-content: normal" data-toggle="modal" data-target="#change_role_model">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="fas fa-exclamation-triangle"></i>
                                             </span>
                                             <span class="text">Edit</span>
                                         </a>
-                                        <a href="/admin?page=post&=detail" class="btn btn-info btn-icon-split">
-                                            <span class="icon text-white" style="background: none">
-                                                <i class="fas fa-info-circle"></i>
-                                            </span>
-                                            <span class="text">Detail</span>
-                                        </a>
+                                        @if(user.company.conpany_id!=999){
+                                            <a asp-controller="Account" asp-action="AccountDetailCompany" asp-route-user_id="@user.user_id" class="btn btn-info btn-icon-split">
+                                                <span class="icon text-white" style="background: none">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </span>
+                                                <span class="text">Detail</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="Account" asp-action="AccountDetail" asp-route-user_id="@user.user_id" class="btn btn-info btn-icon-split">
+                                                <span class="icon text-white" style="background: none">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </span>
+                                                <span class="text">Detail</span>
+                                            </a>
+                                        }
+                                     
                                         <a href="#" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="fas fa-trash"></i>
@@ -83,6 +95,6 @@
             </div>
         </div>
     </div>
-
+    @Html.Partial("~/Views/Account/Component/ChangesRole.cshtml")
 </div>
 <!-- /.container-fluid -->

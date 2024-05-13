@@ -10,25 +10,17 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@TempData?["name"];</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@TempData?["name"]</span>
                 <img class="img-profile rounded-circle"
-                     src="/public/img/undraw_profile.svg">
+                     src="~/img/@TempData["avatar"]">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                  aria-labelledby="userDropdown" style="z-index: 9;">
-                @if (TempData["role"] != "Recruiter") {
-                    <a class="dropdown-item" asp-controller="Profile" asp-action="Candidate" asp-route-id="@TempData["user_id"]">
+                    <a class="dropdown-item" asp-controller="Profile" asp-action="Admin" asp-route-id="@TempData["user_id"]">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                }
-                else{
-                    <a class="dropdown-item" asp-controller="Profile" asp-action="Conpany" asp-route-id="@TempData["user_id"]">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                </a>
-                 }
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" asp-controller="Authentication" asp-action="Logout">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

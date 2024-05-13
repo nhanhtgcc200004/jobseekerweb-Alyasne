@@ -1,6 +1,6 @@
 ﻿@model finalyearproject.Models.User
 @{
-        Layout = "AdminLayout";
+        Layout = "UserLayout";
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -8,11 +8,18 @@
     <!-- Topbar Search -->
     <div class="card shadow mb-3" style="position: sticky; text-align: end; z-index: 8; top: 4.4rem;">
         <div class="card-body d-flex align-items-end flex-end justify-content-end flex-wrap gap-4">
+             <a href="#" class="btn btn-success btn-icon-split" style="margin-left: 1rem">
+                <span class="icon text-white-50">
+                    <i class="fa fa-upload"></i>
+                </span>
+                <span class="text">Upload Resume</span>
+            </a>
+
             <a href="#" class="btn btn-info btn-icon-split" style="margin-left: 1rem">
                 <span class="icon text-white-50">
                     <i class="fas fa-download"></i>
                 </span>
-                <span class="text">Resume full name</span>
+                <span class="text"> download Resume</span>
             </a>
             <a href="#" data-toggle="modal" data-target="#change_pass_model" id="modal_changepassword" data-user-id="@Model.user_id" class="btn btn-warning btn-icon-split" style="margin-left: 1rem">
                 <span class="icon text-white-50">
@@ -26,6 +33,7 @@
                 </span>
                 <span class="text">Update</span>
             </a>
+
         </div>
     </div>
     <!-- DataTales Example -->
@@ -37,7 +45,7 @@
             <div class="d-flex justify-content-center flex-md-wrap flex-sm-wrap gap-5">
                 <div class="d-flex flex-column flex-grow-1">
                     <div class="text-center">
-                        <img src="~/img/undraw_profile.svg" alt="" style="width: 10rem; height: 10rem">
+                        <img src="~/img/@Model.avatar" alt="" style="width: 10rem; height: 10rem" id="avatar_img">
                         <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>
                         <input type="file" id="fileupload" style="display: none;">
                     </div>
@@ -79,5 +87,3 @@
 
 @Html.Partial("~/Views/Profile/Components/Changepassword.cshtml");
 <!-- /.container-fluid -->
-
-<script src="~/js/Profile.js"></script>

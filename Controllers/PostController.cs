@@ -30,8 +30,9 @@ namespace finalyearproject.Controllers
             List<Post> posts = await postRepo.SearchAllPostForHome();
             return View(posts);
         }
-        public async Task<IActionResult> PostManagement(int user_id)
+        public async Task<IActionResult> PostManagement()
         {
+            TempData["name"]=Session.GetString("name");
             List<Post> posts= await postRepo.SearchAllPostByUserId(user_id);
             return View(posts);
         }
@@ -46,6 +47,7 @@ namespace finalyearproject.Controllers
                 Post_CommentViewModel post_comment= new Post_CommentViewModel(post,comments);
                 TempData["role"] = role;
                 TempData["avatar"] = user.avatar;
+                TempData["name"] = Session.GetString("name");
                 return View(post_comment);
             }
             else return NotFound();
@@ -62,9 +64,31 @@ namespace finalyearproject.Controllers
             }
             else return NotFound();
         }
+        [HttpPost]
+        public async Task<IActionResult> AddComment(int post_id, string content)
+        {
+            if (CheckUserInfo())
+            {
+                HandleAddComment(content,post_id); return Ok();
+            }
+            return BadRequest();
+        }
+
+        private void HandleAddComment(string content, int post_id)
+        {
+            Comment comment = new Comment();
+            comment.user_id = user_id;
+            comment.comment_content = content;
+            comment.date_comment = DateTime.Now;
+            comment.post_id = post_id;
+            _dbContext.Add(comment);
+            _dbContext.SaveChanges();
+
+        }
 
         public IActionResult CreatePost()
         {
+            TempData["name"] = Session.GetString("name");
             return View();
         }
         [HttpPost]
@@ -90,6 +114,8 @@ namespace finalyearproject.Controllers
            
             if (post != null && user_id != null)
             {
+                TempData["user_id"] = user_id;
+                TempData["name"] = Session.GetString("name");
                 return View(post);
             }
             else { return NotFound(); }
@@ -115,10 +141,6 @@ namespace finalyearproject.Controllers
             return post;
         }
 
-        public async Task<IActionResult> AddComment(int post_id, [FromForm] Comment comment)
-        {
-            return View();
-        }
         //public async void UpdateComment(int comment_id,string newcontent,string type_comment)
         //{
         //    if (type_comment=="reply")
@@ -161,22 +183,22 @@ namespace finalyearproject.Controllers
 
         private bool CheckUserInfo()
         {
-            //if(user_id!=null&& role != null)
-            // {
-            //     return true;
-            // }
-            // else
-            // {
-            //     return false;
-            // }
-            return true;
+            if (user_id != null && role != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         private void HandleCreatePost(Post post,User user)
         {
             post.date_post = DateTime.Now;
             post.user_id = user_id;
-            post.address = user.conpany.Address;
+            post.address = user.company.Address;
             post.status = "1";
             post.post_title = "a";
             _dbContext.Add(post);
@@ -195,14 +217,14 @@ namespace finalyearproject.Controllers
         public async Task<IActionResult> AppliedJob(int post_id)
         {
             Post post_targeted = await postRepo.SearchPostById(post_id);
-            if (post_targeted.limit_candidates >= post_targeted.total_of_candidates)
+            if (post_targeted.limit_candidates <= post_targeted.total_of_candidates)
             {
                 return Ok("out of candidates");
             }
             else
             {
                 HandleAppliedJob(post_targeted);
-                return Ok();
+                return Ok("success");
             }
         }
         private async void HandleAppliedJob(Post post_targeted)

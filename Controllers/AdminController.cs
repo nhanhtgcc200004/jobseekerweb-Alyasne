@@ -48,7 +48,7 @@ namespace finalyearproject.Controllers
             List<Report> reports = await reportRepo.SearchAllReport();
             List<User> users = await userRepo.SearchAllWorker();
             List<Post> posts =await postRepo.SearchAllPostForManagement();
-            return new data_chart(posts, users,reports);
+            return null;
         }
         public async Task<IActionResult> ManageAccount()
         {

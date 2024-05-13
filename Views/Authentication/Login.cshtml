@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/login/bootstrap.min.css">
+<link rel="stylesheet" href="~/css/login/login.css">
+<body style="background: var(--light-blue); margin="auto">
+        <div class="">
+            <div class="form-wrapper is-active">
+            
+            <form class="form" asp-controller="Authentication" asp-action="Login" method="post" style="    background: white;
+    width: 24rem;
+    margin: auto;
+    margin-top: 5rem;
+}">
+<p style="text-align:center ">Login</p>
+                    <fieldset>
+                        <div class="input-block">
+                            <label>Email</label>
+                            <input type="email" name="Email" value="user@gmail.com" required>
+                        </div>
+                        <div class="d-flex gap-2 flex-sm-column flex-md-row">
+                            <div class="input-block">
+                                <label>Password</label>
+                                <input type="password" name="Password" value="123456" required>
+                            </div>
+                        </div>
+                        <p style="color:red">email or password is incorrect</p>
+                        <a asp-controller="Authentication" asp-action="ForgotPassword" style="text-decoration:none">
+                        <p>Forgot password?</p>
+                        </a>
+                        
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <a asp-controller="Authentication" asp-action="Register" style="text-decoration:none">
+                    <p style="text-align:center">Don't have an account yet? Create One</p>
+                    </a>
+                 
+                </form>
+
+            </div>
+        </div>
+        </body>

@@ -12,7 +12,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<User> SearchUserById(int id)
         {
-           User user = await dbcontext.Users.Where(u => u.user_id == id).Include(u=>u.conpany).FirstAsync();
+           User user = await dbcontext.Users.Where(u => u.user_id == id).Include(u=>u.company).FirstAsync();
             return user;
         }
         public async Task<User> Login(string email,string password)
@@ -22,7 +22,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<User>> SearchAllUser()
         {
-            return await dbcontext.Users.Where(u=>u.Status!="0").ToListAsync();
+            return await dbcontext.Users.Where(u=>u.Status!="banned").Include(u=>u.company).ToListAsync();
         }
         public async Task<List<User>> SearchAllWorker()
         {

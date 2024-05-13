@@ -1,0 +1,51 @@
+﻿@model IEnumerable<finalyearproject.Models.Appliedjob>
+@{
+    Layout = "RecruiterLayout";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Candidate</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Post Id</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var jobs in Model)
+                        {
+                            <tr>
+                                <th>@jobs.appliedjob_id</th>
+                                <th>@jobs.user.Email</th>
+                                <th>@jobs.post.post_id</th>
+                                <th>@jobs.status</th>
+                                <th>
+                                    <div class="btn-group-vertical">
+                                        <button class="btn btn-success" id="deletebutton_id" data-toggle="modal" data-post-id="@jobs.appliedjob_id" data-target="#confirm_delete">
+                                            <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="btn-group-vertical">
+                                        <button class="btn btn-danger" id="deletebutton_id" data-toggle="modal" data-post-id="@jobs.appliedjob_id" data-target="#confirm_delete">
+                                            <i class="fas fa-trash"></i>
+                                    </div>
+
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Post/Components/DeleteModal.cshtml")
+</div>
+<!-- /.container-fluid -->

@@ -11,8 +11,8 @@ using finalyearproject.Models;
 namespace finalyearproject.Migrations
 {
     [DbContext(typeof(ApplicationDBcontext))]
-    [Migration("20240510113943_v5.0")]
-    partial class v50
+    [Migration("20240511153033_v1.0")]
+    partial class v10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace finalyearproject.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("finalyearproject.Models.Conpany", b =>
+            modelBuilder.Entity("finalyearproject.Models.Company", b =>
                 {
                     b.Property<int>("conpany_id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +119,7 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("conpany_name")
+                    b.Property<string>("company_name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -142,7 +142,7 @@ namespace finalyearproject.Migrations
                             Address = "open",
                             Email_conpany = "b",
                             User_Name = "d",
-                            conpany_name = "a",
+                            company_name = "a",
                             position = "c",
                             status = "open"
                         });
@@ -290,7 +290,7 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("conpany_id")
+                    b.Property<int>("company_id")
                         .HasColumnType("int");
 
                     b.Property<string>("role")
@@ -299,7 +299,7 @@ namespace finalyearproject.Migrations
 
                     b.HasKey("user_id");
 
-                    b.HasIndex("conpany_id");
+                    b.HasIndex("company_id");
 
                     b.ToTable("Users");
 
@@ -316,7 +316,7 @@ namespace finalyearproject.Migrations
                             Status = "Ok",
                             Viewable = "public",
                             avatar = "a",
-                            conpany_id = 999,
+                            company_id = 999,
                             role = "user"
                         });
                 });
@@ -430,13 +430,13 @@ namespace finalyearproject.Migrations
 
             modelBuilder.Entity("finalyearproject.Models.User", b =>
                 {
-                    b.HasOne("finalyearproject.Models.Conpany", "conpany")
+                    b.HasOne("finalyearproject.Models.Company", "company")
                         .WithMany()
-                        .HasForeignKey("conpany_id")
+                        .HasForeignKey("company_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("conpany");
+                    b.Navigation("company");
                 });
 
             modelBuilder.Entity("finalyearproject.Models.Verification", b =>

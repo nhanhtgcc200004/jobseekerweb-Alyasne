@@ -2,7 +2,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">@Model.user.conpany.conpany_name</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Company:  @Model.user.company.company_name</h6>
         <div class="dropdown no-arrow">
             <div class="d-flex gap-4">
                 <a asp-controller="Candidate" asp-action="Index" asp-route-post_id="@Model.post_id" class="btn btn-primary">
@@ -23,7 +23,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-2 col-sm-12">
-                <img src="~/public/img/@Model.user.avatar" style="width: 5rem; height: 5rem" alt="">
+                <img src="~/img/@Model.user.avatar" style="width: 5rem; height: 5rem" alt="">
             </div>
             <div class="col-md-10 col-sm-12">
                 <div><label>Postion: </label> <p style="margin-left: 2%;display: inline;">@Model.Position</p></div>

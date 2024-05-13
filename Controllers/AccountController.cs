@@ -3,6 +3,7 @@ using finalyearproject.Models;
 using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
 
 namespace finalyearproject.Controllers
 {
@@ -28,7 +29,20 @@ namespace finalyearproject.Controllers
         {
             List<User> users = await userRepo.SearchAllUser();
             TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = Session.GetString("avatar");
+            TempData["name"] = Session.GetString("name");
             return View(users);
+        }
+        public async Task<IActionResult> AccountDetail(int user_id)
+        {
+            User user = await userRepo.SearchUserById(user_id);
+            TempData["user_id"] = Session.GetInt32("user_id");
+            TempData["role"] = role;
+            TempData["avatar"] = Session.GetString("avatar");
+            TempData["name"] = Session.GetString("name");
+            
+            return View(user);
         }
         [HttpPost]
         public void BanAccount(int user_id)

@@ -23,7 +23,7 @@ namespace finalyearproject.Controllers
             mailSystem = new SendMailSystem(emailSender,hostEnvironment);
             verifyRepo = new VerifyRepo(_dbContext);
         }
-        public IActionResult Authentication()
+        public IActionResult Register()
         {
             if (Session.GetString("role") != null && Session.GetInt32("user_id") != null)
             {
@@ -38,6 +38,7 @@ namespace finalyearproject.Controllers
             }
             return View();
         }
+        public IActionResult Login() { return View(); }
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
@@ -56,6 +57,8 @@ namespace finalyearproject.Controllers
                 }
                 else
                 {
+                    TempData["avatar"] = user.avatar;
+                    TempData["name"] = user.Name;
                     return RedirectToAction("Candidate", "Home");
                 }
             }
@@ -65,7 +68,7 @@ namespace finalyearproject.Controllers
             }
             else
             {
-                ViewBag.erorr = "Gmail or password is incorrect";
+                ViewBag.erorr = "Email or password is incorrect";
                 return View();
             }
         }
@@ -77,6 +80,8 @@ namespace finalyearproject.Controllers
                 {
                     Session.SetString("role", user.role);
                     Session.SetInt32("user_id", user.user_id);
+                    Session.SetString("avatar", user.avatar);
+                    Session.SetString("name", user.Name);
                     TempData["role"] = Session.GetString("role");
                     TempData["name"] = user.Name;
                     return "success";
@@ -91,11 +96,6 @@ namespace finalyearproject.Controllers
                 return "fail";
             }
 
-        }
-
-        public IActionResult Register()
-        {
-            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Register([FromForm] User user)//
@@ -139,7 +139,7 @@ namespace finalyearproject.Controllers
 
         
 
-        public IActionResult ForgetPassword()
+        public IActionResult ForgotPassword()
         {
             return View();
         }
@@ -260,13 +260,13 @@ namespace finalyearproject.Controllers
         {
             return View();
         }
-        public IActionResult RegisterCompany([FromForm] Conpany company)
+        public IActionResult RegisterCompany([FromForm] Company company)
         {
             HandleRegisterCompany(company);
             return View();
         }
        
-        private void HandleRegisterCompany(Conpany company)
+        private void HandleRegisterCompany(Company company)
         {
             company.status = "waiting for confirmation";
             _dbContext.Add(company);

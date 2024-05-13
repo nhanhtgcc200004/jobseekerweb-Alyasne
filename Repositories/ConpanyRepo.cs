@@ -10,11 +10,11 @@ namespace finalyearproject.Repositories
         {
             _dbcontext = applicationDBcontext;
         }   
-        public async Task<List<Conpany>> SearchAllConpany()
+        public async Task<List<Company>> SearchAllConpany()
         {
             return await _dbcontext.Companys.ToListAsync();
         }
-        public async Task<Conpany> SearchConpanyById(int conpany_id)
+        public async Task<Company> SearchConpanyById(int conpany_id)
         {
             return await _dbcontext.Companys.Where(c=>c.conpany_id==conpany_id).FirstOrDefaultAsync();
         }

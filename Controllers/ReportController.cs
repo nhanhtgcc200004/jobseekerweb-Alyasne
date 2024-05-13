@@ -33,6 +33,9 @@ namespace finalyearproject.Controllers
         {
             List<Report> reports=await _reportRepo.SearchAllReport();
             TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = session.GetString("avatar");
+            TempData["name"] = session.GetString("name");
             return View(reports);
         }
         [HttpPost]
@@ -48,8 +51,9 @@ namespace finalyearproject.Controllers
                 report.reciver_id = post.user_id;
                 report.content_report = reason;
                 report.status = "Processing..";
+                report.date_submit= DateTime.Now;
                 HandleCreateReport(report);
-                return Ok();
+                return Ok("success");
             }
             return BadRequest();
         }

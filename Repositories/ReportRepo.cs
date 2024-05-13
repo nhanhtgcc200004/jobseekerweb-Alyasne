@@ -12,7 +12,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Report>> SearchAllReport()
         {
-            return await dbContext.Reports.Where(r=>r.status=="1").Include(R=>R.reciver).Include(R=>R.repoter).ToListAsync();
+            return await dbContext.Reports.Where(r=>r.status== "Processing..").Include(R=>R.reciver).Include(R=>R.repoter).ToListAsync();
         }
         public async Task<Report> SearchReportById(int report_id)
         {

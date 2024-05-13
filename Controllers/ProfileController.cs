@@ -37,11 +37,27 @@ namespace finalyearproject.Controllers
             }
             return BadRequest();
         }
-        public async Task<IActionResult> Conpany(int id)
+        public async Task<IActionResult> Admin(int id)
+        {
+
+            if (Checkinfor(id))
+            {
+                User user = await _userRepo.SearchUserById(id);
+
+                return View(user);
+            }
+            return BadRequest();
+        }
+        public async Task<IActionResult> Company(int id)
         {
             User user= await _userRepo.SearchUserById(id);
             if (Checkinfor(user.user_id))
-            return View(user);
+            {
+                TempData["user_id"]=user_id;
+                TempData["name"] = user.Name;
+                return View(user);
+            }    
+          
             return NotFound();
         }
         public async Task<IActionResult> UpdateProfile(int id)

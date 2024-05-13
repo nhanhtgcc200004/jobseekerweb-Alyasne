@@ -1,13 +1,6 @@
 ﻿@model finalyearproject.Models.User
 @{
-    if (TempData["role"] == "Admin")
-    {
         Layout = "AdminLayout";
-    }
-    else 
-    {
-        Layout = "RecruiterLayout";
-    }
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -44,39 +37,45 @@
             <div class="d-flex justify-content-center flex-md-wrap flex-sm-wrap gap-5">
                 <div class="d-flex flex-column flex-grow-1">
                     <div class="text-center">
-                        <img src="~/public/img/undraw_profile.svg" alt="" style="width: 10rem; height: 10rem">
-                        <button class="btn btn-primary mt-5 d-block" style="margin-right: auto; margin-left: auto">Upload</button>
+                        <img src="~/img/@TempData["avatar"]" alt="" style="width: 10rem; height: 10rem" id="avatar_img">
+                        <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>  
                     </div>
                 </div>
-                <div class="flex-grow-1">
-                    <div class="input-block">
-                        <label>Full name</label>
-                        <input value="@Model.Name" />
-                    </div>
-                    <div class="input-block">
-                        <label>Email</label>
-                        <input value="@Model.Email" />
-                    </div>
-                    <div class="input-block">
-                        <label>Birthdate</label>
-                        <input value="@Model.Birthday" />
-                    </div>
-                    <div class="input-block">
-                        <label>Phone number</label>
-                        <input value="@Model.Phone" />
-                    </div>
-                    <div class="d-flex gap-2">
-                        <label style="font-size: 14px; color: #a1b4b4;">Gender</label>
-                        <div class="ms-2">
-                            <label for="Male">Male</label>
-                            <input id="Male" type="radio" name="gender" required>
+                
+                    
+                    <div class="flex-grow-1">
+                        <form>
+                        <input type="file" id="fileupload" style="display: none;">
+                        <div class="input-block">
+                            <label>Full name</label>
+                            <input value="@Model.Name" />
                         </div>
-                        <div class="ms-3">
-                            <label for="Female">Female</label>
-                            <input id="Female" type="radio" name="gender" required>
+                        <div class="input-block">
+                            <label>Email</label>
+                            <input value="@Model.Email" />
                         </div>
+                        <div class="input-block">
+                            <label>Birthdate</label>
+                            <input value="@Model.Birthday" />
+                        </div>
+                        <div class="input-block">
+                            <label>Phone number</label>
+                            <input value="@Model.Phone" />
+                        </div>
+                        <div class="d-flex gap-2">
+                            <label style="font-size: 14px; color: #a1b4b4;">Gender</label>
+                            <div class="ms-2">
+                                <label for="Male">Male</label>
+                                <input id="Male" type="radio" name="gender" checked='@Model.Gender =="Male"?"Checked":""' required>
+                            </div>
+                            <div class="ms-3">
+                                <label for="Female">Female</label>
+                                <input id="Female" type="radio" name="gender" checked='@Model.Gender=="Female"?"Checked":""' required>
+                            </div>
+                        </div>
+                    </form>
                     </div>
-                </div>
+               
             </div>
         </div>
     </div>
@@ -85,5 +84,3 @@
 
 @Html.Partial("~/Views/Profile/Components/Changepassword.cshtml");
 <!-- /.container-fluid -->
-
-<script src="~/js/Profile.js"></script>

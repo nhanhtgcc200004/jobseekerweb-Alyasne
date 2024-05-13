@@ -20,8 +20,7 @@ namespace finalyearproject.Models
             Birthday = birthday;
             Status = status;
             Viewable = viewable;
-            this.conpany_id = conpany_id;
-            this.conpany = conpany;
+            this.company_id = conpany_id;
         }
 
         [Key]
@@ -41,9 +40,9 @@ namespace finalyearproject.Models
         public string Birthday { get; set; }
         public string Status { get; set; }
         public string Viewable {  get; set; }
-        public int conpany_id { get; set; }
-        [ForeignKey("conpany_id")]
-        public Conpany conpany { get; set; }
+        public int company_id { get; set; }
+        [ForeignKey("company_id")]
+        public Company company { get; set; }
 
     }
 }

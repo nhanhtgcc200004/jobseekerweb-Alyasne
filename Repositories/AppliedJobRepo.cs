@@ -12,7 +12,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Appliedjob>> SearchAllCandidateOfPost(int post_id)
         {
-            return await _dbcontext.Appliedjobs.Where(al=>al.post_id == post_id).Include(al=>al.post).Include(al=>al.user).ToListAsync();
+            return await _dbcontext.Appliedjobs.Where(al=>al.post_id == post_id).Include(al=>al.post).Include(al=>al.post.user).Include(al=>al.user).ToListAsync();
         }
         public async Task<Appliedjob> SearchAppliedById(int applied_id)
         {

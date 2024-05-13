@@ -14,6 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\dashboard\chart1.js" />
+    <None Include="wwwroot\js\dashboard\chart2.js" />
+    <None Include="wwwroot\js\dashboard\chart3.js" />
+    <None Include="wwwroot\js\demo\chart-area-demo.js" />
+    <None Include="wwwroot\js\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\js\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\js\demo\datatables-demo.js" />
     <None Include="wwwroot\vendor\bootstrap\js\bootstrap.bundle.js" />
     <None Include="wwwroot\vendor\bootstrap\js\bootstrap.bundle.js.map" />
     <None Include="wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js" />

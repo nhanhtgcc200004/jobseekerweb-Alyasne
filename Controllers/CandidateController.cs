@@ -1,6 +1,9 @@
 ﻿using finalyearproject.Models;
+using finalyearproject.Models.ViewModel;
 using finalyearproject.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
+using System.Runtime.Intrinsics.Arm;
 
 namespace finalyearproject.Controllers
 {
@@ -8,18 +11,28 @@ namespace finalyearproject.Controllers
     {
         private AppliedJobRepo appliedjobRepo;
         private PostRepo postRepo;
+        private CommentRepo commentRepo;
+       private ISession session;
         private readonly ApplicationDBcontext _dbContext;
         private int user_id;
-        private int role;
-        public CandidateController(ApplicationDBcontext dbContext)
+        private string role;
+        public CandidateController(ApplicationDBcontext dbContext, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
             postRepo = new PostRepo(_dbContext);
             appliedjobRepo=new AppliedJobRepo(_dbContext);
+            commentRepo=new CommentRepo(_dbContext);
+            session = httpContextAccessor.HttpContext.Session;
+            user_id = (int)session.GetInt32("user_id");
+            role = session.GetString("role");
+
         }
         public async Task<IActionResult> Index(int post_id)
         {
             List<Appliedjob> jobs = await appliedjobRepo.SearchAllCandidateOfPost(post_id);
+            TempData["role"] = role;
+            TempData["avatar"] = session.GetString("avatar");
+            TempData["name"] = session.GetString("name");
             return View(jobs);
         }
 
@@ -48,6 +61,20 @@ namespace finalyearproject.Controllers
 
         }
 
+        public async Task<IActionResult> Detail(int post_id)
+        {
+            
+            List<Comment> comments = await commentRepo.GetAllCommentByPostId(post_id);
+            if (CheckInfor())
+            {
+                Post post = await postRepo.SearchPostById(post_id);
+                Post_CommentViewModel post_comment = new Post_CommentViewModel(post, comments);
+                TempData["role"] = role;
+                TempData["avatar"] = session.GetString("avatar");
+                return View(post_comment);
+            }
+            else return NotFound();
+        }
         private async void HandleRefuse(int id)
         {
             Appliedjob appliedjob = await appliedjobRepo.SearchAppliedById(id);

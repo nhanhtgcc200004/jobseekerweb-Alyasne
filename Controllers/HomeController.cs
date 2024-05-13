@@ -34,6 +34,7 @@ namespace finalyearproject.Controllers
         {
             List<Post> posts = await postRepo.SearchAllPostForAdmin();
             TempData["data"] = role;
+            TempData["user_id"]=user_id;
             return View(posts);
         }
     }

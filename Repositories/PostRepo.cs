@@ -13,11 +13,11 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Post>> SearchAllPostForHome()
         {
-            return await dbcontext.Posts.Where(p => p.status !="reported"&& p.status!="deleted").Include(p=>p.user).Include(p=>p.user.conpany).ToListAsync();
+            return await dbcontext.Posts.Where(p => p.status !="reported"&& p.status!="deleted").Include(p=>p.user).Include(p=>p.user.company).ToListAsync();
         }
         public async Task<List<Post>> SearchAllPostForAdmin()
         {
-            return await dbcontext.Posts.Where(p => p.status != "reported" && p.status != "deleted").Include(p => p.user).Include(p => p.user.conpany).ToListAsync();
+            return await dbcontext.Posts.Where(p => p.status != "reported" && p.status != "deleted").Include(p => p.user).Include(p => p.user.company).ToListAsync();
         }
         public async Task<List<Post>> SearchAllPostForManagement()
         {
@@ -29,7 +29,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<Post> SearchPostById(int post_id)
         {
-            return await dbcontext.Posts.Where(p=>p.post_id==post_id && p.status!="reported").FirstOrDefaultAsync();
+            return await dbcontext.Posts.Where(p=>p.post_id==post_id && p.status!="reported").Include(p=>p.user).FirstOrDefaultAsync();
         }
         public async Task<List<Post>> SearchPost(string search_value)
         {
@@ -37,7 +37,7 @@ namespace finalyearproject.Repositories
         }
         public async Task<List<Post>> SearchAllPostByUserId(int user_id)
         {
-            return await dbcontext.Posts.Where(p=>p.user_id==user_id && p.status!="reported" || p.status!="deleted").Include(u=>u.user).Include(c=>c.user.conpany).ToListAsync();
+            return await dbcontext.Posts.Where(p=>(p.user_id==user_id) && (p.status!="reported" && p.status!="deleted")).Include(u=>u.user).Include(c=>c.user.company).ToListAsync();
         }
         internal List<Post> SearchAllPostWithCondition(string search_value, string condition)
         {

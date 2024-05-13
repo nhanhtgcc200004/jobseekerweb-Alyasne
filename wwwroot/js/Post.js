@@ -17,7 +17,7 @@
             },
             success: function (response) {
                 console.log("CreateReport success");
-                
+                alert("report success");
                 window.location.reload();
             },
             error: function (xhr, status, error) {
@@ -33,6 +33,7 @@
     applyButton.addEventListener("click", function () {
         // Get the post ID from the data attribute
         var postId = applyButton.getAttribute("data-post-id");
+        
 
         // Make an AJAX call to the AppliedJob action
         $.ajax({
@@ -40,9 +41,10 @@
             method: "POST",
             data: { post_id: postId },
             success: function (response) {
-                console.log("AppliedJob success");
+                console.log("Report success");
+                alert("applied success");
                 window.location.reload();
-                applyButton.disabled = true;
+               
             },
             error: function (xhr, status, error) {
                 // Handle error response
@@ -50,6 +52,28 @@
             }
         });
     });
-    var commentbutton = document.getElementById("commentbutton")
+
+    var commentbutton = document.getElementById("commentButton")
+    commentbutton.addEventListener("click", function () {
+        var comment_content = document.getElementById("comment").value();
+        var post_Id = commentbutton.getAttribute("post_id");
+       
+        $.ajax({
+            url: "/Post/AddComment",
+            method: "POST",
+            data: {
+                post_id: post_Id,
+                comment: comment_content
+            },
+            success: function (response) {
+                window.location.reload();
+                alert("report success");
+            },
+            error: function (xhr, status, error) {
+                console.error("error: ");
+            }
+
+        });
+    });
 
 });

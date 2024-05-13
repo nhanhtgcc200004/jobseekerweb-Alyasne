@@ -25,7 +25,7 @@ namespace finalyearproject.Controllers
         }
         public async Task<IActionResult> ProfileConpany(int conpany_id)
         {
-            Conpany conpany= await _conpanyRepo.SearchConpanyById(conpany_id);
+            Company conpany= await _conpanyRepo.SearchConpanyById(conpany_id);
             return View(conpany);
         }
     }
