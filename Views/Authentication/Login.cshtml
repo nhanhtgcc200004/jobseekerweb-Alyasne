@@ -24,7 +24,10 @@
                                 <input type="password" name="Password" value="123456" required>
                             </div>
                         </div>
-                        <p style="color:red">email or password is incorrect</p>
+                        @if(ViewBag.erorr!=null){
+                        <p style="color:red">@ViewBag.erorr</p>
+                        }
+                        
                         <a asp-controller="Authentication" asp-action="ForgotPassword" style="text-decoration:none">
                         <p>Forgot password?</p>
                         </a>

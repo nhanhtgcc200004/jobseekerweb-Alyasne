@@ -1,8 +1,9 @@
 ﻿$(document).ready(function () {
     $("#search_post").submit(function (eventObj) {
-        var condition = document.querySelector('#exampleFormControlSelect1');
-        $(this).append('<input type="hidden" name="condition" value= " ' + condition.value + '"/>');
+        var condition = document.getElementById("condition_select").value;
+        var search_value = document.getElementById("Search_value").value;
     });
+
 });
    
 

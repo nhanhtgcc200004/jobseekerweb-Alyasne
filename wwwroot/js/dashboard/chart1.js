@@ -7,7 +7,7 @@ var ctx = document.getElementById("chart_1");
 var chart_1 = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: ["SpeaceX", "Spa", "March", "April", "May", "June"],
         datasets: [{
             label: "Revenue",
             backgroundColor: "#4e73df",

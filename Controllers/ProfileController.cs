@@ -1,6 +1,7 @@
 ﻿
 using EnterpriceWeb.Controllers;
 using finalyearproject.Models;
+using finalyearproject.Models.ViewModel;
 using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
 using Microsoft.AspNetCore.Mvc;
@@ -42,8 +43,9 @@ namespace finalyearproject.Controllers
 
             if (Checkinfor(id))
             {
+                TempData["user_id"] = user_id;
+                TempData["name"] = session.GetString("name");
                 User user = await _userRepo.SearchUserById(id);
-
                 return View(user);
             }
             return BadRequest();
@@ -58,17 +60,7 @@ namespace finalyearproject.Controllers
                 return View(user);
             }    
           
-            return NotFound();
-        }
-        public async Task<IActionResult> UpdateProfile(int id)
-        {
-            if (Checkinfor(id))
-            {
-                User user= await _userRepo.SearchUserById(id);
-                
-                return View(user);
-            }
-            return BadRequest();
+         return NotFound();
         }
         [HttpPut]
         public async Task<IActionResult> UpdateProfile(int id, [FromForm] User user)
@@ -80,6 +72,28 @@ namespace finalyearproject.Controllers
             }
             return BadRequest();
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateCandidateProfile(int id, [FromForm] RecruiterViewModel Recruiter)
+        {
+            if (Checkinfor(id))
+            {
+                User user= await _userRepo.SearchUserById(id);
+                HandleUpdateRecruiter(user,Recruiter);
+                return RedirectToAction("Index", "Profile", id = id);
+            }
+            return NotFound();
+        }
+
+        private void HandleUpdateRecruiter(User user,RecruiterViewModel recruiter)
+        {
+            user.Name=recruiter.Name;
+            user.Email=recruiter.Email;
+            user.Phone=recruiter.Phone;
+            user.Gender=recruiter.Gender;
+            _dbcontext.Update(user);
+            _dbcontext.SaveChanges();
+        }
+
         [HttpPost]
         private async Task<IActionResult> downloadUserCv(int user_profile_id)
         { 

@@ -41,8 +41,16 @@ namespace finalyearproject.Controllers
             TempData["role"] = role;
             TempData["avatar"] = Session.GetString("avatar");
             TempData["name"] = Session.GetString("name");
+
+            if (user.role == "Candidate")
+            {
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction();
+            }
             
-            return View(user);
         }
         [HttpPost]
         public void BanAccount(int user_id)

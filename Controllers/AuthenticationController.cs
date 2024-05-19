@@ -44,15 +44,19 @@ namespace finalyearproject.Controllers
         {
             User user = await userRepo.Login(email, password);
             var login = HandleLogin(user);
-            if (login =="success") 
+            if (login == "success")
             {
                 TempData["user_id"] = user.user_id;
                 if (user.role == "Recruiter")
                 {
+                    TempData["avatar"] = user.avatar;
+                    TempData["name"] = user.Name;
                     return RedirectToAction("Recruiter", "Home");
                 }
-                else if(user.role == "Admin")
+                else if (user.role == "Admin")
                 {
+                    TempData["avatar"] = user.avatar;
+                    TempData["name"] = user.Name;
                     return RedirectToAction("Index", "Admin");
                 }
                 else
@@ -61,10 +65,6 @@ namespace finalyearproject.Controllers
                     TempData["name"] = user.Name;
                     return RedirectToAction("Candidate", "Home");
                 }
-            }
-            else if (login == "this account still doesn't verify")
-            {
-                return RedirectToAction("VerifyAccount", "Account");
             }
             else
             {
@@ -98,7 +98,7 @@ namespace finalyearproject.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Register([FromForm] User user)//
+        public async Task<IActionResult> Register([FromForm] User user)
         {
             User s_user = await userRepo.SearchUserByMail(user.Email);
             if (CheckValue(s_user))
@@ -144,14 +144,14 @@ namespace finalyearproject.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ForgetPassword(string gmail)
+        public async Task<IActionResult> ForgetPassword(string email)
         {
-            if (gmail != null)
+            if (email != null)
             {
-             User user1 = await userRepo.SearchUserByMail(gmail);
+             User user1 = await userRepo.SearchUserByMail(email);
                 if (user1 != null)
                 {
-                    string newpassword = await mailSystem.SendgmailForgetPassword(gmail);
+                    string newpassword = await mailSystem.SendgmailForgetPassword(email);
                     if (newpassword != "Something wrong with your account")
                     {
                         changesPassword(newpassword, user1);
@@ -171,15 +171,6 @@ namespace finalyearproject.Controllers
             }
             return View();
         }
-       public IActionResult UpdatePassword(int id)
-        {
-            if (checkUser(id))
-            {
-                return View();
-            }
-            return NotFound();
-        }
-
         public async Task<IActionResult> ChangePassword(string current_password, string new_passsword, string confirm_password)
         {
             int id = 1;

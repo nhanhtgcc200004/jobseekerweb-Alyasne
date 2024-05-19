@@ -48,6 +48,10 @@ namespace finalyearproject.Controllers
                 TempData["role"] = role;
                 TempData["avatar"] = user.avatar;
                 TempData["name"] = Session.GetString("name");
+                if (post.total_of_candidates==post.limit_candidates)
+                {
+                    TempData["limited"] = "limited";
+                }
                 return View(post_comment);
             }
             else return NotFound();
@@ -88,6 +92,9 @@ namespace finalyearproject.Controllers
 
         public IActionResult CreatePost()
         {
+            TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = Session.GetString("avatar");
             TempData["name"] = Session.GetString("name");
             return View();
         }
@@ -96,7 +103,7 @@ namespace finalyearproject.Controllers
         {
             if (CheckUserInfo())
             {
-              
+                
                 User user = await userRepo.SearchUserById(user_id);
                 HandleCreatePost(post,user);
                 return View();
@@ -115,6 +122,8 @@ namespace finalyearproject.Controllers
             if (post != null && user_id != null)
             {
                 TempData["user_id"] = user_id;
+                TempData["role"] = role;
+                TempData["avatar"] = Session.GetString("avatar");
                 TempData["name"] = Session.GetString("name");
                 return View(post);
             }

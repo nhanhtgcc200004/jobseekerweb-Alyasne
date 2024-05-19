@@ -1,17 +1,6 @@
 ﻿@model finalyearproject.Models.ViewModel.Post_CommentViewModel
 @{
-    @if (TempData["role"].ToString() == "Admin")
-    {
-        Layout = "AdminLayout";
-    }
-    else if (TempData["role"].ToString() == "Recruiter")
-    {
         Layout = "RecruiterLayout";
-    }
-    else
-    {
-        Layout = null;
-    }
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -25,25 +14,36 @@
                     <img src="~/img/@Model.Post.user.avatar" style="width: 5rem; height: 5rem" alt="">
                 </div>
                 <div class="col-md-8 col-sm-12">
-                    <p>@Model.Post.Position</p>
-                    <p>@Model.Post.address</p>
-                    <p>@Model.Post.total_of_candidates/@Model.Post.limit_candidates</p>
-                    <p>@Model.Post.salary</p>
+                    <p>Postion: @Model.Post.Position</p>
+                    <p>Company address: @Model.Post.address</p>
+                    <p>Candidates: @Model.Post.total_of_candidates/@Model.Post.limit_candidates</p>
+                    <p>Salary: @Model.Post.salary</p>
                 </div>
                 <div class="col-md-2 col-sm-12" style="text-align: end">
                     <p>Date: @Model.Post.date_post.ToString("yyyy-mm-dd")</p>
                     <p>Expire date: @Model.Post.expired_date.ToString("yyyy-mm-dd")</p>
                     <br />
                     <br />
-                    <p>@Model.Post.experience</p>
+                    <p>Expriences required: @Model.Post.experience</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mt-5">
-                    <button id="Apply" class="btn btn-success" data-post-id="@Model.Post.post_id" style="margin-right: 2rem">
-                        <i class="fas fa-sign-in-alt" style="margin-right: 10px"></i>
-                        Apply now
-                    </button>
+                    @if (TempData["limited"] != "limited")
+                    {
+                        <button id="Apply" class="btn btn-success" data-post-id="@Model.Post.post_id" style="margin-right: 2rem">
+                            <i class="fas fa-sign-in-alt" style="margin-right: 10px"></i>
+                            Apply now
+                        </button>
+                    }
+                    else
+                    {
+                        <button id="Full" class="btn btn-success" data-post-id="@Model.Post.post_id" style="margin-right: 2rem">
+                            <i class="fas fa-sign-in-alt" style="margin-right: 10px"></i>
+                            Reach limited
+                        </button>
+                    }
+
                     <button id="ShowCreateReport" class="btn btn-danger" data-toggle="modal" data-id="@Model.Post.post_id" data-target="#Report">
                         <i class="fas fa-exclamation-triangle" style="margin-right: 10px"></i>
                         Report

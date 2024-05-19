@@ -28,9 +28,6 @@ var chart_2 = new Chart(ctx, {
         },
         scales: {
             xAxes: [{
-                time: {
-                    unit: 'month'
-                },
                 gridLines: {
                     display: false,
                     drawBorder: false

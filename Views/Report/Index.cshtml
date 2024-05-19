@@ -34,13 +34,13 @@
                                 <th>@report.status</th>
                                 <th>
                                     <div class="btn-group-vertical">
-                                        <a asp-controller="Report" asp-action="Accept" asp-route-report_id="@report.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                        <a asp-controller="Report" asp-action="AcceptReport" asp-route-report_id="@report.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="bi bi-check-circle-fill"></i>
                                             </span>
                                             <span class="text">Accecpt</span>
                                         </a>
-                                        <a asp-controller="Report" asp-action="Refuse" asp-route-report_id="@report.report_id" class="btn btn-danger btn-icon-split">
+                                        <a asp-controller="Report" asp-action="RefuseReport" asp-route-report_id="@report.report_id" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="fas fa-trash"></i>
                                             </span>

@@ -75,5 +75,9 @@
 
         });
     });
+    var FullButton = document.getElementById("Full");
+    FullButton.addEventListener("click", function () {
+        alert("this post job is reach limit");
+    })
 
 });
