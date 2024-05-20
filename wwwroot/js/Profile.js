@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     function readURL(input) {
         console.log('here')
         if (input.files && input.files[0]) {
@@ -22,13 +21,13 @@
         var currentPassword = document.getElementsByTagName("current_password");
         var newpassword = document.getElementsByTagName("new_password");
         var confirmpassword = document.getElementsByTagName("confirm_password");
-        $.Ajax({
+        $.ajax({
             url: "/...",
             method: "Post",
             data: {
-                current_password=currentPassword,
-                new_password=newpassword,
-                confirm_password=confirmpassword
+                current_password: currentPassword,
+                new_password: newpassword,
+                confirm_password: confirmpassword
             },
             success: function (response) {
                 console.log("success");

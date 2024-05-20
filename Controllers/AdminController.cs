@@ -44,6 +44,7 @@ namespace finalyearproject.Controllers
             TempData["role"] = role;
             TempData["avatar"] = session.GetString("avatar");
             TempData["name"] = session.GetString("name");
+
             return View();
         }
 

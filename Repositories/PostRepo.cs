@@ -39,9 +39,20 @@ namespace finalyearproject.Repositories
         {
             return await dbcontext.Posts.Where(p=>(p.user_id==user_id) && (p.status!="reported" && p.status!="deleted")).Include(u=>u.user).Include(c=>c.user.company).ToListAsync();
         }
-        internal List<Post> SearchAllPostWithCondition(string search_value, string condition)
+        internal async Task<List<Post>> SearchAllPostWithCondition(string condition, string search_value)
         {
-            throw new NotImplementedException();
+            if(condition =="Company_name")
+            {
+                return await dbcontext.Posts.Where(p=>p.user.company.company_name.Contains(search_value)).ToListAsync();
+            }    
+            else if (condition=="Position")
+            {
+                return await dbcontext.Posts.Where(p => p.Position.Contains(search_value)).ToListAsync();
+            }
+            else
+            {
+                return await dbcontext.Posts.Where(p=>p.address.Contains(search_value)).ToListAsync();
+            }
         }
     }
 }

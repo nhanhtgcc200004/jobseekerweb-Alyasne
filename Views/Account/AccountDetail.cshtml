@@ -1,8 +1,8 @@
 ﻿@model finalyearproject.Models.User
 @{
-        Layout = "AdminLayout";
+    Layout = "AdminLayout";
 }
-<!-- Begin Page Content -->
+    <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Topbar Search -->
@@ -54,11 +54,11 @@
                         <label style="font-size: 14px; color: #a1b4b4;">Gender</label>
                         <div class="ms-2">
                             <label for="Male">Male</label>
-                            <input id="Male" type="radio" name="gender" readonly>
+                            <input id="Male" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' readonly>
                         </div>
                         <div class="ms-3">
                             <label for="Female">Female</label>
-                            <input id="Female" type="radio" name="gender" readonly>
+                            <input id="Female" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' readonly>
                         </div>
                     </div>
                 </div>

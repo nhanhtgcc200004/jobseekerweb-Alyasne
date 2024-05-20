@@ -40,7 +40,7 @@ namespace finalyearproject.Controllers
 
         private async Task<List<Post>> HandleSearchFollowCondition(string search_value, string condition)
         {
-            List<Post> posts = PostRepo.SearchAllPostWithCondition(search_value, condition);
+            List<Post> posts =  await PostRepo.SearchAllPostWithCondition(search_value, condition);
             return posts;
         }
 

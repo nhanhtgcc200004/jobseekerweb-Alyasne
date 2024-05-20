@@ -1,7 +1,9 @@
 ﻿using EnterpriceWeb.Controllers;
 using finalyearproject.Models;
+using finalyearproject.Models.ViewModel;
 using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
+using finalyearproject.SubSystem.Support;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -98,18 +100,32 @@ namespace finalyearproject.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Register([FromForm] User user)
+        public async Task<IActionResult> CandidateRegister([FromForm] User user,[FromForm] IFormFile Resume)
         {
-            User s_user = await userRepo.SearchUserByMail(user.Email);
-            if (CheckValue(s_user))
+            string type = Path.GetFileName(Resume.FileName);
+            type = type.Substring(type.LastIndexOf("."));
+            if (type==".PDF")
             {
-                user.role = "user";
-                user.Status = "waiting for confirmation";
-                HandleRegister(user);
-                User new_user = await userRepo.SearchUserJustInsert();
-                String verify_code=HandleAddVerifyCode(new_user);
-                mailSystem.SendVerifyCode(verify_code, new_user.Email);
-                return RedirectToAction("VerifyAccount", "Authentication", new {id=new_user.user_id });
+                var _user = await userRepo.Register(user.Email);
+                if (user == null)
+                {
+                    //_user.us_password = MD5(_user.us_password);
+                    
+                   
+                    HandleRegister(user, Resume);
+                    //User new_user = await userRepo.SearchUserJustInsert();
+                    //String verify_code = HandleAddVerifyCode(new_user);
+                    //mailSystem.SendVerifyCode(verify_code, new_user.Email);
+                    //return RedirectToAction("VerifyAccount", "Authentication", new {id=new_user.user_id });
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
             }
             return View();
         }
@@ -241,27 +257,74 @@ namespace finalyearproject.Controllers
             return false;
         }
 
-        private void HandleRegister(User user)
+        private async void HandleRegister(User user,IFormFile avatar)
         {
-            _dbContext.Add(user);
-            _dbContext.SaveChanges();
+            try
+            {
+                if (avatar != null)
+                {
+                    string filename = await FileSupport.Instance.SaveFileAsync(avatar, "img/Avatar");
+                    user.avatar = "img_avatar" ;
+                    user.role = "user";
+                    user.Status = "1";
+                    user.company_id = 999;
+                    _dbContext.Add(user);
+                    _dbContext.SaveChanges();
+                    CV Resume = new CV();
+                    Resume.date_upload = DateTime.Now;
+                    Resume.cv_file= filename;
+                    Resume.user_id = user.user_id;
+                    _dbContext.Add(Resume);
+                    _dbContext.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+       
         }
-
-        public IActionResult RegisterCompany()
+        [HttpPost]
+        public IActionResult RegisterCompany([FromForm] RecruiterViewModel recruiter, IFormFile Logo)
         {
-            return View();
-        }
-        public IActionResult RegisterCompany([FromForm] Company company)
-        {
-            HandleRegisterCompany(company);
+            User user = new User();
+            Company company = new Company();
+            HandleRegisterCompany(user,company,recruiter,Logo);
             return View();
         }
        
-        private void HandleRegisterCompany(Company company)
+        private async void HandleRegisterCompany(User user,Company company,RecruiterViewModel recruiter, IFormFile Logo)
         {
-            company.status = "waiting for confirmation";
-            _dbContext.Add(company);
-            _dbContext.SaveChanges();
+            try
+            {
+                if (Logo != null)
+                {
+                    string filename = await FileSupport.Instance.SaveFileAsync(Logo, "img/Logo");
+                    company.status = "OK";
+                    company.Address = recruiter.Address;
+                    company.company_name = recruiter.Company_name;
+                    company.Email_conpany = recruiter.Email;
+                    _dbContext.Add(company);
+                    _dbContext.SaveChanges();
+                    user.avatar = filename;
+                    user.Email = recruiter.Email;
+                    user.role = "User";
+                    user.Phone = recruiter.Phone;
+                    user.Gender = recruiter.Gender;
+                    user.Password = recruiter.Password;
+                    user.company_id = company.conpany_id;
+                    _dbContext.Add(user);
+                    _dbContext.SaveChanges();
+                    _dbContext.Add(user);
+                    _dbContext.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+       
         }
         private string HandleAddVerifyCode(User user)
         {

@@ -41,8 +41,6 @@
                         <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>  
                     </div>
                 </div>
-                
-                    
                     <div class="flex-grow-1">
                         <form>
                         <input type="file" id="fileupload" style="display: none;">
@@ -66,11 +64,11 @@
                             <label style="font-size: 14px; color: #a1b4b4;">Gender</label>
                             <div class="ms-2">
                                 <label for="Male">Male</label>
-                                <input id="Male" type="radio" name="gender" checked='@Model.Gender =="Male"?"Checked":""' required>
+                                <input id="Male" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' value="Male" required>
                             </div>
                             <div class="ms-3">
                                 <label for="Female">Female</label>
-                                <input id="Female" type="radio" name="gender" checked='@Model.Gender=="Female"?"Checked":""' required>
+                                <input id="Female" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' value="Female" required>
                             </div>
                         </div>
                     </form>

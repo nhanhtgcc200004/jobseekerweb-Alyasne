@@ -15,13 +15,7 @@ namespace EnterpriceWeb.Controllers
             _emailSender = emailSender;
             _hostEnvironment = hostEnvironment;
         }
-        public async void Sendgmail(User user)
-        {
-            var receiver = user.Email;
-            var subject = "please comment at the new article";
-            var message = "You have 14 days to feedback for the new article";
-            await _emailSender.SenderEmailAsync(receiver, subject, message);
-        }
+       
         public string randomPass()
         {
             Random rand = new Random();

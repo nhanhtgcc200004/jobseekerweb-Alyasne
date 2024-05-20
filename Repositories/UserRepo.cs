@@ -38,7 +38,10 @@ namespace finalyearproject.Repositories
         {
             return await dbcontext.Users.LastAsync();
         }
-
+        public async Task<User> Register(string Email)
+        {
+            return await dbcontext.Users.Where(u => u.Email == Email).FirstOrDefaultAsync();
+        }
         
     }
 }

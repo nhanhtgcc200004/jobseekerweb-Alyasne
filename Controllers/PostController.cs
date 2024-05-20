@@ -149,7 +149,10 @@ namespace finalyearproject.Controllers
             post.other_condition = form_post.other_condition;
             return post;
         }
-
+        public async Task<IActionResult> Search( string condition, string Search_value)
+        {
+            return View();
+        }
         //public async void UpdateComment(int comment_id,string newcontent,string type_comment)
         //{
         //    if (type_comment=="reply")

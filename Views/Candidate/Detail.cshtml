@@ -14,18 +14,19 @@
                     <img src="~/img/@Model.Post.user.avatar" style="width: 5rem; height: 5rem" alt="">
                 </div>
                 <div class="col-md-8 col-sm-12">
-                    <p>@Model.Post.Position</p>
-                    <p>@Model.Post.address</p>
-                    <p>@Model.Post.total_of_candidates/@Model.Post.limit_candidates</p>
-                    <p>@Model.Post.salary</p>
+                    <p>Postion: @Model.Post.Position</p>
+                    <p>Company address: @Model.Post.address</p>
+                    <p>Candidates: @Model.Post.total_of_candidates/@Model.Post.limit_candidates</p>
+                    <p>Salary: @Model.Post.salary</p>
+                    <p>Expriences required: @Model.Post.experience</p>
                 </div>
                 <div class="col-md-2 col-sm-12" style="text-align: end">
-                    <p>Date: @Model.Post.date_post.ToString("yyyy-MM-dd")</p>
-                    <p>Expire date: @Model.Post.expired_date.ToString("yyyy-MM-dd")</p>
+                    <p>Date: @Model.Post.date_post.ToString("yyyy-mm-dd")</p>
+                    <p>Expire date: @Model.Post.expired_date.ToString("yyyy-mm-dd")</p>
                     <br />
-                    <br />
-                    <p>@Model.Post.experience</p>
+                   
                 </div>
+          
             </div>
             <div class="row">
                 <div class="col-md-12 mt-5">

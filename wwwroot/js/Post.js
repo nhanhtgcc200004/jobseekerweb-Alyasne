@@ -53,17 +53,17 @@
         });
     });
 
-    var commentbutton = document.getElementById("commentButton")
+    var commentbutton = document.getElementById("CommentButton")
     commentbutton.addEventListener("click", function () {
-        var comment_content = document.getElementById("comment").value();
-        var post_Id = commentbutton.getAttribute("post_id");
+        var comment_content = document.getElementById("comment").value;
+        var post_Id = document.getElementById("comment").getAttribute("data-post_id");
        
         $.ajax({
             url: "/Post/AddComment",
             method: "POST",
             data: {
                 post_id: post_Id,
-                comment: comment_content
+                content: comment_content
             },
             success: function (response) {
                 window.location.reload();

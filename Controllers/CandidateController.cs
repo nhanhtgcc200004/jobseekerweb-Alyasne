@@ -38,6 +38,9 @@ namespace finalyearproject.Controllers
 
         public async Task<IActionResult> Appliedjobmanagement()
         {
+            TempData["user_id"] = user_id;
+            TempData["name"] = session.GetString("name");
+            TempData["avatar"] = session.GetString("avatar");
             List<Appliedjob> appliedjobs = await appliedjobRepo.SearchAllAppliedByUserId(user_id);
             return View(appliedjobs);
         }
@@ -70,6 +73,8 @@ namespace finalyearproject.Controllers
                 Post post = await postRepo.SearchPostById(post_id);
                 Post_CommentViewModel post_comment = new Post_CommentViewModel(post, comments);
                 TempData["role"] = role;
+                TempData["user_id"] = user_id;
+                TempData["name"] = session.GetString("name");
                 TempData["avatar"] = session.GetString("avatar");
                 return View(post_comment);
             }

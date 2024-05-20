@@ -4,7 +4,9 @@ using finalyearproject.Models;
 using finalyearproject.Models.ViewModel;
 using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
+using finalyearproject.SubSystem.Support;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI.Common;
 
 namespace finalyearproject.Controllers
 {
@@ -33,6 +35,9 @@ namespace finalyearproject.Controllers
             
             if (Checkinfor(id))
             {
+                TempData["user_id"] = user_id;
+                TempData["name"] = session.GetString("name");
+                TempData["avatar"] = session.GetString("avatar");
                 User user= await _userRepo.SearchUserById(id);
                 return View(user);
             }
@@ -73,7 +78,7 @@ namespace finalyearproject.Controllers
             return BadRequest();
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateCandidateProfile(int id, [FromForm] RecruiterViewModel Recruiter)
+        public async Task<IActionResult> UpdateRecruiterProfile(int id, [FromForm] RecruiterViewModel Recruiter)
         {
             if (Checkinfor(id))
             {
@@ -86,7 +91,7 @@ namespace finalyearproject.Controllers
 
         private void HandleUpdateRecruiter(User user,RecruiterViewModel recruiter)
         {
-            user.Name=recruiter.Name;
+            user.Name=recruiter.Full_Name;
             user.Email=recruiter.Email;
             user.Phone=recruiter.Phone;
             user.Gender=recruiter.Gender;
@@ -107,10 +112,32 @@ namespace finalyearproject.Controllers
             }
             return null;
         }
-        private async void UploadCV()
+        private async void UploadCV([FromForm] IFormFile Resume)
         {
-
+            User user = await _userRepo.SearchUserById(user_id);
+           
+            string type = Path.GetFileName(Resume.FileName);
+            type = type.Substring(type.LastIndexOf("."));
+            if (type == ".PDF")
+            {
+                HandleChangesCv(user,Resume);
+            }
+            else
+            {
+                
+            }
         }
+
+        private async void HandleChangesCv(User user, IFormFile resume)
+        {
+            CV resume_new = await cvRepo.SearchCvOfUser(user.user_id);
+            FileSupport.Instance.DeleteFileAsync(resume_new.cv_file, "Resume");
+            string filename = await FileSupport.Instance.SaveFileAsync(resume, "Resume");
+            resume_new.cv_file = filename;
+            _dbcontext.Update(resume_new);
+            _dbcontext.SaveChanges();
+        }
+
         private void HandleUpdateProfile(User user)
         {
             _dbcontext.Update(user);
