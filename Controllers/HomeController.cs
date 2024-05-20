@@ -26,15 +26,20 @@ namespace finalyearproject.Controllers
         public async Task<IActionResult> Recruiter()
         {
             List<Post> posts = await postRepo.SearchAllPostForAdmin();
-            TempData["data"] = role;
+            TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = Session.GetString("avatar");
+            TempData["name"] = Session.GetString("name");
             return View(posts);
         }
         
         public async Task<IActionResult> Candidate()
         {
             List<Post> posts = await postRepo.SearchAllPostForAdmin();
-            TempData["data"] = role;
-            TempData["user_id"]=user_id;
+            TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = Session.GetString("avatar");
+            TempData["name"] = Session.GetString("name");
             return View(posts);
         }
     }

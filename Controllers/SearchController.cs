@@ -19,11 +19,12 @@ namespace finalyearproject.Controllers
             user_id =(int) session.GetInt32("user_id");
             role = session.GetString("role");
         }
-        public IActionResult Index(string search_value,string condition )
+        [HttpPost]
+        public IActionResult Result(string search_value,string condition)
         {
             if (ChecktypeSearch())
             {
-               return View(HandleSearch(search_value));
+               return View(HandleSearchFollowCondition(search_value,"A"));
             }
             return View();
         }
@@ -31,11 +32,6 @@ namespace finalyearproject.Controllers
         private bool ChecktypeSearch()
         {
             return true;
-        }
-
-        private async Task<List<Post>> HandleSearch(string search_value)
-        {
-          return await PostRepo.SearchPost(search_value);
         }
 
         private async Task<List<Post>> HandleSearchFollowCondition(string search_value, string condition)

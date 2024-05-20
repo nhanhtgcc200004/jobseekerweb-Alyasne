@@ -100,7 +100,7 @@ namespace finalyearproject.Controllers
         }
 
         [HttpPost]
-        private async Task<IActionResult> downloadUserCv(int user_profile_id)
+        public async Task<IActionResult> DownloadUserCv(int user_profile_id)
         { 
             int user_id = (int)session.GetInt32("user_id");
             string role = session.GetString("role");
@@ -110,9 +110,9 @@ namespace finalyearproject.Controllers
                 MemoryStream memory = _sendMailSystem.DownloadSingleFile(user_cv);
                 return File(memory.ToArray(), "application/zip", user_cv.user.Name);
             }
-            return null;
+            return BadRequest();
         }
-        private async void UploadCV([FromForm] IFormFile Resume)
+        public async void UploadCV([FromForm] IFormFile Resume)
         {
             User user = await _userRepo.SearchUserById(user_id);
            

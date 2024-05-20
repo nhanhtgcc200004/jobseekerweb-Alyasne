@@ -187,20 +187,20 @@ namespace finalyearproject.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> ChangePassword(string current_password, string new_passsword, string confirm_password)
+        public async Task<IActionResult> ChangePassword(string current_password, string new_password, string confirm_password)
         {
             int id = 1;
             if (checkUser(id))
             {
                 User user=await userRepo.SearchUserById(id);
-                if (checkPassword(user,current_password,new_passsword,confirm_password))
+                if (checkPassword(user,current_password,new_password,confirm_password))
                 {
-                    changesPassword(new_passsword, user);
-                    
+                    changesPassword(new_password, user);
+                    return Ok();
                 }
                 else
                 {
-                    return View();
+                    return Ok();
                 }
             }
             return NotFound();

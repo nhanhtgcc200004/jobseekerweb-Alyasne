@@ -1,16 +1,23 @@
 ﻿$(document).ready(function () {
-    $("#search_post").submit(function (eventObj) {
-        var condition = document.getElementById("condition_select").value;
-        var search_value = document.getElementById("Search_value").value;
+    var searchButton = document.getElementById("Search");
+    searchButton.addEventListener("click", function () {
+        var condition = document.getElementById("condition").value;
+        var search_value = document.getElementById("search_value").value;
         $.ajax({
-            url: "/Post/Search",
-            method: "POST",
+            url: "/Search/Result",
+            method: "Post",
             data: {
-                condition: condition,
-                Search_value: search_value
+                search_value: search_value,
+                condition: condition
+            },
+            success: function (response) {
+                window.location.reload();
+            },
+            error: function () {
+                console.log("something wrong")
             }
         })
-    });
+    })
 
 });
    

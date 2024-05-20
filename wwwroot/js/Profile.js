@@ -18,11 +18,11 @@
 
     var UpdatePasswordButton = document.getElementById("updatepassword");
     UpdatePasswordButton.addEventListener("click", function () {
-        var currentPassword = document.getElementsByTagName("current_password");
-        var newpassword = document.getElementsByTagName("new_password");
-        var confirmpassword = document.getElementsByTagName("confirm_password");
+        var currentPassword = document.getElementById("current_password").value;
+        var newpassword = document.getElementById("new_password").value;
+        var confirmpassword = document.getElementById("confirm_password").value;
         $.ajax({
-            url: "/...",
+            url: "/Authentication/ChangePassword",
             method: "Post",
             data: {
                 current_password: currentPassword,
@@ -35,6 +35,23 @@
             },
             erorr: function () {
                 console.log("fail");
+            }
+        })
+    })
+    var downloadbutton = document.getElementById("download");
+    downloadbutton.addEventListener("click", function () {
+        var profile_user_id = downloadbutton.getAttribute("data-user_id");
+        $.ajax({
+            url: "/Profile/DownloadUserCv",
+            method: "Post",
+            data: {
+                user_profile_id: user_profile_id
+            },
+            success: function () {
+                window.location.reload();
+            },
+            error: function () {
+                console.log("something wrong")
             }
         })
     })

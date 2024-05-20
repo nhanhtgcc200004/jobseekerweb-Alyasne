@@ -103,7 +103,6 @@ namespace finalyearproject.Controllers
         {
             if (CheckUserInfo())
             {
-                
                 User user = await userRepo.SearchUserById(user_id);
                 HandleCreatePost(post,user);
                 return View();
@@ -149,43 +148,7 @@ namespace finalyearproject.Controllers
             post.other_condition = form_post.other_condition;
             return post;
         }
-        public async Task<IActionResult> Search( string condition, string Search_value)
-        {
-            return View();
-        }
-        //public async void UpdateComment(int comment_id,string newcontent,string type_comment)
-        //{
-        //    if (type_comment=="reply")
-        //    {
-        //        //Reply_Comment reply = await commentRepo.GetReplyCommentByCommentId(comment_id);
-        //        HandleUpdateComment(newcontent,reply,"reply");
-        //    }
-        //    else
-        //    {
-        //        Comment comment = await commentRepo.GetCommentById(comment_id);
-        //        HandleUpdateComment(newcontent, comment,"comment");
-        //    }
-            
-        //}
-
-        //private void HandleUpdateComment(string newcontent,Object comment,string type)
-        //{
-        //    if (type == "reply")
-        //    {
-        //        Reply_Comment reply = (Reply_Comment)comment;
-        //        reply.reply_content = newcontent;
-        //        _dbContext.Update(reply);
-        //        _dbContext.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        Comment newcomment = (Comment)comment;
-        //        newcomment.comment_content = newcontent;
-        //        _dbContext.Update(newcomment);
-        //        _dbContext.SaveChanges();
-        //    }
-           
-        //}
+       
 
         private void HandleUpdatePost(Post post)
         {
