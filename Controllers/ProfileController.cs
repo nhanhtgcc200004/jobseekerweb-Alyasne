@@ -123,8 +123,11 @@ namespace finalyearproject.Controllers
             }
 
         }
-
         [HttpPost]
+        public int SomethingDummy(int user_profile_id)
+        {
+            return user_profile_id;
+        }
         public async Task<IActionResult> DownloadUserCv(int user_profile_id)
         {
             int user_id = (int)session.GetInt32("user_id");
@@ -133,11 +136,11 @@ namespace finalyearproject.Controllers
             {
                 CV user_cv = await cvRepo.SearchCvOfUser(user_profile_id);
                 MemoryStream memory = _sendMailSystem.DownloadSingleFile(user_cv);
-                return File(memory.ToArray(), "application/zip", user_cv.user.Name);
+                return File(memory.ToArray(), "application/zip", user_cv.user.Name+".zip");
             }
             return BadRequest();
         }
-        public async void UploadCV([FromForm] IFormFile Resume)
+        public async Task UploadCV([FromForm] IFormFile Resume)
         {
             User user = await _userRepo.SearchUserById(user_id);
            
@@ -145,7 +148,7 @@ namespace finalyearproject.Controllers
             type = type.Substring(type.LastIndexOf(".")).ToUpper();
             if (type == ".PDF")
             {
-                HandleChangesCv(user,Resume);
+               await HandleChangesCv(user,Resume);
             }
             else
             {
@@ -153,14 +156,30 @@ namespace finalyearproject.Controllers
             }
         }
 
-        private async void HandleChangesCv(User user, IFormFile resume)
+        private async Task HandleChangesCv(User user, IFormFile resume)
         {
             CV resume_new = await cvRepo.SearchCvOfUser(user.user_id);
-            FileSupport.Instance.DeleteFileAsync(resume_new.cv_file, "Resume");
-            string filename = await FileSupport.Instance.SaveFileAsync(resume, "Resume");
-            resume_new.cv_file = filename;
-            _dbcontext.Update(resume_new);
-            _dbcontext.SaveChanges();
+            if (resume_new!=null)
+            {
+                FileSupport.Instance.DeleteFileAsync(resume_new.cv_file, "Resume");
+                string filename = await FileSupport.Instance.SaveFileAsync(resume, "Resume");
+                resume_new.cv_file = filename;
+                _dbcontext.Update(resume_new);
+                await _dbcontext.SaveChangesAsync();
+
+            }
+            else
+            {
+                resume_new = new CV();
+                string filename = await FileSupport.Instance.SaveFileAsync(resume, "Resume");
+                resume_new.date_upload = DateTime.Now;
+                resume_new.user_id=user.user_id;
+                resume_new.cv_file = filename;
+               await _dbcontext.AddAsync(resume_new);
+               await _dbcontext.SaveChangesAsync();
+
+            }
+           
         }
 
         private async Task HandleUpdateProfile(User user,User old_user, IFormFile avatar)

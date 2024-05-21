@@ -1,0 +1,6 @@
+﻿@model IEnumerable<finalyearproject.Models.Post>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("~/Views/Post/Components/PostHome.cshtml", item)
+}

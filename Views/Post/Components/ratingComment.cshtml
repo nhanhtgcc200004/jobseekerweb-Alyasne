@@ -1,13 +1,16 @@
-﻿@model int
+﻿@model finalyearproject.Models.Comment;
+@{
+    var uniqueId = Guid.NewGuid().ToString();
+}
 <span class="star-rating">
     <label for="rate-1" style="--i:1"><i class="fas fa-star"></i></label>
-    <input type="radio" name="rating_comment" id="rate-1" value="1" @(Model == 1 ? "checked" : "") disabled>
+    <input type="radio" name=@($"{Model.user.Email}-rating_comment-{uniqueId}") id="rate-1" value="1" @(Model.rating == 1 ? "checked" : "") readonly>
     <label for="rate-2" style="--i:2"><i class="fas fa-star"></i></label>
-    <input type="radio" name="rating_comment" id="rate-2" value="2" @(Model == 2 ? "checked" : "") disabled>
+    <input type="radio" name=@($"{Model.user.Email}-rating_comment-{uniqueId}") id="rate-2" value="2" @(Model.rating == 2 ? "checked" : "") readonly>
     <label for="rate-3" style="--i:3"><i class="fas fa-star"></i></label>
-    <input type="radio" name="rating_comment" id="rate-3" value="3" @(Model == 3 ? "checked" : "") disabled>
+    <input type="radio" name=@($"{Model.user.Email}-rating_comment-{uniqueId}") id="rate-3" value="3" @(Model.rating == 3 ? "checked" : "") readonly>
     <label for="rate-4" style="--i:4"><i class="fas fa-star"></i></label>
-    <input type="radio" name="rating_comment" id="rate-4" value="4" @(Model == 4 ? "checked" : "") disabled>
+    <input type="radio" name=@($"{Model.user.Email}-rating_comment-{uniqueId}") id="rate-4" value="4" @(Model.rating == 4 ? "checked" : "") readonly>
     <label for="rate-5" style="--i:5"><i class="fas fa-star"></i></label>
-    <input type="radio" name="rating_comment" id="rate-5" value="5" @(Model == 5 ? "checked" : "") disabled>
+    <input type="radio" name=@($"{Model.user.Email}-rating_comment-{uniqueId}") id="rate-5" value="5" @(Model.rating == 5 ? "checked" : "") readonly>
 </span>

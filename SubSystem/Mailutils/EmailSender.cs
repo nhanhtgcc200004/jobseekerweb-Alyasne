@@ -9,8 +9,8 @@ namespace EnterpriceWeb.Mailutils
     {
         public async Task<string> SenderEmailAsync(string email, string subject, string message)
         {
-            string mail = "enterpriceweb04@gmail.com";
-            string password = "xsufkvdvimrqxhmv";
+            string mail = "pluto.com2809@gmail.com";
+            string password = "hzsexaebdbnrvhpf";
             var client = new SmtpClient()
             {
                 EnableSsl = true,

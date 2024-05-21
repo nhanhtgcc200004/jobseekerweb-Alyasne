@@ -20,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50RGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/1640/finalyearproject/finalyearproject/Views/Account/AccountDetailAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50RGV0YWlsQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Account/AccountDetailRecruiter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50RGV0YWlsUmVjcnVpdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Account/Component/Banned.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb21wb25lbnRcQmFubmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/1640/finalyearproject/finalyearproject/Views/Account/Component/ChangesRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb21wb25lbnRcQ2hhbmdlc1JvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -124,6 +136,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXFBvc3RIb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/Post_search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXFBvc3Rfc2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Post/Components/Post_search_management.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXFBvc3Rfc2VhcmNoX21hbmFnZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/1640/finalyearproject/finalyearproject/Views/Post/Components/rating.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDb21wb25lbnRzXHJhdGluZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -174,6 +194,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/1640/finalyearproject/finalyearproject/Views/Report/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/1640/finalyearproject/finalyearproject/Views/Search/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/1640/finalyearproject/finalyearproject/Views/Search/Result.cshtml]

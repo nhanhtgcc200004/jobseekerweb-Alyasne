@@ -30,55 +30,17 @@
                 confirm_password: confirmpassword
             },
             success: function (response) {
-                console.log("success");
+                console.log(response);
                 window.location.reload();
             },
-            erorr: function () {
-                console.log("fail");
+                error: function (xhr, status, error) {
+                    var errorMsg = xhr.responseText || "An error occurred.";
+                    document.getElementById("error").innerText = errorMsg;
+                
             }
-        })
+        });
     })
-    var downloadbutton = document.getElementById("download");
-    downloadbutton.addEventListener("click", function () {
-        var profile_user_id = downloadbutton.getAttribute("data-user_id");
-        $.ajax({
-            url: "/Profile/DownloadUserCv",
-            method: "Post",
-            data: {
-                user_profile_id: user_profile_id
-            },
-            success: function () {
-                window.location.reload();
-            },
-            error: function () {
-                console.log("something wrong")
-            }
-        })
-    })
-    var uploadButton = document.getElementById("UploadCv");
-    uploadButton.addEventListener("click", function () {
-        var input = document.getElementById("Resume");
-        const new_resume = input.files[0];
-        if (new_resume) {
-            var formData = new FormData();
-            formData.append("Resume", new_resume);
-            $.ajax({
-                url: "/Profile/UploadCV",
-                method: "Post",
-                data: formData,
-                processData: false, 
-                contentType: false,
-                success: function () {
-                    window.location.reload();
-                },
-                error: function () {
-                    console.log("something wrong");
-                }
-            })
-           
-        }
-
-    })
+    
     document.getElementById("submit-profile").addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the default anchor behavior
         document.getElementById("profile-form").submit(); // Submit the form

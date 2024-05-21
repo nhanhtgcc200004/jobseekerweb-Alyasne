@@ -31,7 +31,7 @@ namespace finalyearproject.Repositories
         
         public async Task<User> SearchUserByMail(string email)
         {
-            User user = await dbcontext.Users.Where(u => u.Email == email).FirstAsync();
+            User user = await dbcontext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
             return user;
         }
         public async Task<User> SearchUserJustInsert()
@@ -43,6 +43,14 @@ namespace finalyearproject.Repositories
             User user = await dbcontext.Users.Where(u => u.Email == Email).FirstOrDefaultAsync();
             return user;
         }
-        
+
+        internal async Task<int> TotalUser()
+        {
+            return await dbcontext.Users.Where(u => u.Status == "Ok" && u.role=="user").CountAsync();
+        }
+        internal async Task<int> TotalRecruiter()
+        {
+            return await dbcontext.Users.Where(u => u.Status == "Ok" && u.role == "Recruiter").CountAsync();
+        }
     }
 }

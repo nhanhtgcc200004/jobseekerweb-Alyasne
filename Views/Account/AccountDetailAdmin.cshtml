@@ -1,0 +1,57 @@
+﻿@model finalyearproject.Models.User
+@{
+    Layout = "AdminLayout";
+}
+    <!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Topbar Search -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-center flex-md-wrap flex-sm-wrap gap-5">
+                <div class="d-flex flex-column flex-grow-1">
+                    <div class="text-center">
+                        <img src="~/img/Avatar/@Model.avatar" alt="" style="width: 10rem; height: 10rem" id="avatar_img">
+                        <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>
+                        <input type="file" id="fileupload" style="display: none;">
+                    </div>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="input-block">
+                        <label>Full name</label>
+                        <input value="@Model.Name" readonly />
+                    </div>
+                    <div class="input-block">
+                        <label>Email</label>
+                        <input value="@Model.Email" readonly />
+                    </div>
+                    <div class="input-block">
+                        <label>Birthdate</label>
+                        <input value="@Model.Birthday" readonly />
+                    </div>
+                    <div class="input-block">
+                        <label>Phone number</label>
+                        <input value="@Model.Phone" readonly />
+                    </div>
+                    <div class="d-flex gap-2">
+                        <label style="font-size: 14px; color: #a1b4b4;">Gender</label>
+                        <div class="ms-2">
+                            <label for="Male">Male</label>
+                            <input id="Male" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' readonly>
+                        </div>
+                        <div class="ms-3">
+                            <label for="Female">Female</label>
+                            <input id="Female" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

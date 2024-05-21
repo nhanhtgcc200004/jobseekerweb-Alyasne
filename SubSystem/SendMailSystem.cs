@@ -122,7 +122,7 @@ namespace EnterpriceWeb.Controllers
             {
                 
                     // Construct the path to the file
-                    var filePath = Path.Combine(_hostEnvironment.WebRootPath, "CV",  cV.cv_file);
+                    var filePath = Path.Combine(_hostEnvironment.WebRootPath, "Resume",  cV.cv_file);
 
                     if (System.IO.File.Exists(filePath))
                     {

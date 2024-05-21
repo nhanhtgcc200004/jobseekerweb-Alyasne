@@ -111,22 +111,18 @@ namespace finalyearproject.Controllers
                 if (_user == null)
                 {
                     //_user.us_password = MD5(_user.us_password);
-                    
-                   
                     await HandleRegister(user, Resume);
-                    //User new_user = await userRepo.SearchUserJustInsert();
-                    //String verify_code = HandleAddVerifyCode(new_user);
-                    //mailSystem.SendVerifyCode(verify_code, new_user.Email);
-                    //return RedirectToAction("VerifyAccount", "Authentication", new {id=new_user.user_id });
+                   
                 }
                 else
                 {
-
+                    ViewBag.error = "Email is exist";
+                    return View("register");
                 }
             }
             else
             {
-
+                
             }
             return View();
         }
@@ -161,7 +157,7 @@ namespace finalyearproject.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ForgetPassword(string email)
+        public async Task<IActionResult> ForgotPassword(string email)
         {
             if (email != null)
             {
@@ -172,7 +168,7 @@ namespace finalyearproject.Controllers
                     if (newpassword != "Something wrong with your account")
                     {
                         changesPassword(newpassword, user1);
-                        ViewBag.forgot = "The new password has been sent to the gmail you registered with";
+                        ViewBag.success = "The new password has been sent to the gmail you registered with";
                     }
                     else
                     {
@@ -188,9 +184,11 @@ namespace finalyearproject.Controllers
             }
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> ChangePassword(string current_password, string new_password, string confirm_password)
         {
-            int id = 1;
+            int id = (int)Session.GetInt32("user_id");
+            string role = Session.GetString("role");
             if (checkUser(id))
             {
                 User user=await userRepo.SearchUserById(id);
@@ -201,10 +199,11 @@ namespace finalyearproject.Controllers
                 }
                 else
                 {
-                    return Ok();
+                    string erorr=ViewBag.erorr;
+                    return BadRequest(erorr);
                 }
             }
-            return NotFound();
+            return BadRequest();
         }
 
         private bool checkPassword(User user, string current_password, string new_password, string confirm_password)
@@ -215,18 +214,18 @@ namespace finalyearproject.Controllers
                 {
                     return true;
                 }
-                ViewBag.Clear();
-                ViewBag.erorr = "The new password and confirm_passowrd are not match";
+                
+                ViewBag.erorr = "The new password and confirm passowrd are not match";
                 return false;
             }
-            ViewBag.Clear();
+           
             ViewBag.erorr = "The current password is incorrect";
             return false;
         }
 
         private bool checkUser(int id)
         {
-            if (Session.GetString("role") != null && Session.GetInt32("Id")==id)
+            if (Session.GetString("role") != null && Session.GetInt32("user_id")==id)
             {
                 return true;
             }

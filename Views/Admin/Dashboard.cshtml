@@ -1,4 +1,4 @@
-﻿@model IEnumerable<finalyearproject.Models.ViewModel.data_chart>
+﻿@model finalyearproject.Models.ViewModel.data_chart; 
 @{
     Layout = "AdminLayout";
 }
@@ -14,7 +14,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total post
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.total_post</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -32,7 +32,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total candidate
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.total_candidate</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user-tag fa-2x text-gray-300"></i>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@Model.total_recrutier</div>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Total report
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.total_report</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-flag fa-2x text-gray-300"></i>
@@ -86,7 +86,7 @@
         <div class="col-xl-6 col-lg-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Top 10 company</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Top 3 company have the most rating</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-bar">
@@ -99,7 +99,7 @@
         <div class="col-xl-6 col-lg-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Top 10 company</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Top 3 company find the most candidates</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-bar">
@@ -112,7 +112,7 @@
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Top 3 company</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Top 3 company receiving the most report </h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-bar">
@@ -126,6 +126,6 @@
 </div>
 
 <script src="~/vendor/chart.js/Chart.js"></script>
-@Html.Partial("~/Views/Admin/Chart/chart1.cshtml")
-@Html.Partial("~/Views/Admin/Chart/chart2.cshtml")
-@Html.Partial("~/Views/Admin/Chart/chart3.cshtml")
+@Html.Partial("~/Views/Admin/Chart/chart1.cshtml",Model.chart_total_rating)
+@Html.Partial("~/Views/Admin/Chart/chart2.cshtml",Model.chart_total_receving_candidate)
+@Html.Partial("~/Views/Admin/Chart/chart3.cshtml",Model.chart_total_receiving_report)

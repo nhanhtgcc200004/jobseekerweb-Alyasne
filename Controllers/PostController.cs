@@ -108,8 +108,18 @@ namespace finalyearproject.Controllers
             if (CheckUserInfo())
             {
                 User user = await userRepo.SearchUserById(user_id);
-                HandleCreatePost(post,user);
-                return View();
+               string error= HandleCheckPost(post);
+                if (error == "")
+                {
+                    HandleCreatePost(post, user);
+                    return RedirectToAction("PostManagement");
+                }
+                else
+                {
+                    ViewBag.error=error;
+                    return View();
+                }
+                
             }
             else
             {
@@ -118,6 +128,20 @@ namespace finalyearproject.Controllers
                 return View();
             }
         }
+
+        private string HandleCheckPost(Post post)
+        {
+            if (post.expired_date < DateTime.Now)
+            {
+                return "the expried date must be geater than current date";
+            }
+            else if (post.salary < 0)
+            {
+                return "the salary must higher than zero";
+            }
+            return "";
+        }
+
         public async Task<IActionResult> UpdatePost(int post_id)
         {
             Post post=await postRepo.SearchPostById(post_id);

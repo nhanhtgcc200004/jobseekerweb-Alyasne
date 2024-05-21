@@ -31,11 +31,16 @@
             </form>
         </div>
     </div>
-    <!-- DataTales Example -->
-    @foreach (var item in Model)
+  <div id="post-container">
+
+        @foreach (var item in Model)
     {
         @Html.Partial("~/Views/Post/Components/PostHome.cshtml",item)
     }
+
+    </div>
+    <!-- DataTales Example -->
+    
 
 </div>
 <!-- /.container-fluid -->

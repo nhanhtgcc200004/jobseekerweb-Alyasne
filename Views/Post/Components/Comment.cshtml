@@ -7,7 +7,7 @@
     <div class="col-md-10 col-sm-12">
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-sm-between">
-                @Html.Partial("~/Views/Post/Components/ratingComment.cshtml",Model.rating)
+                @Html.Partial("~/Views/Post/Components/ratingComment.cshtml",Model)
                 <p>@Model.date_comment.ToString("yyyy-MM-dd")</p>
             </div>
             <p>@Model.comment_content</p>

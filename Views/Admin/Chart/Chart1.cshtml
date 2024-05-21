@@ -1,4 +1,5 @@
-﻿@model finalyearproject.Models.ViewModel.data_chart;
+﻿@model IEnumerable<finalyearproject.Models.ViewModel.Chart_total_rating>;
+
 <script>
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -6,16 +7,25 @@
 
     // Bar Chart Example
     var ctx = document.getElementById("chart_1");
+    var labels = [];
+    var data = [];
+
+    @foreach (var item in Model)
+    {
+        @:labels.push("@item.company_name");
+        @:data.push(@item.total_rating);
+    }
+
     var chart_1 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["SpeaceX", "Spa", "Maash"],
+            labels: labels,
             datasets: [{
-                label: "Revenue",
+                label: "total Rating",
                 backgroundColor: "#4e73df",
                 hoverBackgroundColor: "#2e59d9",
                 borderColor: "#4e73df",
-                data: [4.9,4.5,4.4 ],
+                data: data,
             }],
         },
         options: {

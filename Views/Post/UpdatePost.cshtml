@@ -45,6 +45,7 @@
                     <label>Expired date</label>
                         <input name="expired_date" type="date" value="@Model.expired_date.ToString("yyyy-MM-dd")" required>
                 </div>
+                    <p style="color:red"> @ViewBag.error</p>
                 <div class="input-block">
                     <label>Salary</label>
                         <input name="salary" type="number" placeholder="Enter salary " value="@Model.salary" required>

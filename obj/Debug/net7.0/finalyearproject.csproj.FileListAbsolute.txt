@@ -269,3 +269,8 @@ D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\refint\finalyearproje
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\finalyearproject.pdb
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\finalyearproject.genruntimeconfig.cache
 D:\1640\finalyearproject\finalyearproject\obj\Debug\net7.0\ref\finalyearproject.dll
+D:\1640\finalyearproject\finalyearproject\bin\Debug\net7.0\MailKit.dll
+D:\1640\finalyearproject\finalyearproject\bin\Debug\net7.0\MimeKit.dll
+D:\1640\finalyearproject\finalyearproject\bin\Debug\net7.0\System.Formats.Asn1.dll
+D:\1640\finalyearproject\finalyearproject\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\1640\finalyearproject\finalyearproject\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
