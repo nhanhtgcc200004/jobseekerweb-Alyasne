@@ -18,8 +18,8 @@ namespace finalyearproject.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Entity<Company>().HasData(new Company(999,"a","b","c","d","open","open"));
-            modelBuilder.Entity<User>().HasData(new User(1, "a", "abc@gmail.com", "123456", "user","nhan","Male","07777","13/05/2002","Ok","public",999));
+            modelBuilder.Entity<Company>().HasData(new Company(999,"a","b","c","open"));
+            modelBuilder.Entity<User>().HasData(new User(1, "a", "abc@gmail.com", "123456", "user","nhan","Male","07777","13/05/2002","Ok",999));
         }
        
     }

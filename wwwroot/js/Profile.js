@@ -55,4 +55,28 @@
             }
         })
     })
+    var uploadButton = document.getElementById("UploadCv");
+    uploadButton.addEventListener("click", function () {
+        var input = document.getElementById("Resume");
+        const new_resume = input.files[0];
+        if (new_resume) {
+            var formData = new FormData();
+            formData.append("Resume", new_resume);
+            $.ajax({
+                url: "/Profile/UploadCV",
+                method: "Post",
+                data: formData,
+                processData: false, 
+                contentType: false,
+                success: function () {
+                    window.location.reload();
+                },
+                error: function () {
+                    console.log("something wrong");
+                }
+            })
+           
+        }
+
+    })
 });

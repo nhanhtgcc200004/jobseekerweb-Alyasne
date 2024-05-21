@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace finalyearproject.Migrations
 {
     /// <inheritdoc />
-    public partial class v10 : Migration
+    public partial class v4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,10 +24,6 @@ namespace finalyearproject.Migrations
                     company_name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Email_conpany = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    position = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    User_Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Address = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -63,8 +59,6 @@ namespace finalyearproject.Migrations
                     Birthday = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Status = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Viewable = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     company_id = table.Column<int>(type: "int", nullable: false)
                 },
@@ -267,13 +261,13 @@ namespace finalyearproject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Companys",
-                columns: new[] { "conpany_id", "Address", "Email_conpany", "User_Name", "company_name", "position", "status" },
-                values: new object[] { 999, "open", "b", "d", "a", "c", "open" });
+                columns: new[] { "conpany_id", "Address", "Email_conpany", "company_name", "status" },
+                values: new object[] { 999, "c", "b", "a", "open" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "user_id", "Birthday", "Email", "Gender", "Name", "Password", "Phone", "Status", "Viewable", "avatar", "company_id", "role" },
-                values: new object[] { 1, "13/05/2002", "abc@gmail.com", "Male", "nhan", "123456", "07777", "Ok", "public", "a", 999, "user" });
+                columns: new[] { "user_id", "Birthday", "Email", "Gender", "Name", "Password", "Phone", "Status", "avatar", "company_id", "role" },
+                values: new object[] { 1, "13/05/2002", "abc@gmail.com", "Male", "nhan", "123456", "07777", "Ok", "a", 999, "user" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appliedjobs_post_id",

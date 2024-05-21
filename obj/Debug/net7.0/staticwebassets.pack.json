@@ -29,24 +29,28 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\6.jpg",
-      "PackagePath": "staticwebassets\\img\\6.jpg"
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\6.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\Logo.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\Logo.jpg"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\img_avatar.png",
       "PackagePath": "staticwebassets\\img\\Avatar\\img_avatar.png"
     },
     {
-      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Logo.jpg",
-      "PackagePath": "staticwebassets\\img\\Logo.jpg"
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\logo2.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\logo2.jpg"
     },
     {
-      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\logo2.jpg",
-      "PackagePath": "staticwebassets\\img\\logo2.jpg"
-    },
-    {
-      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\plant.jpg",
-      "PackagePath": "staticwebassets\\img\\plant.jpg"
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\plant.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\plant.jpg"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Post.js",

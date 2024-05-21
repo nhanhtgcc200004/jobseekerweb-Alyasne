@@ -9,6 +9,7 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
+builder.Services.AddScoped<ApplicationDBcontext>();
 
 
 
@@ -25,6 +26,6 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Authentication}/{action=Register}");
+    pattern: "{controller=Authentication}/{action=Login}");
 
 app.Run();

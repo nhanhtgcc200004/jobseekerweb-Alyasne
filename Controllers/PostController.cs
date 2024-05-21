@@ -2,6 +2,7 @@
 using finalyearproject.Models.ViewModel;
 using finalyearproject.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
 
 namespace finalyearproject.Controllers
 {
@@ -32,7 +33,9 @@ namespace finalyearproject.Controllers
         }
         public async Task<IActionResult> PostManagement()
         {
-            TempData["name"]=Session.GetString("name");
+            TempData["user_id"] = user_id;
+            TempData["avatar"] = Session.GetString("avatar");
+            TempData["name"] = Session.GetString("name");
             List<Post> posts= await postRepo.SearchAllPostByUserId(user_id);
             return View(posts);
         }
@@ -69,22 +72,23 @@ namespace finalyearproject.Controllers
             else return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> AddComment(int post_id, string content)
+        public async Task<IActionResult> AddComment(int post_id, string content,int rating)
         {
             if (CheckUserInfo())
             {
-                HandleAddComment(content,post_id); return Ok();
+                HandleAddComment(content,post_id,rating); return Ok();
             }
             return BadRequest();
         }
 
-        private void HandleAddComment(string content, int post_id)
+        private void HandleAddComment(string content, int post_id, int rating)
         {
             Comment comment = new Comment();
             comment.user_id = user_id;
             comment.comment_content = content;
             comment.date_comment = DateTime.Now;
             comment.post_id = post_id;
+            comment.rating = rating;
             _dbContext.Add(comment);
             _dbContext.SaveChanges();
 

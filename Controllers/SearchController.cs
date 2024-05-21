@@ -24,7 +24,7 @@ namespace finalyearproject.Controllers
         {
             if (ChecktypeSearch())
             {
-               return View(HandleSearchFollowCondition(search_value,"A"));
+               return View(HandleSearchFollowCondition(search_value,condition));
             }
             return View();
         }

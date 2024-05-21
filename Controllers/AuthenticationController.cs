@@ -5,6 +5,7 @@ using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
 using finalyearproject.SubSystem.Support;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI.Common;
 using System;
 
 
@@ -103,16 +104,16 @@ namespace finalyearproject.Controllers
         public async Task<IActionResult> CandidateRegister([FromForm] User user,[FromForm] IFormFile Resume)
         {
             string type = Path.GetFileName(Resume.FileName);
-            type = type.Substring(type.LastIndexOf("."));
+            type = type.Substring(type.LastIndexOf(".")).ToUpper();
             if (type==".PDF")
             {
                 var _user = await userRepo.Register(user.Email);
-                if (user == null)
+                if (_user == null)
                 {
                     //_user.us_password = MD5(_user.us_password);
                     
                    
-                    HandleRegister(user, Resume);
+                    await HandleRegister(user, Resume);
                     //User new_user = await userRepo.SearchUserJustInsert();
                     //String verify_code = HandleAddVerifyCode(new_user);
                     //mailSystem.SendVerifyCode(verify_code, new_user.Email);
@@ -257,25 +258,23 @@ namespace finalyearproject.Controllers
             return false;
         }
 
-        private async void HandleRegister(User user,IFormFile avatar)
+        private async Task HandleRegister(User user,IFormFile avatar)
         {
             try
             {
                 if (avatar != null)
                 {
-                    string filename = await FileSupport.Instance.SaveFileAsync(avatar, "img/Avatar");
                     user.avatar = "img_avatar" ;
                     user.role = "user";
                     user.Status = "1";
                     user.company_id = 999;
-                    _dbContext.Add(user);
-                    _dbContext.SaveChanges();
+                    await _dbContext.AddAsync(user);
+                    await _dbContext.SaveChangesAsync();
+                    string filename = await FileSupport.Instance.SaveFileAsync(avatar, "Resume");
                     CV Resume = new CV();
-                    Resume.date_upload = DateTime.Now;
-                    Resume.cv_file= filename;
-                    Resume.user_id = user.user_id;
-                    _dbContext.Add(Resume);
-                    _dbContext.SaveChanges();
+                    HandleSaveResume(Resume,filename,user.user_id);
+                   
+                  
                 }
             }
             catch (Exception e)
@@ -284,39 +283,51 @@ namespace finalyearproject.Controllers
             }
        
         }
+
+        private void HandleSaveResume(CV Resume,string filename,int user_id)
+        {
+            Resume.date_upload = DateTime.Now;
+            Resume.cv_file = filename;
+            Resume.user_id = user_id;
+            _dbContext.Add(Resume);
+           _dbContext.SaveChanges();
+        }
+
         [HttpPost]
-        public IActionResult RegisterCompany([FromForm] RecruiterViewModel recruiter, IFormFile Logo)
+        public async Task<IActionResult> RegisterCompany([FromForm] RecruiterViewModel recruiter, IFormFile Logo)
         {
             User user = new User();
             Company company = new Company();
-            HandleRegisterCompany(user,company,recruiter,Logo);
+           await HandleRegisterCompany(user,company,recruiter,Logo);
             return View();
         }
        
-        private async void HandleRegisterCompany(User user,Company company,RecruiterViewModel recruiter, IFormFile Logo)
+        private async Task HandleRegisterCompany(User user,Company company,RecruiterViewModel recruiter, IFormFile Logo)
         {
             try
             {
                 if (Logo != null)
                 {
-                    string filename = await FileSupport.Instance.SaveFileAsync(Logo, "img/Logo");
+                    
                     company.status = "OK";
                     company.Address = recruiter.Address;
                     company.company_name = recruiter.Company_name;
                     company.Email_conpany = recruiter.Email;
-                    _dbContext.Add(company);
-                    _dbContext.SaveChanges();
+                    await _dbContext.AddAsync(company);
+                    await _dbContext.SaveChangesAsync();
+                    string filename = await FileSupport.Instance.SaveFileAsync(Logo, "img/Avatar");
                     user.avatar = filename;
+                    user.Name = recruiter.Full_Name;
                     user.Email = recruiter.Email;
-                    user.role = "User";
+                    user.role = "Recruiter";
+                    user.Status= "OK";
+                    user.Birthday = DateTime.Now.ToString("yyyy-mm-dd");
                     user.Phone = recruiter.Phone;
                     user.Gender = recruiter.Gender;
                     user.Password = recruiter.Password;
                     user.company_id = company.conpany_id;
-                    _dbContext.Add(user);
-                    _dbContext.SaveChanges();
-                    _dbContext.Add(user);
-                    _dbContext.SaveChanges();
+                    await _dbContext.AddAsync(user);
+                    await _dbContext.SaveChangesAsync();
                 }
             }
             catch (Exception e)
@@ -361,7 +372,7 @@ namespace finalyearproject.Controllers
         private void CompleteVefify(User user, Verification verification)
         {
             user.Status = "verified";
-            user.Viewable = "Private";
+            
             _dbContext.Update(user);
             _dbContext.Remove(verification);
             _dbContext.SaveChanges();
@@ -370,7 +381,7 @@ namespace finalyearproject.Controllers
         public IActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Authentication");
+            return RedirectToAction("Login");
         }
     }
 }

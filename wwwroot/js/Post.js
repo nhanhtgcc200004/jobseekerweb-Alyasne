@@ -53,26 +53,28 @@
         });
     });
 
-    var commentbutton = document.getElementById("CommentButton")
+    
+    
+    var commentbutton = document.getElementById("CommentButton");
     commentbutton.addEventListener("click", function () {
         var comment_content = document.getElementById("comment").value;
         var post_Id = document.getElementById("comment").getAttribute("data-post_id");
-       
+        var rating = document.querySelector('input[name="rating"]:checked').value;
         $.ajax({
             url: "/Post/AddComment",
             method: "POST",
             data: {
                 post_id: post_Id,
-                content: comment_content
+                content: comment_content,
+                rating: rating, 
             },
             success: function (response) {
                 window.location.reload();
-                alert("report success");
+                
             },
             error: function (xhr, status, error) {
-                console.error("error: ");
+                console.error("Error: ", error);
             }
-
         });
     });
     var FullButton = document.getElementById("Full");

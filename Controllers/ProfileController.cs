@@ -23,22 +23,22 @@ namespace finalyearproject.Controllers
         {
             _dbcontext = dBcontext;
             _userRepo = new UserRepo(_dbcontext);
-            session =httpContextAccessor.HttpContext.Session;
-            _sendMailSystem=new SendMailSystem(emailSender, hostEnvironment);
+            session = httpContextAccessor.HttpContext.Session;
+            _sendMailSystem = new SendMailSystem(emailSender, hostEnvironment);
             cvRepo = new CvRepo(_dbcontext);
-            user_id =(int) session.GetInt32("user_id");
+            user_id = (int)session.GetInt32("user_id");
             role = session.GetString("role");
-           
+
         }
         public async Task<IActionResult> Candidate(int id)
         {
-            
+
             if (Checkinfor(id))
             {
                 TempData["user_id"] = user_id;
                 TempData["name"] = session.GetString("name");
                 TempData["avatar"] = session.GetString("avatar");
-                User user= await _userRepo.SearchUserById(id);
+                User user = await _userRepo.SearchUserById(id);
                 return View(user);
             }
             return BadRequest();
@@ -49,6 +49,7 @@ namespace finalyearproject.Controllers
             if (Checkinfor(id))
             {
                 TempData["user_id"] = user_id;
+                TempData["avatar"] = session.GetString("avatar");
                 TempData["name"] = session.GetString("name");
                 User user = await _userRepo.SearchUserById(id);
                 return View(user);
@@ -57,15 +58,15 @@ namespace finalyearproject.Controllers
         }
         public async Task<IActionResult> Company(int id)
         {
-            User user= await _userRepo.SearchUserById(id);
+            User user = await _userRepo.SearchUserById(id);
             if (Checkinfor(user.user_id))
             {
-                TempData["user_id"]=user_id;
+                TempData["user_id"] = user_id;
                 TempData["name"] = user.Name;
                 return View(user);
-            }    
-          
-         return NotFound();
+            }
+
+            return NotFound();
         }
         [HttpPut]
         public async Task<IActionResult> UpdateProfile(int id, [FromForm] User user)
@@ -73,7 +74,7 @@ namespace finalyearproject.Controllers
             if (Checkinfor(id))
             {
                 HandleUpdateProfile(user);
-                return RedirectToAction("Index","Profile",id=id);
+                return RedirectToAction("Index", "Profile", id = id);
             }
             return BadRequest();
         }
@@ -82,26 +83,26 @@ namespace finalyearproject.Controllers
         {
             if (Checkinfor(id))
             {
-                User user= await _userRepo.SearchUserById(id);
-                HandleUpdateRecruiter(user,Recruiter);
+                User user = await _userRepo.SearchUserById(id);
+                HandleUpdateRecruiter(user, Recruiter);
                 return RedirectToAction("Index", "Profile", id = id);
             }
             return NotFound();
         }
 
-        private void HandleUpdateRecruiter(User user,RecruiterViewModel recruiter)
+        private void HandleUpdateRecruiter(User user, RecruiterViewModel recruiter)
         {
-            user.Name=recruiter.Full_Name;
-            user.Email=recruiter.Email;
-            user.Phone=recruiter.Phone;
-            user.Gender=recruiter.Gender;
+            user.Name = recruiter.Full_Name;
+            user.Email = recruiter.Email;
+            user.Phone = recruiter.Phone;
+            user.Gender = recruiter.Gender;
             _dbcontext.Update(user);
             _dbcontext.SaveChanges();
         }
 
         [HttpPost]
         public async Task<IActionResult> DownloadUserCv(int user_profile_id)
-        { 
+        {
             int user_id = (int)session.GetInt32("user_id");
             string role = session.GetString("role");
             if (user_id != null && role != null)
@@ -117,7 +118,7 @@ namespace finalyearproject.Controllers
             User user = await _userRepo.SearchUserById(user_id);
            
             string type = Path.GetFileName(Resume.FileName);
-            type = type.Substring(type.LastIndexOf("."));
+            type = type.Substring(type.LastIndexOf(".")).ToUpper();
             if (type == ".PDF")
             {
                 HandleChangesCv(user,Resume);

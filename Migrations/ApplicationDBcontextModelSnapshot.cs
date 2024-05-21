@@ -112,15 +112,7 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("User_Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("company_name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("position")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -136,11 +128,9 @@ namespace finalyearproject.Migrations
                         new
                         {
                             conpany_id = 999,
-                            Address = "open",
+                            Address = "c",
                             Email_conpany = "b",
-                            User_Name = "d",
                             company_name = "a",
-                            position = "c",
                             status = "open"
                         });
                 });
@@ -279,10 +269,6 @@ namespace finalyearproject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Viewable")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("avatar")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -311,7 +297,6 @@ namespace finalyearproject.Migrations
                             Password = "123456",
                             Phone = "07777",
                             Status = "Ok",
-                            Viewable = "public",
                             avatar = "a",
                             company_id = 999,
                             role = "user"

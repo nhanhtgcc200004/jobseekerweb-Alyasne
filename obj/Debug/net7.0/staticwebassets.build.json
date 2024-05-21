@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jl28D0zJgdxav5C8J2MXLG0DG5nHyMb+7tCV9XHKKWs=",
+  "Hash": "feZFZNm/gehcfqq6J6cBFUQgCvEqIiiqMNsyplpBpNw=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -136,12 +136,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\6.jpg",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\6.jpg",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "img/6.jpg",
+      "RelativePath": "img/Avatar/6.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,7 +150,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\6.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\6.jpg"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "img/Avatar/68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\img_avatar.png",
@@ -170,12 +187,12 @@
       "OriginalItemSpec": "wwwroot\\img\\Avatar\\img_avatar.png"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Logo.jpg",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\Logo.jpg",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "img/Logo.jpg",
+      "RelativePath": "img/Avatar/Logo.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -184,15 +201,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\Logo.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\Logo.jpg"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\logo2.jpg",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\logo2.jpg",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "img/logo2.jpg",
+      "RelativePath": "img/Avatar/logo2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -201,15 +218,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\logo2.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\logo2.jpg"
     },
     {
-      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\plant.jpg",
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\plant.jpg",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
       "BasePath": "_content/finalyearproject",
-      "RelativePath": "img/plant.jpg",
+      "RelativePath": "img/Avatar/plant.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -218,7 +235,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\plant.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\plant.jpg"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\dashboard\\chart1.js",

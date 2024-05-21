@@ -40,7 +40,8 @@ namespace finalyearproject.Repositories
         }
         public async Task<User> Register(string Email)
         {
-            return await dbcontext.Users.Where(u => u.Email == Email).FirstOrDefaultAsync();
+            User user = await dbcontext.Users.Where(u => u.Email == Email).FirstOrDefaultAsync();
+            return user;
         }
         
     }
