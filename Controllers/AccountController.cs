@@ -42,7 +42,7 @@ namespace finalyearproject.Controllers
             TempData["avatar"] = Session.GetString("avatar");
             TempData["name"] = Session.GetString("name");
 
-            if (user.role == "Candidate")
+            if (user.role == "User")
             {
                 return View(user);
             }

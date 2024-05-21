@@ -34,9 +34,9 @@
                                 <th>@report.status</th>
                                 <th>
                                     <div class="btn-group-vertical">
-                                        <a asp-controller="Report" asp-action="AcceptReport" asp-route-report_id="@report.report_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                        <a id="accept_report_button" data-report-id="@report.report_id" href="#" class="btn btn-success btn-icon-split" style="justify-content: normal">
                                             <span class="icon text-white" style="background: none">
-                                                <i class="bi bi-check-circle-fill"></i>
+                                                <i class="fas fa-check"></i>
                                             </span>
                                             <span class="text">Accecpt</span>
                                         </a>

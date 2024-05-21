@@ -16,7 +16,6 @@
                             <th>Id</th>
                             <th>Email</th>
                             <th>Post Id</th>
-                          
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -30,13 +29,13 @@
                             <th>@jobs.status</th>
                             <th>
                                 <div class="btn-group-vertical">
-                                        <a asp-controller="Candidate" asp-action="AcceptApplied" asp-route-appliedjob_id="@jobs.post.post_id" class="btn btn-success btn-icon-split" style="justify-content: normal">
+                                        <a id="appliedbutton" data-applied-id="@jobs.appliedjob_id" href="#" class="btn btn-success btn-icon-split" style="justify-content: normal">
                                         <span class="icon text-white" style="background: none">
                                             <i class="fas fa-check"></i>
                                         </span>
                                         <span class="text">Accecpt</span>
                                     </a>
-                                        <a asp-controller="Candidate" asp-action="RefuseApplied" asp-route-appliedjob_id="@jobs.post" class="btn btn-danger btn-icon-split">
+                                        <a id="refusebutton" data-toggle="modal" data-applied-id="@jobs.appliedjob_id" data-target="#confirm_delete" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white" style="background: none">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -53,6 +52,6 @@
             </div>
         </div>
     </div>
-
+    @Html.Partial("~/Views/Candidate/Components/DeleteModal.cshtml")
 </div>
 <!-- /.container-fluid -->

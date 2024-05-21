@@ -1,33 +1,49 @@
 ﻿$(document).ready(function () {
-    var deletebuttons = document.querySelectorAll("#deletebutton_id");
-    var confirmdelete = document.getElementById("deletebuttonmodal");
-    var deletebuttonId;
-    deletebuttons.forEach(function (deletebutton) {
-        deletebutton.addEventListener("click", function () {
-            deletebuttonId = deletebutton.getAttribute("data-post-id");
-        });
-    });
-
-    confirmdelete.addEventListener("click", function () {
-        var post_id = deletebuttonId;
-        $.ajax({
-            url: "/Post/DeletePost",
-            method: "Post",
-            data: {
-                post_id: post_id,
-            },
-            success: function (response) {
-                console.log("CreateReport success");
-                window.location.reload();
-            },
-            error: function (xhr, status, error) {
-                // Handle error response
-                console.error("CreateReport error: " + xhr.responseText);
-            }
-        });
-    });
-    
-    
-    // Get a reference to the ShowCreateReport button
-   
+    var acceptbuttons = document.querySelectorAll("#appliedbutton");
+    var appliedjob_id;
+    acceptbuttons.forEach(function (acceptbutton) {
+        acceptbutton.addEventListener("click", function () {
+            console.log("OK")
+            appliedjob_id = acceptbutton.getAttribute("data-applied-id");
+           
+            $.ajax({
+                url: "/Candidate/AcceptApplied",
+                method: "Post",
+                data: {
+                    appliedjob_id: appliedjob_id
+                },
+                success: function () {
+                    window.location.reload();
+                },
+                error: function () {
+                    console.log("something wrong");
+                } 
+            })
+        })
+    })
+    var Refusebuttons = document.querySelectorAll("#refusebutton");
+    var confirmdelete = document.getElementById("delete_applied_modal");
+    var appliedjob_id_refuse;
+    Refusebuttons.forEach(function (refusebutton) {
+       refusebutton.addEventListener("click", function () {
+            console.log("OK");
+            appliedjob_id_refuse = refusebutton.getAttribute("data-applied-id");
+        })
+        confirmdelete.addEventListener("click", function () {
+            $.ajax({
+                url: "/Candidate/RefuseApplied",
+                method: "Post",
+                data: {
+                    appliedjob_id: appliedjob_id_refuse
+                },
+                success: function () {
+                    window.location.reload();
+                },
+                error: function () {
+                    console.log("something wrong");
+                }
+            })
+        })
+        })
+        
 });

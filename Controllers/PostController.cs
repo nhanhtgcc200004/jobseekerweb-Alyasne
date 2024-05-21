@@ -185,12 +185,12 @@ namespace finalyearproject.Controllers
         }
        
         [HttpPost]
-        public async void DeletePost(int post_id)
+        public async Task DeletePost(int post_id)
         {
             Post post= await postRepo.SearchPostById(post_id);
             post.status = "deleted";
-            _dbContext.Update(post);
-            _dbContext.SaveChanges();
+             _dbContext.Update(post);
+            await _dbContext.SaveChangesAsync();
         }
         [HttpPost]
         public async Task<IActionResult> AppliedJob(int post_id)

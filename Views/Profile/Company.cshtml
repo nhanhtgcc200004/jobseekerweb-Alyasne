@@ -15,7 +15,7 @@
                 </span>
                 <span class="text">Change password</span>
             </a>
-            <a asp-controller="Profile" asp-action="UpdateProfile" class="btn btn-success btn-icon-split" style="margin-left: 1rem">
+            <a href="#" id="submit-form" class="btn btn-success btn-icon-split" style="margin-left: 1rem">
 
                 <span class="icon text-white-50">
                     <i class="fas fa-check"></i>
@@ -33,49 +33,49 @@
             <div class="d-flex justify-content-center  flex-md-wrap flex-sm-wrap gap-5">
                 <div class="d-flex flex-column flex-grow-1">
                     <div class="text-center">
-                        <img src="~/img/@Model.avatar" id="avatar_img" alt="" style="width: 10rem;height: 10rem">
+                        <img src="~/img/Avatar/@Model.avatar" id="avatar_img" alt="" style="width: 10rem;height: 10rem">
                         <button class="btn btn-primary mt-5 d-block" style="margin-right: auto;margin-left: auto" onclick="document.getElementById('fileupload').click();">Upload</button>
                         <input type="file" id="fileupload" style="display: none;">
-
                     </div>
-
                 </div>
                 <div class="flex-grow-1">
+                     <form id="profile-form" method="post" asp-controller="Profile" asp-action="UpdateRecruiterProfile" >
                     <div class="d-flex">
                         <div class="input-block" style="padding-right: 5%;">
                             <label>Full name</label>
-                            <input type="text" value="@Model.Name" />
+                            <input type="text" value="@Model.Name" name="Full_Name" />
                         </div>
                         <div class="input-block ms-3">
                             <label>Conpany Name</label>
-                            <input type="text" value="@Model.company.company_name" />
+                            <input type="text" value="@Model.company.company_name" name="Company_Name" />
                         </div>
                     </div>
                     <div class="input-block">
                         <label>Email</label>
-                        <input type="text" value="@Model.company.Email_conpany" />
+                        <input type="text" value="@Model.company.Email_conpany" name="Email" />
                     </div>
                     
                     <div class="input-block">
                         <label>Phone number</label>
-                        <input type="text" value="@Model.Phone"/>
+                        <input type="text" value="@Model.Phone" name="Phone"/>
                     </div>
                     <div class="input-block">
                         <label>Address</label>
-                        <input type="text" value="@Model.company.Address" />
+                        <input type="text" value="@Model.company.Address" name="Address" />
                     </div>
                     <div class="d-flex gap-2">
                         <label style="font-size: 14px;color: #a1b4b4;">Gender</label>
                             <div class="ms-2">
                                 <label for="Male">Male</label>
-                            <input id="Male" type="radio" name="gender" checked='@(Model.Gender == "Male" ? "checked" : null)' required>
+                            <input id="Male" type="radio" name="gender" value="Male" checked='@(Model.Gender == "Male" ? "checked" : null)' required>
                             </div>
                        
                         <div class="ms-3">
                             <label for="Female">Female</label>
-                            <input id="Female" type="radio" name="gender" checked='@(Model.Gender == "Female" ? "checked" : null)' required>
+                            <input id="Female" type="radio" value="Female" name="gender" checked='@(Model.Gender == "Female" ? "checked" : null)' required>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace finalyearproject.Repositories
 {
-    public class ConpanyRepo
+    public class CompanyRepo
     {
         private ApplicationDBcontext _dbcontext;
-        public ConpanyRepo(ApplicationDBcontext applicationDBcontext)
+        public CompanyRepo(ApplicationDBcontext applicationDBcontext)
         {
             _dbcontext = applicationDBcontext;
         }   

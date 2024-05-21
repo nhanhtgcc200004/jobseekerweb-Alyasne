@@ -9,7 +9,7 @@ namespace finalyearproject.Controllers
     public class ConpanyController : Controller
     {
         private ISession session;
-        private ConpanyRepo _conpanyRepo;
+        private CompanyRepo _conpanyRepo;
         private ApplicationDBcontext _dbcontext;
         private CvRepo cvRepo;
         private int user_id;
@@ -17,7 +17,7 @@ namespace finalyearproject.Controllers
         public ConpanyController(ApplicationDBcontext dBcontext, IHttpContextAccessor httpContextAccessor, IEmailSender emailSender, IWebHostEnvironment hostEnvironment)
         {
             _dbcontext = dBcontext;
-            _conpanyRepo = new ConpanyRepo(_dbcontext);
+            _conpanyRepo = new CompanyRepo(_dbcontext);
             session = httpContextAccessor.HttpContext.Session;
             user_id = (int)session.GetInt32("user_id");
             role = session.GetString("role");

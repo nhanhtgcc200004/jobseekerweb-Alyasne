@@ -28,8 +28,10 @@ namespace finalyearproject.Controllers
         public async Task<IActionResult> Index()
         {
             List<Post> posts = await postRepo.SearchAllPostForAdmin();
-            TempData["data"] = role;
             TempData["user_id"] = user_id;
+            TempData["role"] = role;
+            TempData["avatar"] = session.GetString("avatar");
+            TempData["name"] = session.GetString("name");
             return View(posts);
         }
         public async Task<IActionResult> PostManagement(int user_id)

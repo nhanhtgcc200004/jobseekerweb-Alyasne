@@ -46,20 +46,20 @@ namespace finalyearproject.Controllers
         }
 
         [HttpPost]
-        public async void AcceptApplied(int appliedjob_id)
+        public async Task AcceptApplied(int appliedjob_id)
         {
             if (CheckInfor())
             {
-                HandleApplied(appliedjob_id);
+                await HandleApplied(appliedjob_id);
             }
             
         }
         [HttpPost]
-        public async void RefuseApplied(int appliedjob_id)
+        public async Task RefuseApplied(int appliedjob_id)
         {
             if (CheckInfor())
             {
-                HandleRefuse(appliedjob_id);
+              await HandleRefuse(appliedjob_id);
             }
 
         }
@@ -80,21 +80,23 @@ namespace finalyearproject.Controllers
             }
             else return NotFound();
         }
-        private async void HandleRefuse(int id)
+        private async Task HandleRefuse(int id)
         {
             Appliedjob appliedjob = await appliedjobRepo.SearchAppliedById(id);
+            if(appliedjob.status!="Refuse")
+                appliedjob.post.total_of_candidates--;
             appliedjob.status = "Refuse";
-            appliedjob.post.total_of_candidates--;
+           
             _dbContext.Update(appliedjob);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
-        private async void HandleApplied(int id)
+        private async Task  HandleApplied(int id)
         {
             Appliedjob appliedjob = await appliedjobRepo.SearchAppliedById(id);
-            if (appliedjob.status == "Refuse") appliedjob.post.total_of_candidates++;
             appliedjob.status = "Accept";
             _dbContext.Update(appliedjob);
-            _dbContext.SaveChanges();
+           await _dbContext.SaveChangesAsync();
+           
         }
         private bool CheckInfor()
         {

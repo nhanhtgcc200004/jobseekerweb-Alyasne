@@ -15,6 +15,7 @@ namespace finalyearproject.Controllers
         private ISession session;
         private UserRepo _userRepo;
         private ApplicationDBcontext _dbcontext;
+        private CompanyRepo companyRepo;
         private SendMailSystem _sendMailSystem;
         private CvRepo cvRepo;
         private int user_id;
@@ -26,6 +27,7 @@ namespace finalyearproject.Controllers
             session = httpContextAccessor.HttpContext.Session;
             _sendMailSystem = new SendMailSystem(emailSender, hostEnvironment);
             cvRepo = new CvRepo(_dbcontext);
+            companyRepo = new CompanyRepo(_dbcontext);
             user_id = (int)session.GetInt32("user_id");
             role = session.GetString("role");
 
@@ -62,42 +64,64 @@ namespace finalyearproject.Controllers
             if (Checkinfor(user.user_id))
             {
                 TempData["user_id"] = user_id;
-                TempData["name"] = user.Name;
+                TempData["avatar"] = session.GetString("avatar");
+                TempData["name"] = session.GetString("name");
                 return View(user);
             }
 
             return NotFound();
         }
-        [HttpPut]
-        public async Task<IActionResult> UpdateProfile(int id, [FromForm] User user)
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile([FromForm] User user, IFormFile avatar)
         {
-            if (Checkinfor(id))
+            if (Checkinfor(user_id))
             {
-                HandleUpdateProfile(user);
-                return RedirectToAction("Index", "Profile", id = id);
+                User old_user = await _userRepo.SearchUserById(user_id);
+                HandleUpdateProfile(user,old_user,avatar);
+                return RedirectToAction("Candidate", "Profile",new {id=user_id});
             }
             return BadRequest();
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateRecruiterProfile(int id, [FromForm] RecruiterViewModel Recruiter)
+        public async Task<IActionResult> UpdateRecruiterProfile([FromForm] RecruiterViewModel Recruiter, IFormFile Logo)
         {
-            if (Checkinfor(id))
+            if (Checkinfor(user_id))
             {
-                User user = await _userRepo.SearchUserById(id);
-                HandleUpdateRecruiter(user, Recruiter);
-                return RedirectToAction("Index", "Profile", id = id);
+                User user = await _userRepo.SearchUserById(user_id);
+                Company company = await companyRepo.SearchConpanyById(user.company_id);
+                HandleUpdateRecruiter(user,company,Recruiter ,Logo);
+                return RedirectToAction("Company", "Profile", new {id=user_id});
             }
             return NotFound();
         }
 
-        private void HandleUpdateRecruiter(User user, RecruiterViewModel recruiter)
+        private async Task HandleUpdateRecruiter(User user,Company company, RecruiterViewModel recruiter,IFormFile Logo)
         {
-            user.Name = recruiter.Full_Name;
-            user.Email = recruiter.Email;
-            user.Phone = recruiter.Phone;
-            user.Gender = recruiter.Gender;
-            _dbcontext.Update(user);
-            _dbcontext.SaveChanges();
+            try
+            {
+
+                if (Logo != null)
+                {
+                    FileSupport.Instance.DeleteFileAsync(user.avatar, "img/avatar");
+                    string filename = await FileSupport.Instance.SaveFileAsync(Logo, "img/Avatar");
+                    user.avatar = filename;
+                }
+                user.Name = recruiter.Full_Name;
+                user.Email = recruiter.Email;
+                user.Phone = recruiter.Phone;
+                user.Gender = recruiter.Gender;
+                company.Address= recruiter.Address;
+                company.company_name = recruiter.Company_name;
+                company.Email_conpany = recruiter.Email;
+                _dbcontext.Update(user);
+                _dbcontext.Update(company);
+                _dbcontext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
         }
 
         [HttpPost]
@@ -139,20 +163,40 @@ namespace finalyearproject.Controllers
             _dbcontext.SaveChanges();
         }
 
-        private void HandleUpdateProfile(User user)
+        private async Task HandleUpdateProfile(User user,User old_user, IFormFile avatar)
         {
-            _dbcontext.Update(user);
-            _dbcontext.SaveChanges();
+            try
+            {
+                
+                if (avatar != null)
+                {
+                    FileSupport.Instance.DeleteFileAsync(old_user.avatar, "img/avatar");
+                    string filename = await FileSupport.Instance.SaveFileAsync(avatar, "img/Avatar");
+                    old_user.avatar = filename;
+                }
+                old_user.Email = user.Email;
+                old_user.Name = user.Name;
+                old_user.Birthday = user.Birthday;
+                old_user.Phone = user.Phone;
+                old_user.Gender = user.Gender;
+
+                _dbcontext.Update(old_user);
+                _dbcontext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         private bool Checkinfor(int id)
         {
-            //if (user_id != null && user_id == id)
-            //{
-            //    return true;
-            //}
-            //return false;
-            return true;
+            if (user_id != null && user_id == id)
+            {
+                return true;
+            }
+            return false;
+           ;
         }
     }
 }

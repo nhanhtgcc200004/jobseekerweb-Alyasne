@@ -53,8 +53,16 @@
       "PackagePath": "staticwebassets\\img\\Avatar\\plant.jpg"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\ManagePost.js",
+      "PackagePath": "staticwebassets\\js\\ManagePost.js"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Post.js",
       "PackagePath": "staticwebassets\\js\\Post.js"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Report.js",
+      "PackagePath": "staticwebassets\\js\\Report.js"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Search.js",

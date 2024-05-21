@@ -79,4 +79,8 @@
         }
 
     })
+    document.getElementById("submit-profile").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        document.getElementById("profile-form").submit(); // Submit the form
+    });
 });

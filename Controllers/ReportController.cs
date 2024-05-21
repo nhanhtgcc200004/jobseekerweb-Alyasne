@@ -58,12 +58,12 @@ namespace finalyearproject.Controllers
             return BadRequest();
         }
         [HttpPost]
-        public async void AcceptReport(int report_id)
+        public async Task AcceptReport(int report_id)
         {
             if (CheckInfor())
             {
                 Report report = await _reportRepo.SearchReportById(report_id);
-                UpdateReport(report,"Accepted");
+               await UpdateReport(report,"Accepted");
                 Post post = await _postRepo.SearchPostById(report.report_id);
                 User reporter = await _userRepo.SearchUserById(report.reporter_id);
                 User reciver = await _userRepo.SearchUserById(report.reciver_id);
@@ -87,17 +87,17 @@ namespace finalyearproject.Controllers
             mailSystem.SendMailAcceptReport(reporter,reciver,report);
         }
 
-        private void updatePost(Post post)
+        private async Task updatePost(Post post)
         {
             post.status = "reported";
             _dbcontext.Update(post);
-            _dbcontext.SaveChanges();
+            await _dbcontext.SaveChangesAsync();
         }
-        private void UpdateReport(Report report,string status)
+        private async Task UpdateReport(Report report,string status)
         {
             report.status = status;
             _dbcontext.Update(report);
-            _dbcontext.SaveChanges();
+           await _dbcontext.SaveChangesAsync();
         }
         private void HandleRefuseReport(User repoter)
         {
