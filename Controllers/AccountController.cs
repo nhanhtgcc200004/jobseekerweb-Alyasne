@@ -41,7 +41,19 @@ namespace finalyearproject.Controllers
             TempData["role"] = role;
             TempData["avatar"] = Session.GetString("avatar");
             TempData["name"] = Session.GetString("name");
-
+            if (role == "Recruiter")
+            {
+                TempData["Layout"] = "RecruiterLayout";
+            }
+            else if (role=="Admin")
+            {
+                TempData["Layout"] = "AdminLayout";
+            }
+            else
+            {
+                TempData["Layout"] = "UserLayout";
+            }
+            
             
             if(user.role =="Recruiter")
             {

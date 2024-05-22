@@ -1,6 +1,6 @@
 ﻿@model finalyearproject.Models.ViewModel.Post_CommentViewModel
 @{
-    Layout = "UserLayout";
+    Layout = "AdminLayout";
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -24,9 +24,9 @@
                     <p>Date: @Model.Post.date_post.ToString("yyyy-MM-dd")</p>
                     <p>Expire date: @Model.Post.expired_date.ToString("yyyy-MM-dd")</p>
                     <br />
-                   
+
                 </div>
-          
+
             </div>
             <div class="row">
                 <div class="col-md-12 mt-5">

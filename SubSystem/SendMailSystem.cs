@@ -76,7 +76,7 @@ namespace EnterpriceWeb.Controllers
             }
             catch (Exception ex)
             {
-                return "Something wrong with your account";
+                return "Something wrong with account";
             }
         }
         public async Task<string> SendgmailRefuseReport(string gmail)

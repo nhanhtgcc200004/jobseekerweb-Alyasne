@@ -1,6 +1,5 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "AdminLayout";
 }
 
 <!DOCTYPE html>
@@ -16,14 +15,14 @@
 </head>
 <body style="background: var(--light-blue)">
     <section class="forms-section">
-        <h1 class="section-title text-center w-100 mt-5">Sign up</h1>
+        <h1 class="section-title text-center w-100 mt-5" style="color:black">Sign up</h1>
         <div class="forms">
             <div class="form-wrapper is is-active">
                 <button type="button" class="switcher switcher-login">
                     Candidate
                     <span class="underline"></span>
                 </button>
-                <form class="form form-login" enctype="multipart/form-data" asp-controller="Authentication" asp-action="CandidateRegister" method="POST">
+                <form class="form form-login" enctype="multipart/form-data" asp-controller="Authentication" asp-action="CandidateRegisterAdmin" method="POST">
                     <fieldset>
                         <div class="input-block">
                             <label>Full name</label>
@@ -68,7 +67,7 @@
                             <label>Upload resume</label>
                             <input type="file" name="Resume" required>
                         </div>
-                        <p style="color:red">ViewBag.error</p>
+                        <p style="color:red">@ViewBag.error</p>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
@@ -78,7 +77,7 @@
                     Recruiter
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" asp-action="RegisterCompany" enctype="multipart/form-data" method="post">
+                <form class="form form-signup" asp-action="RegisterCompanyAdmin" enctype="multipart/form-data" method="post">
                     <fieldset>
                         <div class="input-block">
                             <label>Company's name</label>
@@ -136,9 +135,9 @@
     </section>
     <script>
         const switchers = [...document.querySelectorAll('.switcher')]
-        
+
         switchers.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 switchers.forEach(item => item.parentElement.classList.remove('is-active'))
                 this.parentElement.classList.add('is-active')
             })

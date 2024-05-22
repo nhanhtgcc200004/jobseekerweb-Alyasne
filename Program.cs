@@ -22,7 +22,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
-
+app.UseStatusCodePages(async context =>
+{
+    if (context.HttpContext.Response.StatusCode == 404)
+    {
+        context.HttpContext.Response.Redirect("/Error/NotFound");
+    }
+});
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",

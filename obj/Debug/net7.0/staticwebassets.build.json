@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ppO/clyW1BXPzeIiZeJIJLqETXBYvodZyq2rwtuje9Q=",
+  "Hash": "Fdzk3MyrolI5as5zbbxZIh18pLi8velCq0cnvYoJAzs=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\404.css",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "css/404.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\404.css"
+    },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\css\\login\\bootstrap.min.css",
       "SourceId": "finalyearproject",

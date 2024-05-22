@@ -5,8 +5,10 @@ using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
 using finalyearproject.SubSystem.Support;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Common;
 using System;
+using System.Data;
 
 
 namespace finalyearproject.Controllers
@@ -39,6 +41,15 @@ namespace finalyearproject.Controllers
                     return RedirectToAction("Index", "Admin");
                 }
             }
+            return View();
+        }
+        public IActionResult RegisterAdmin()
+        {
+            TempData["role"] = Session.GetString("role");
+            TempData["user_id"] =Session.GetInt32("user_id");
+            TempData["name"] = Session.GetString("name");
+            TempData["avatar"] = Session.GetString("avatar");
+
             return View();
         }
         public IActionResult Login() { return View(); }
@@ -122,11 +133,38 @@ namespace finalyearproject.Controllers
             }
             else
             {
-                
+                ViewBag.error = "please choose FDF file";
+                return View("Register");
             }
-            return View();
+            return View("Login");
         }
+        [HttpPost]
+        public async Task<IActionResult> CandidateRegisterAdmin([FromForm] User user, [FromForm] IFormFile Resume)
+        {
+            string type = Path.GetFileName(Resume.FileName);
+            type = type.Substring(type.LastIndexOf(".")).ToUpper();
+            if (type == ".PDF")
+            {
+                var _user = await userRepo.Register(user.Email);
+                if (_user == null)
+                {
+                    //_user.us_password = MD5(_user.us_password);
+                    await HandleRegister(user, Resume);
 
+                }
+                else
+                {
+                    ViewBag.error = "Email is exist";
+                    return View("register");
+                }
+            }
+            else
+            {
+                ViewBag.error = "please choose FDF file";
+                return View("Register");
+            }
+            return RedirectToAction("Index","Account");
+        }
         public async Task<IActionResult> VerifyAccount(int user_id)
         {
             return View(user_id);
@@ -298,9 +336,18 @@ namespace finalyearproject.Controllers
             User user = new User();
             Company company = new Company();
            await HandleRegisterCompany(user,company,recruiter,Logo);
-            return View();
+            return View("Login");
         }
-       
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterCompanyAdmin([FromForm] RecruiterViewModel recruiter, IFormFile Logo)
+        {
+            User user = new User();
+            Company company = new Company();
+            await HandleRegisterCompany(user, company, recruiter, Logo);
+            return RedirectToAction("Index", "Account");
+        }
+
         private async Task HandleRegisterCompany(User user,Company company,RecruiterViewModel recruiter, IFormFile Logo)
         {
             try

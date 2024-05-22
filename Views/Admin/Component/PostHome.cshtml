@@ -1,0 +1,25 @@
+﻿@model finalyearproject.Models.Post;
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Company: @Model.user.company.company_name</h6>
+        <div class="dropdown no-arrow">
+            <div class="d-flex gap-4">
+                <a asp-controller="Admin" asp-action="Detail" asp-route-post_id="@Model.post_id" class="btn btn-info">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2 col-sm-12">
+                <img src="~/img/Avatar/@Model.user.avatar" style="width: 5rem; height: 5rem" alt="">
+            </div>
+            <div class="col-md-10 col-sm-12">
+                <p>Position: @Model.Position</p>
+                <p>job description: @Model.job_description</p>
+                <p>Address: @Model.address</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -76,6 +76,10 @@ namespace finalyearproject.Controllers
                 TempData["user_id"] = user_id;
                 TempData["name"] = session.GetString("name");
                 TempData["avatar"] = session.GetString("avatar");
+                if (post.total_of_candidates >= post.limit_candidates)
+                {
+                    TempData["limited"] = "limited";
+                }
                 return View(post_comment);
             }
             else return NotFound();
@@ -93,6 +97,7 @@ namespace finalyearproject.Controllers
         private async Task  HandleApplied(int id)
         {
             Appliedjob appliedjob = await appliedjobRepo.SearchAppliedById(id);
+            if (appliedjob.status == "Refuse") appliedjob.post.total_of_candidates++; 
             appliedjob.status = "Accept";
             _dbContext.Update(appliedjob);
            await _dbContext.SaveChangesAsync();

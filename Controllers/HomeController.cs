@@ -42,5 +42,6 @@ namespace finalyearproject.Controllers
             TempData["name"] = Session.GetString("name");
             return View(posts);
         }
+        
     }
 }

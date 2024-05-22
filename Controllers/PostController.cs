@@ -51,7 +51,7 @@ namespace finalyearproject.Controllers
                 TempData["role"] = role;
                 TempData["avatar"] = user.avatar;
                 TempData["name"] = Session.GetString("name");
-                if (post.total_of_candidates==post.limit_candidates)
+                if (post.total_of_candidates>=post.limit_candidates)
                 {
                     TempData["limited"] = "limited";
                 }

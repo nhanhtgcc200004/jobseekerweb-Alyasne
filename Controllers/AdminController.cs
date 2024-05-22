@@ -60,14 +60,6 @@ namespace finalyearproject.Controllers
 
             return View(data_Chart);
         }
-
-        private async Task<data_chart> HandleGetDataChart()
-        {
-            List<Report> reports = await reportRepo.SearchAllReport();
-            List<User> users = await userRepo.SearchAllWorker();
-            List<Post> posts =await postRepo.SearchAllPostForManagement();
-            return null;
-        }
         public async Task<IActionResult> ManageAccount()
         {
             List<User> allUser = await userRepo.SearchAllUser();
@@ -77,6 +69,36 @@ namespace finalyearproject.Controllers
         {
             User user= await userRepo.SearchUserById(user_id);
             return View(user);
+        }
+
+        public async Task<IActionResult> Detail(int post_id)
+        {
+
+            List<Comment> comments = await commentRepo.GetAllCommentByPostId(post_id);
+            if (CheckInfor())
+            {
+                Post post = await postRepo.SearchPostById(post_id);
+                Post_CommentViewModel post_comment = new Post_CommentViewModel(post, comments);
+                TempData["role"] = role;
+                TempData["user_id"] = user_id;
+                TempData["name"] = session.GetString("name");
+                TempData["avatar"] = session.GetString("avatar");
+                if (post.total_of_candidates >= post.limit_candidates)
+                {
+                    TempData["limited"] = "limited";
+                }
+                return View(post_comment);
+            }
+            else return NotFound();
+        }
+
+        private bool CheckInfor()
+        {
+            if (user_id != null && role=="Admin")
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

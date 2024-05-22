@@ -24,7 +24,11 @@
                         @foreach( var jobs in Model){
                         <tr>
                             <th>@jobs.appliedjob_id</th>
-                            <th>@jobs.user.Email</th>
+                                <th>
+                                    <a asp-controller="Account" asp-action="AccountDetail" asp-route-user_id="@jobs.user_id">
+                                        @jobs.user.Email
+                                    </a>
+                                </th>
                             <th>@jobs.post.post_id</th>
                             <th>@jobs.status</th>
                             <th>

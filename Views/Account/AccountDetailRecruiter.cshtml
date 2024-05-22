@@ -1,6 +1,6 @@
 ﻿@model finalyearproject.Models.User
 @{
-    Layout = "RecruiterLayout";
+    Layout = TempData["Layout"]?.ToString();
 }
 <!-- Begin Page Content -->
 <div class="container-fluid">
