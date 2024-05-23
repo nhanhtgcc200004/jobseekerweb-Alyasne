@@ -70,11 +70,11 @@ namespace finalyearproject.Controllers
             }
         }
         [HttpPost]
-        public void BanAccount(int user_id,string reason)
+        public async Task BanAccount(int user_id,string reason)
         {
             if (checkUser())
             {
-                HandleBanUser(user_id,reason);
+               await HandleBanUser(user_id,reason);
             }
         }
 
@@ -91,7 +91,7 @@ namespace finalyearproject.Controllers
         {
             if (checkUser())
             {
-                HandleUpdateRole(user_id, role);
+               await HandleUpdateRole(user_id, role);
             }
         }
 
