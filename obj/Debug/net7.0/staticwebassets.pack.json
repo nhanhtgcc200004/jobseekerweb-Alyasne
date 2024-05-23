@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Resume\\30853c3e-fe20-4bbd-8751-97f4e90a097cNhan.pdf"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\Resume\\4b9c1a81-4789-43ea-9232-34febe23dff4ThanhNien.pdf",
+      "PackagePath": "staticwebassets\\Resume\\4b9c1a81-4789-43ea-9232-34febe23dff4ThanhNien.pdf"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\Resume\\7586913f-f192-49cc-b8b6-66c5947ae05aNhan.pdf",
       "PackagePath": "staticwebassets\\Resume\\7586913f-f192-49cc-b8b6-66c5947ae05aNhan.pdf"
     },
@@ -53,6 +57,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\0f6d37c1-ed9d-4af6-a2c6-9ddf8d87845bplant.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\0f6d37c1-ed9d-4af6-a2c6-9ddf8d87845bplant.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\51760637-c062-4a8c-b49a-4d75228a75746.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\51760637-c062-4a8c-b49a-4d75228a75746.jpg"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\6.jpg",
       "PackagePath": "staticwebassets\\img\\Avatar\\6.jpg"
     },
@@ -65,6 +77,10 @@
       "PackagePath": "staticwebassets\\img\\Avatar\\Logo.jpg"
     },
     {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\ce5f861a-7e3e-4bd8-bc17-fba6473190cc6.jpg",
+      "PackagePath": "staticwebassets\\img\\Avatar\\ce5f861a-7e3e-4bd8-bc17-fba6473190cc6.jpg"
+    },
+    {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\img_avatar.png",
       "PackagePath": "staticwebassets\\img\\Avatar\\img_avatar.png"
     },
@@ -75,6 +91,10 @@
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\plant.jpg",
       "PackagePath": "staticwebassets\\img\\Avatar\\plant.jpg"
+    },
+    {
+      "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Account.js",
+      "PackagePath": "staticwebassets\\js\\Account.js"
     },
     {
       "Id": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Candidate.js",

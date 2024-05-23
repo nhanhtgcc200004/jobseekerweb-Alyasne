@@ -1,6 +1,7 @@
 ﻿using EnterpriceWeb.Mailutils;
 using finalyearproject.Models;
 using finalyearproject.SubSystem.Mailutils;
+using Org.BouncyCastle.Crypto.Macs;
 using System.IO.Compression;
 
 namespace EnterpriceWeb.Controllers
@@ -144,6 +145,29 @@ namespace EnterpriceWeb.Controllers
             // Return the ZIP archive as a file
             return memoryStream;
         }
+
+        internal async Task SendMailBanAccount(string email, string reason)
+        {
+            var receiver = email;
+            var subject = "Your account was banned";
+            var message = "This mail be sent by our website to notify that your account" + email + "was banned because" + reason;
+            try
+            {
+                await _emailSender.SenderEmailAsync(receiver, subject, message);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal Task SendMailUpdateRoleAccount(string email, string role)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         //public async Task<MemoryStream> DownloadProcessAsync(List<MemoryStream> memoryStreams, List<string> titles)
         //{
         //    var finalMemoryStream = new MemoryStream();

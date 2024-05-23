@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Fdzk3MyrolI5as5zbbxZIh18pLi8velCq0cnvYoJAzs=",
+  "Hash": "6ginUpfVQ1GXEMTnUUy0WWMNZ2oPn/OD0peR/pmOJY0=",
   "Source": "finalyearproject",
   "BasePath": "_content/finalyearproject",
   "Mode": "Default",
@@ -153,6 +153,40 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\0f6d37c1-ed9d-4af6-a2c6-9ddf8d87845bplant.jpg",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "img/Avatar/0f6d37c1-ed9d-4af6-a2c6-9ddf8d87845bplant.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\0f6d37c1-ed9d-4af6-a2c6-9ddf8d87845bplant.jpg"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\51760637-c062-4a8c-b49a-4d75228a75746.jpg",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "img/Avatar/51760637-c062-4a8c-b49a-4d75228a75746.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\51760637-c062-4a8c-b49a-4d75228a75746.jpg"
+    },
+    {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\6.jpg",
       "SourceId": "finalyearproject",
       "SourceType": "Discovered",
@@ -185,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Avatar\\68925224-ee97-4d0a-9a4f-5237963b8397plant.jpg"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\ce5f861a-7e3e-4bd8-bc17-fba6473190cc6.jpg",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "img/Avatar/ce5f861a-7e3e-4bd8-bc17-fba6473190cc6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Avatar\\ce5f861a-7e3e-4bd8-bc17-fba6473190cc6.jpg"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\img\\Avatar\\img_avatar.png",
@@ -253,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Avatar\\plant.jpg"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Account.js",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "js/Account.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Account.js"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\js\\Candidate.js",
@@ -1545,6 +1613,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resume\\30853c3e-fe20-4bbd-8751-97f4e90a097cNhan.pdf"
+    },
+    {
+      "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\Resume\\4b9c1a81-4789-43ea-9232-34febe23dff4ThanhNien.pdf",
+      "SourceId": "finalyearproject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\",
+      "BasePath": "_content/finalyearproject",
+      "RelativePath": "Resume/4b9c1a81-4789-43ea-9232-34febe23dff4ThanhNien.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resume\\4b9c1a81-4789-43ea-9232-34febe23dff4ThanhNien.pdf"
     },
     {
       "Identity": "D:\\1640\\finalyearproject\\finalyearproject\\wwwroot\\Resume\\7586913f-f192-49cc-b8b6-66c5947ae05aNhan.pdf",

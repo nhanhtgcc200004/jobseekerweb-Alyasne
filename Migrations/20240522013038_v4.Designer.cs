@@ -11,7 +11,7 @@ using finalyearproject.Models;
 namespace finalyearproject.Migrations
 {
     [DbContext(typeof(ApplicationDBcontext))]
-    [Migration("20240521035243_v4")]
+    [Migration("20240522013038_v4")]
     partial class v4
     {
         /// <inheritdoc />

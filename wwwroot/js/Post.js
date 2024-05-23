@@ -1,5 +1,32 @@
 ﻿$(document).ready(function () {
-  
+
+    var showreportButton = document.getElementById("ShowCreateReport");
+    var reportButton = document.getElementById("CreateReport");
+
+    reportButton.addEventListener("click", function () {
+
+        var postId = showreportButton.getAttribute("data-id");
+        var reason_str = document.getElementById("Reason").value;
+
+        // Make an AJAX call to the CreateReport action
+        $.ajax({
+            url: "/Report/CreateReport",
+            method: "POST",
+            data: {
+                post_id: postId,
+                reason: reason_str
+            },
+            success: function (response) {
+                console.log("CreateReport success");
+                alert("report success");
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                console.error("CreateReport error: " + xhr.responseText);
+            }
+        });
+    });
 
     var applyButton = document.getElementById("Apply");
 
@@ -52,8 +79,11 @@
         });
     });
     var FullButton = document.getElementById("Full");
-    FullButton.addEventListener("click", function () {
-        alert("this post job is reach limit");
-    })
+    if (FullButton) { 
+        FullButton.addEventListener("click", function () {
+            alert("this post job is reach limit");
+        })
+    }
+    
 
 });

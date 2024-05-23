@@ -4,6 +4,7 @@ using finalyearproject.Repositories;
 using finalyearproject.SubSystem.Mailutils;
 using Microsoft.AspNetCore.Mvc;
 using MySqlX.XDevAPI;
+using System.Drawing;
 
 namespace finalyearproject.Controllers
 {
@@ -69,18 +70,36 @@ namespace finalyearproject.Controllers
             }
         }
         [HttpPost]
-        public void BanAccount(int user_id)
+        public void BanAccount(int user_id,string reason)
         {
             if (checkUser())
             {
-                HandleBanUser(user_id);
+                HandleBanUser(user_id,reason);
             }
         }
 
-        private async void HandleBanUser(int user_id)
+        private async Task HandleBanUser(int user_id,string reason)
         {
             User user = await userRepo.SearchUserById(user_id);
             user.Status = "Banned";
+            await mailSystem.SendMailBanAccount(user.Email,reason);
+            _dbContext.Update(user);
+            _dbContext.SaveChanges();
+        }
+        [HttpPost]
+        public async Task UpdateRole(int user_id, string role)
+        {
+            if (checkUser())
+            {
+                HandleUpdateRole(user_id, role);
+            }
+        }
+
+        private async Task HandleUpdateRole(int user_id, string role)
+        {
+            User user = await userRepo.SearchUserById(user_id);
+            user.role=role;
+            await mailSystem.SendMailUpdateRoleAccount(user.Email, role);
             _dbContext.Update(user);
             _dbContext.SaveChanges();
         }
