@@ -29,4 +29,31 @@
             });
         });
     }
+    var DeleteButton = document.getElementById("DeleteAccountButton");
+    var Banbutton = document.getElementById("confirm_delete");
+    if (Banbutton) {
+        Banbutton.addEventListener("click", function () {
+
+            var user_id = DeleteButton.getAttribute("data-user_id");
+            var reason = document.getElementById("reason").value;
+
+            // Make an AJAX call to the CreateReport action
+            $.ajax({
+                url: "/Account/BanAccount",
+                method: "POST",
+                data: {
+                    user_id: user_id,
+                    reason: reason
+                },
+                success: function (response) {
+                    console.log("success");
+                    window.location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error("fail");
+                }
+            });
+        });
+    }
 });
