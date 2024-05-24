@@ -56,19 +56,19 @@
                         <input type="file" id="fileupload" style="display: none;">
                         <div class="input-block">
                             <label>Full name</label>
-                            <input value="@Model.Name" name="Name" />
+                            <input value="@Model.Name" name="Name" required />
                         </div>
                         <div class="input-block">
                             <label>Email</label>
-                            <input value="@Model.Email" name="Email" />
+                            <input value="@Model.Email" name="Email" required />
                         </div>
                         <div class="input-block">
                             <label>Birthdate</label>
-                            <input type="date" value="@Model.Birthday" name="Birthday" />
+                            <input type="date" value="@Model.Birthday" name="Birthday" required />
                         </div>
                         <div class="input-block">
                             <label>Phone number</label>
-                            <input value="@Model.Phone" name="Phone" />
+                            <input value="@Model.Phone" name="Phone" required type="tel" />
                         </div>
                         <div class="d-flex gap-2">
                             <label style="font-size: 14px; color: #a1b4b4;">Gender</label>

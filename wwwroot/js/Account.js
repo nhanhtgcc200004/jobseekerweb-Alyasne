@@ -9,7 +9,7 @@
             var role = changesroleselection.value;
             var user_id = editButton.getAttribute("data-user_id");
 
-            // Make an AJAX call to the CreateReport action
+       
             $.ajax({
                 url: "/Account/UpdateRole",
                 method: "POST",
@@ -37,7 +37,7 @@
             var user_id = DeleteButton.getAttribute("data-user_id");
             var reason = document.getElementById("reason").value;
 
-            // Make an AJAX call to the CreateReport action
+          
             $.ajax({
                 url: "/Account/BanAccount",
                 method: "POST",

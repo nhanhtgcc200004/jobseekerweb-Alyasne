@@ -56,7 +56,7 @@
                                 <th>@user.Status</th>
                                 <td>
                                     <div class="btn-group-vertical">
-                                        <a href="#" class="btn btn-warning btn-icon-split" style="justify-content: normal" data-toggle="modal" data-target="#change_role_model">
+                                        <a href="#" class="btn btn-warning btn-icon-split" id="EditAccount" style="justify-content: normal" data-toggle="modal" data-target="#change_role_model" data-user_id="@user.user_id">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="fas fa-exclamation-triangle"></i>
                                             </span>
@@ -80,7 +80,7 @@
                                             </a>
                                         }
                                      
-                                        <a href="#" class="btn btn-danger btn-icon-split" id="DeleteAccountButton">
+                                        <a href="#" class="btn btn-danger btn-icon-split" id="DeleteAccountButton" data-user_id="@user.user_id">
                                             <span class="icon text-white" style="background: none">
                                                 <i class="fas fa-trash"></i>
                                             </span>
