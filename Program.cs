@@ -15,7 +15,7 @@ builder.Services.AddScoped<ApplicationDBcontext>();
 
 // Configure the HTTP request pipeline.
 var connectionString = builder.Configuration.GetConnectionString("ApDbConnectionString");
-builder.Services.AddDbContext<ApplicationDBcontext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<ApplicationDBcontext>(options =>  options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 app.UseHttpsRedirection();

@@ -1,15 +1,15 @@
 ﻿$(document).ready(function () {
-    var editButton = document.getElementById("EditAccount");
+    var editButtons = document.querySelectorAll("#EditAccount");
     var changesroleselection = document.getElementById("changesRoleSelection");
     var updateButton = document.getElementById("updaterole");
-
+    var user_id;
+    editButtons.forEach(function (editButton) {
+        user_id = editButton.getAttribute("data-user_id");
+    });
     if (updateButton) {
         updateButton.addEventListener("click", function () {
-
             var role = changesroleselection.value;
-            var user_id = editButton.getAttribute("data-user_id");
-
-       
+            
             $.ajax({
                 url: "/Account/UpdateRole",
                 method: "POST",
@@ -19,7 +19,7 @@
                 },
                 success: function (response) {
                     console.log("success");
-                  
+
                     window.location.reload();
                 },
                 error: function (xhr, status, error) {
@@ -29,12 +29,16 @@
             });
         });
     }
-    var DeleteButton = document.getElementById("DeleteAccountButton");
-    var Banbutton = document.getElementById("confirm_delete");
+
+    var user_id_ban;
+    var DeleteButtons = document.querySelectorAll("#DeleteAccountButton");
+    var Banbutton = document.getElementById("BanAccount");
+    DeleteButtons.forEach(function (DeleteButton) {
+        user_id_ban = DeleteButton.getAttribute("data-user_id");
+    });
     if (Banbutton) {
         Banbutton.addEventListener("click", function () {
-
-            var user_id = DeleteButton.getAttribute("data-user_id");
+            
             var reason = document.getElementById("reason").value;
 
           
@@ -42,7 +46,7 @@
                 url: "/Account/BanAccount",
                 method: "POST",
                 data: {
-                    user_id: user_id,
+                    user_id: user_id_ban,
                     reason: reason
                 },
                 success: function (response) {

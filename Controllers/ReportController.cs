@@ -71,12 +71,12 @@ namespace finalyearproject.Controllers
             }
         }
         [HttpPost]
-        public async void RefuseReport(int report_id)
+        public async Task RefuseReport(int report_id)
         {
             if (CheckInfor())
             {
                 Report report = await _reportRepo.SearchReportById(report_id);
-                UpdateReport(report, "Refuse");
+               await UpdateReport(report, "Refuse");
                 User reporter = await _userRepo.SearchUserById(report.reporter_id);
                 HandleRefuseReport(reporter);
             }

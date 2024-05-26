@@ -106,7 +106,7 @@ namespace finalyearproject.Controllers
 
         private bool checkUser()
         {
-            if(user_id !=null && role == "admin")
+            if(user_id !=null && role == "Admin")
             {
                 return true;
             }
