@@ -46,7 +46,7 @@ namespace finalyearproject.Repositories
 
         internal async Task<int> TotalUser()
         {
-            return await dbcontext.Users.Where(u => u.Status == "Ok" && u.role=="user").CountAsync();
+            return await dbcontext.Users.Where(u => u.Status == "Ok" && u.role=="User").CountAsync();
         }
         internal async Task<int> TotalRecruiter()
         {

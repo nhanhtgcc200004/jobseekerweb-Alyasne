@@ -302,7 +302,7 @@ namespace finalyearproject.Controllers
                 if (avatar != null)
                 {
                     user.avatar = "img_avatar" ;
-                    user.role = "user";
+                    user.role = "User";
                     user.Status = "1";
                     user.company_id = 999;
                     await _dbContext.AddAsync(user);
