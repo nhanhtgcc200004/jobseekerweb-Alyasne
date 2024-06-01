@@ -1,2 +1,2 @@
 # finalyearproject
- myfinalproject
+ Database name: jobseeker
